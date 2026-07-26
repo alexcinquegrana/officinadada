@@ -22,7 +22,7 @@ export function Sede() {
 
         <div className="col-span-12 md:col-span-5 md:col-start-8 flex flex-col justify-center">
           <Reveal>
-            <p className="eyebrow">04 — La sede</p>
+            <p className="eyebrow">La sede</p>
             <h2 className="mt-6 font-display font-light text-[clamp(2rem,4.5vw,3.6rem)] leading-[1.05] tracking-[-0.02em] text-paper">
               Uno spazio pensato per <span className="italic">volare</span> in sicurezza.
             </h2>
