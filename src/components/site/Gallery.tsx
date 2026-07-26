@@ -11,7 +11,7 @@ export function Gallery() {
         <div className="grid grid-cols-12 gap-6 md:gap-10">
           <div className="col-span-12 md:col-span-4">
             <Reveal>
-              <p className="eyebrow">03 — Galleria</p>
+              <p className="eyebrow">Galleria</p>
               <h2 className="mt-6 font-display italic font-light text-[clamp(2rem,4vw,3.4rem)] leading-tight text-paper">
                 Immagini di scena.
               </h2>
