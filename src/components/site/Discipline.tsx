@@ -28,7 +28,7 @@ export function Discipline() {
         <div className="grid grid-cols-12 gap-6 md:gap-10">
           <div className="col-span-12 md:col-span-3">
             <Reveal>
-              <p className="eyebrow">02 — Discipline</p>
+              <p className="eyebrow">Discipline</p>
               <p className="mt-6 font-display italic text-2xl text-paper/80 leading-tight">
                 I nostri corsi.
               </p>

@@ -6,7 +6,7 @@ export function Manifesto() {
       <div className="mx-auto grid max-w-[1400px] grid-cols-12 gap-6 px-6 md:gap-10 md:px-10">
         <div className="col-span-12 md:col-span-3">
           <Reveal>
-            <p className="eyebrow">01 — Manifesto</p>
+            <p className="eyebrow">Manifesto</p>
             <p className="mt-6 font-display italic text-2xl text-paper/80 leading-tight">
               In cosa crediamo.
             </p>

@@ -47,7 +47,7 @@ export function Team() {
         <div className="grid grid-cols-12 gap-6 md:gap-10">
           <div className="col-span-12 md:col-span-3">
             <Reveal>
-              <p className="eyebrow">06 — Chi siamo</p>
+              <p className="eyebrow">Chi siamo</p>
               <h2 className="mt-6 font-display italic font-light text-[clamp(2rem,4vw,3.2rem)] leading-tight text-paper">
                 Le persone dietro il volo.
               </h2>

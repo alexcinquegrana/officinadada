@@ -16,7 +16,7 @@ export function Eventi() {
       <div className="mx-auto max-w-[1400px] px-6 md:px-10 grid grid-cols-12 gap-6 md:gap-10">
         <div className="col-span-12 md:col-span-3">
           <Reveal>
-            <p className="eyebrow">05 — Percorso</p>
+            <p className="eyebrow">Percorso</p>
             <h2 className="mt-6 font-display italic font-light text-[clamp(2rem,4vw,3.2rem)] leading-tight text-paper">
               Otto anni in aria.
             </h2>
