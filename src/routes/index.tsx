@@ -1,24 +1,53 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { SiteNav } from "@/components/site/SiteNav";
+import { Hero } from "@/components/site/Hero";
+import { Manifesto } from "@/components/site/Manifesto";
+import { Discipline } from "@/components/site/Discipline";
+import { Gallery } from "@/components/site/Gallery";
+import { Sede } from "@/components/site/Sede";
+import { Eventi } from "@/components/site/Eventi";
+import { Team } from "@/components/site/Team";
+import { Contatti } from "@/components/site/Contatti";
+import { SiteFooter } from "@/components/site/SiteFooter";
+import hero from "@/assets/tessuti0103.jpg.asset.json";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+const title = "Officina Dadà — Discipline aeree e arti circensi in Valsabbia";
+const description =
+  "Scuola di danza aerea e arti circensi a Roè Volciano (BS). Tessuti, cerchio, amaca, corda, trapezio, giocoleria, flexibility e verticali per bambini e adulti.";
+
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => ({
+    meta: [
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+      { property: "og:type", content: "website" },
+      { property: "og:image", content: hero.url },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: title },
+      { name: "twitter:description", content: description },
+      { name: "twitter:image", content: hero.url },
+    ],
+  }),
+  component: Home,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
+function Home() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <>
+      <SiteNav />
+      <main>
+        <Hero />
+        <Manifesto />
+        <Discipline />
+        <Gallery />
+        <Sede />
+        <Eventi />
+        <Team />
+        <Contatti />
+      </main>
+      <SiteFooter />
+    </>
   );
 }
