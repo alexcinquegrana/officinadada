@@ -2,11 +2,10 @@ import { useEffect, useState } from "react";
 import logo from "@/assets/dada-logo.jpg.asset.json";
 
 const links = [
-  { href: "#corsi", label: "Corsi" },
+  { href: "#manifesto", label: "Manifesto" },
   { href: "#discipline", label: "Discipline" },
-  { href: "#galleria", label: "Galleria" },
   { href: "#sede", label: "Sede" },
-  { href: "#sponsor", label: "Sponsor" },
+  { href: "#team", label: "Team" },
   { href: "#contatti", label: "Contatti" },
 ];
 
@@ -24,24 +23,26 @@ export function SiteNav() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-        scrolled ? "backdrop-blur-md bg-ink/80 border-b border-white/10" : "bg-transparent"
+        scrolled
+          ? "backdrop-blur-md bg-ink/70 border-b border-white/10"
+          : "bg-transparent"
       }`}
     >
-      <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-4 px-4 py-3 md:px-10 md:py-4">
-        <a href="#top" className="flex min-w-0 items-center gap-3 group">
-          <span className="relative inline-block h-9 w-9 shrink-0 overflow-hidden rounded-full ring-1 ring-white/20">
+      <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-4 md:px-10">
+        <a href="#top" className="flex items-center gap-3 group">
+          <span className="relative inline-block h-9 w-9 overflow-hidden rounded-full ring-1 ring-white/20">
             <img
               src={logo.url}
               alt="Officina Dadà"
               className="h-full w-full object-cover mix-blend-screen opacity-90 group-hover:opacity-100 transition"
             />
           </span>
-          <span className="font-display italic text-lg tracking-tight text-paper truncate">
+          <span className="font-display italic text-lg tracking-tight text-paper">
             Officina Dadà
           </span>
         </a>
 
-        <nav className="hidden lg:flex items-center gap-7">
+        <nav className="hidden md:flex items-center gap-8">
           {links.map((l) => (
             <a
               key={l.href}
@@ -53,28 +54,19 @@ export function SiteNav() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
-          <a
-            href="#prova"
-            className="hidden sm:inline-flex items-center gap-2 bg-ember px-4 py-2.5 text-[11px] uppercase tracking-[0.2em] text-ink hover:bg-paper transition-colors"
-          >
-            Prova gratuita
-          </a>
-
-          <button
-            aria-label={open ? "Chiudi menu" : "Apri menu"}
-            onClick={() => setOpen((v) => !v)}
-            className="lg:hidden text-paper p-2 -mr-2"
-          >
-            <span className="block w-6 h-px bg-paper mb-1.5" />
-            <span className={`block w-6 h-px bg-paper transition ${open ? "opacity-0" : ""}`} />
-            <span className="block w-6 h-px bg-paper mt-1.5" />
-          </button>
-        </div>
+        <button
+          aria-label="Apri menu"
+          onClick={() => setOpen((v) => !v)}
+          className="md:hidden text-paper p-2 -mr-2"
+        >
+          <span className="block w-6 h-px bg-paper mb-1.5" />
+          <span className={`block w-6 h-px bg-paper transition ${open ? "opacity-0" : ""}`} />
+          <span className="block w-6 h-px bg-paper mt-1.5" />
+        </button>
       </div>
 
       {open && (
-        <div className="lg:hidden border-t border-white/10 bg-ink/95 backdrop-blur-md">
+        <div className="md:hidden border-t border-white/10 bg-ink/95 backdrop-blur-md">
           <nav className="flex flex-col px-6 py-6 gap-4">
             {links.map((l) => (
               <a
@@ -86,13 +78,6 @@ export function SiteNav() {
                 {l.label}
               </a>
             ))}
-            <a
-              href="#prova"
-              onClick={() => setOpen(false)}
-              className="mt-4 inline-flex items-center justify-center gap-2 bg-ember px-4 py-3 text-[11px] uppercase tracking-[0.2em] text-ink"
-            >
-              Prova gratuita →
-            </a>
           </nav>
         </div>
       )}
