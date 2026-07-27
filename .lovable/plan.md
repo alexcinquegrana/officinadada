@@ -1,141 +1,66 @@
 
-# Officina Dadà — Piano del sito
+## Obiettivo
 
-Sito editoriale one-page per **Officina Dadà A.S.D.**, associazione di arti circensi e discipline aeree a Roè Volciano (Valsabbia, Brescia), fondata nel 2018. L'esperienza deve richiamare un programma teatrale stampato incrociato con il sito di un'istituzione culturale contemporanea: silenzioso, sicuro, cinematografico, lasciando che siano le fotografie aeree a portare l'emozione.
+1. Integrare le 6 nuove foto caricate nel sito.
+2. Trasformare la sezione **Galleria** in una vera galleria estendibile (griglia editoriale + lightbox), pronta ad accogliere molte altre foto in futuro.
+3. Nella sezione **Discipline** sostituire le foto attuali con immagini iperrealistiche coerenti al titolo di ogni disciplina, evitando volti in primo piano.
 
-## Direzione creativa
+## 1. Upload e catalogazione delle nuove foto
 
-**Concept — "Sospesi".** Tutto sulla pagina pende, fluttua o discende: le parole si posano, le immagini emergono dal nero come sotto una luce di scena che sale, le sezioni sono separate da sottili linee verticali che richiamano i tessuti aerei. Il sito è una lenta apertura di sipario, non uno scroll frenetico.
+Carico le 6 immagini via `lovable-assets` in `src/assets/` come `.asset.json`:
 
-**Mood.** Palco scuro e teatrale, accenti caldi da luce di scena, ampio silenzio.
+- `SGR_6225.jpeg` → duo su cerchio, luce rossa (drammatica)
+- `SGR_6255.jpeg` → cerchio con corpo in sospensione, luce rossa
+- `cpm01964.jpeg` → cerchio blu, figura capovolta (contiene watermark logo Dadà + Pasotti — la teniamo, coerente con crediti fotografo)
+- `cpm01154.jpeg` → cerchio rosso, bambina in aria (kids)
+- `SGR_5528.jpeg` → backstage/trucco (dietro le quinte, umanità)
+- `cpm00029.jpeg` → foto di gruppo sul palco (saggio finale, comunità)
 
-**Palette (dark, editoriale).**
-- Nero inchiostro `#0B0B0C` (palco)
-- Bianco caldo `#F2EFE9` (carta / testo)
-- Verde acqua muto `#7FB8B4` — tratto dal tessuto del logo
-- Arancio brace `#D96A3E` — tratto dalle luci di scena nelle foto
-- Grigio cenere `#8A8681` (testo secondario)
+## 2. Posizionamento strategico delle nuove foto
 
-**Tipografia.**
-- Display: **Fraunces** (o **Instrument Serif**) — corsivo, sovradimensionato, editoriale, sensazione tipografica artigianale. Usato grandissimo per aperture di sezione e citazioni.
-- Testo: **Inter Tight** — neutro, calmo, interlinea generosa.
-- Occhielli di sezione in maiuscoletto tracciato Inter con numerazione (`01 — Chi siamo`).
+Analisi editoriale — ogni foto va dove rafforza la narrazione della sezione:
 
-**Motion.** Trattenuto. I titoli entrano con una maschera/blur soffuso sullo scroll. Le immagini sfumano dal nero. Lieve parallasse sul tessuto in hero. Cursore ad anello sottile sugli elementi interattivi. Niente rimbalzi, niente molle, niente decorazioni superflue.
+- **Hero / Manifesto**: nessun cambio (già bilanciati).
+- **Sezione "Circo in famiglia / Kids"** nella lista Discipline → `cpm01154.jpeg` (bambina sul cerchio) come immagine associata.
+- **Eventi / Saggi**: `cpm00029.jpeg` (foto di gruppo saggio) come immagine di apertura della sezione — dà scala e comunità.
+- **Team / Backstage**: `SGR_5528.jpeg` (trucco backstage) come immagine editoriale accanto al team — mostra il lato umano/artigianale.
+- **Galleria** (vedi sotto): tutte e 6 le foto entrano nella griglia, con `SGR_6225.jpeg` come immagine hero della galleria (formato verticale forte).
 
-## Struttura (long page unica, in italiano)
+## 3. Nuova sezione Galleria estendibile
 
-```text
-┌─ Nav sottile fissa: marchio · Chi siamo · Corsi · Sede · Team · Contatti
-│
-├─ 01  HERO
-│    Palco nero a tutto schermo. Foto aerea (tessuti0103) in dissolvenza.
-│    Serif italic sovradimensionato: "Sospesi tra terra e cielo."
-│    Sotto: "Discipline aeree e arti circensi · Valsabbia, dal 2018"
-│    Freccia discreta verso il basso.
-│
-├─ 02  MANIFESTO  ("In cosa crediamo")
-│    Due colonne editoriali: a sinistra occhiello tracciato + incipit breve,
-│    a destra il testo lungo riscritto dal CV.
-│    Citazione: "Da spettatori ad artisti della propria vita."
-│
-├─ 03  DISCIPLINE (Corsi)
-│    Lista editoriale orizzontale, non card:
-│      Danza aerea — tessuti, cerchio, amaca, corda, trapezio
-│      Giocoleria
-│      Circo in famiglia
-│      Flexibility
-│      Verticali
-│    Ogni riga in hover mostra una breve descrizione
-│    e una fotografia corrispondente scivola da destra.
-│
-├─ 04  GALLERIA
-│    Composizione fotografica asimmetrica e sfalsata (le 4 foto caricate),
-│    con didascalie in corsivo stile "figure".
-│
-├─ 05  LA SEDE
-│    Layout diviso. Sinistra: fotografia della sala.
-│    Destra: dati come tabella tipografica
-│      Roè Volciano · 2 sale · parquet · h 5,50 m
-│      10–14 appendimenti · 8 materassi · slackline · audio pro
-│      Sede secondaria — Vestone, palestra scuola primaria
-│
-├─ 06  EVENTI
-│    "Born to fly" 2024 / 2025 — competizione regionale
-│    Formazione istruttori 2024/2025
-│    Collaborazioni: Strabilio Festival (2023), Circ'onda (2022)
-│    Timeline verticale con filetti sottili.
-│
-├─ 07  TEAM
-│    Roster editoriale senza ritratti (nessuna foto finta).
-│    Ogni membro come voce tipografica:
-│      Nome in serif italic · ruolo in maiuscoletto · una riga
-│      con la "particolarità" ripresa dal CV.
-│    Elena Trombini, Matteo Dolcetti, Luisa Ribelli,
-│    Romina Savioni, Irene Maioli, Silvia Federici.
-│
-├─ 08  CONTATTI / CTA
-│    Sezione scura a tutta pagina. Frase serif grande:
-│    "Vieni a volare con noi."
-│    Email: segreteriaofficinadada@gmail.com
-│    Tel: +39 327 327 6836 (Elena)
-│    Sede: Roè Volciano (BS)
-│
-└─ Footer
-     Marchio · © Officina Dadà A.S.D. · P.IVA/CF segnaposto ·
-     credito "Fotografie · Pasotti David"
-```
+Refactor di `src/components/site/Gallery.tsx`:
 
-## Trattamento fotografico
+- Sposto la lista foto in un array `gallery` in cima al file, tipizzato `{ src, alt, caption, span }`. Aggiungere nuove foto in futuro = una riga nell'array.
+- Layout: **masonry editoriale asimmetrica** (CSS grid con `col-span` variabili 4/6/8/12 e aspect ratio miste 4/5, 4/3, 16/9) — gestita dal campo `span` per foto.
+- Header sezione invariato (eyebrow "Galleria", crediti David Pasotti).
+- **Lightbox**: click su una foto apre overlay full-screen con `motion/react` (fade + scale), navigazione ←/→ e chiusura con Esc / click su sfondo / tasto X. Focus trap semplice, `overflow:hidden` su body quando aperto.
+- Lazy loading nativo (`loading="lazy"`, `decoding="async"`).
+- Le foto attuali (tessuti0103/165/220, cerchio) restano nel set iniziale insieme alle 6 nuove — totale 10 foto di partenza.
 
-- Uso delle 4 foto caricate come hero + galleria + reveal delle discipline.
-- Import via Lovable Assets da `/mnt/user-uploads/` (nessun binario nel repo).
-- Il logo (`dadà_logo.jpeg`) diventa marchio nav e footer, oltre a favicon.
-- Grading caldo leggero + vignettatura sottile via CSS (nessuna ricodifica).
-- Credito "Pasotti David" sempre presente in galleria e footer.
+## 4. Discipline — immagini iperrealistiche coerenti
 
-## Micro-interazioni
+Le foto attuali della sezione Discipline vengono sostituite con immagini generate AI iperrealistiche, tramite `imagegen--generate_image` (model `standard`), salvate in `src/assets/discipline/*.jpg`. Prompt engineering: fotografia teatrale, luce di scena, grana pellicola, **niente volti in primo piano** (soggetti di spalle, dettagli, silhouette, inquadrature strette su mani/piedi/attrezzo).
 
-- Reveal a maschera sui titoli in scroll (clip-path dal basso).
-- Fade dal nero su ogni immagine all'ingresso nel viewport.
-- Hover sulle righe delle discipline: la riga si alza di 2px, si disegna un filetto sinistra→destra (400ms ease-out), l'immagine di accompagnamento fa crossfade.
-- Numerali di sezione (`01`, `02`…) sticky nella colonna sinistra (solo desktop).
-- La nav si assottiglia e prende un filetto dopo 80px di scroll.
-- Cursore ad anello sottile su desktop per link/hover (disabilitato su touch).
-- Tutte le animazioni rispettano `prefers-reduced-motion`.
+Mappa disciplina → prompt:
 
-## Responsive
+- **Danza aerea** → aerialist di spalle avvolta in tessuti aerei rossi, palco scuro, luce laterale calda, film grain, hyperrealistic.
+- **Giocoleria** → mani in movimento che lanciano tre palline bianche, luce controluce ambrata, motion blur leggero.
+- **Circo in famiglia** → riutilizzo la foto reale `cpm01154.jpeg` (bambina sul cerchio) — è autentica, non serve AI.
+- **Flexibility** → silhouette di dorso in spaccata frontale su pavimento di sala danza, luce da finestra, ombre lunghe.
+- **Verticali** → figura di spalle in verticale su una mano, sala vuota, muro chiaro, ombra netta, fotografia editoriale.
 
-- Mobile-first: colonna unica, numerali di sezione in linea, righe discipline impilate con foto sopra.
-- Desktop ≥ 1024px: griglia editoriale a 12 colonne, rail sinistra sticky con numerali.
-- Type fluida con `clamp()`; display hero da ~44px a ~180px.
+Ogni immagine viene poi caricata via `lovable-assets` (i file generati in `src/assets/` restano solo se non li esternalizziamo — qui li esternalizzo come asset per coerenza col resto del progetto).
 
-## Accessibilità & SEO
+## 5. File toccati
 
-- Landmark semantici (`header`, `main`, `section` con `aria-labelledby`, `footer`).
-- Alt su tutte le immagini che descrivono la disciplina aerea.
-- Contrasto AA sulla palette scura (bianco caldo su nero inchiostro conforme).
-- Focus-visible in arancio brace.
-- Un solo H1 ("Officina Dadà — Discipline aeree e arti circensi in Valsabbia").
-- `head()` di rotta su `/`: title < 60 caratteri, meta description < 160, og:title/description, og:image sulla foto hero (URL assoluto asset), twitter:card summary_large_image, og:type website. JSON-LD `SportsActivityLocation` con indirizzo, telefono, email, foundingDate 2018.
+- `src/components/site/Gallery.tsx` — refactor griglia + lightbox.
+- `src/components/site/Discipline.tsx` — nuovi import immagini AI + foto reale kids.
+- `src/components/site/Eventi.tsx` — inserimento `cpm00029.jpeg`.
+- `src/components/site/Team.tsx` — inserimento `SGR_5528.jpeg` come immagine editoriale.
+- Nuovi `.asset.json` in `src/assets/` per 6 foto utente + 4 immagini AI.
 
-## Implementazione tecnica
+## Note tecniche
 
-- Stack invariato: TanStack Start, Tailwind v4 tokens in `src/styles.css`, primitive shadcn già presenti.
-- Sostituire `src/routes/index.tsx` con la nuova home (nessun sibling).
-- Aggiungere i token della palette in `@theme inline` + `:root` (oklch), più `--font-display` (Fraunces) e `--font-body` (Inter Tight); caricamento font via `<link>` in `__root.tsx` — mai `@import` remoto.
-- Aggiornare `head()` di `__root.tsx` al branding Officina Dadà e sostituire la favicon con il logo (rimuovere `public/favicon.ico` di default).
-- Piccoli componenti presentazionali in `src/components/site/`:
-  `SiteNav`, `Hero`, `Manifesto`, `Discipline`, `Gallery`, `Sede`, `Eventi`, `Team`, `Contatti`, `SiteFooter`, più un wrapper `Reveal` per il reveal a maschera e un `CursorRing` client-only.
-- Animazioni con `motion/react` — leggere, gated su `prefers-reduced-motion`. Nessuna libreria pesante.
-- Tutte le immagini via `lovable-assets create` con pointer JSON in `src/assets/*.asset.json`.
-- Nessun backend in questa fase (nessun form, nessun DB).
-
-## Fuori scope
-
-- Invio form contatti / newsletter (mostrati email e telefono).
-- CMS / area admin.
-- Multilingua (solo italiano, coerente col materiale).
-- Prenotazioni o pagamenti.
-
-Pronto a costruire all'approvazione.
+- Nessun cambio a routing, backend, styles globali.
+- Il lightbox è un componente locale a `Gallery.tsx` (non aggiungiamo dipendenze); usa `motion/react` già installato e `AnimatePresence`.
+- Le immagini AI vengono generate una-per-una con `imagegen--generate_image` in parallelo dove possibile.
