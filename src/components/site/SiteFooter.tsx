@@ -26,26 +26,13 @@ export function SiteFooter() {
           <div className="col-span-6 md:col-span-3">
             <p className="eyebrow">Naviga</p>
             <ul className="mt-4 space-y-2 text-sm">
-              <li>
-                <a href="/#manifesto" className="text-paper/70 hover:text-paper transition-colors">
-                  Manifesto
-                </a>
-              </li>
-              <li>
-                <a href="/#discipline" className="text-paper/70 hover:text-paper transition-colors">
-                  Discipline
-                </a>
-              </li>
-              <li>
-                <a href="/#sede" className="text-paper/70 hover:text-paper transition-colors">
-                  La sede
-                </a>
-              </li>
-              <li>
-                <a href="/#contatti" className="text-paper/70 hover:text-paper transition-colors">
-                  Contatti
-                </a>
-              </li>
+              <li><a href="/#prova" className="text-ember hover:text-paper transition-colors">Prova gratuita</a></li>
+              <li><a href="/#corsi" className="text-paper/70 hover:text-paper transition-colors">Corsi</a></li>
+              <li><a href="/#discipline" className="text-paper/70 hover:text-paper transition-colors">Discipline</a></li>
+              <li><a href="/#galleria" className="text-paper/70 hover:text-paper transition-colors">Galleria</a></li>
+              <li><a href="/#sede" className="text-paper/70 hover:text-paper transition-colors">La sede</a></li>
+              <li><a href="/#sponsor" className="text-paper/70 hover:text-paper transition-colors">Sponsor</a></li>
+              <li><a href="/#contatti" className="text-paper/70 hover:text-paper transition-colors">Contatti</a></li>
             </ul>
           </div>
 
