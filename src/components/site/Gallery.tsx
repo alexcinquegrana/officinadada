@@ -11,17 +11,31 @@ import cpm1964 from "@/assets/cpm01964.jpg.asset.json";
 import cpm1154 from "@/assets/cpm01154.jpg.asset.json";
 import sgr5528 from "@/assets/SGR_5528.jpg.asset.json";
 import cpm0029 from "@/assets/cpm00029.jpg.asset.json";
+import cpm4369 from "@/assets/cpm04369.jpg.asset.json";
+import cpm4439 from "@/assets/cpm04439.jpg.asset.json";
+import sgr7156 from "@/assets/SGR_7156.jpg.asset.json";
+import cpm3107 from "@/assets/cpm03107.jpg.asset.json";
+import cpm0250 from "@/assets/cpm00250.jpg.asset.json";
+import sgr5909 from "@/assets/SGR_5909.jpg.asset.json";
+import sgr5918 from "@/assets/SGR_5918.jpg.asset.json";
 
 type Photo = { src: string; alt: string; caption: string; span: string; ratio: string };
 
 const gallery: Photo[] = [
+  { src: cpm4369.url, alt: "Aerealista su tessuti bianchi, luci viola e gialle", caption: "Tessuti — Spaccata sospesa", span: "md:col-span-5", ratio: "aspect-[3/4]" },
   { src: sgr6225.url, alt: "Duo su cerchio aereo, luce rossa", caption: "Duo — Cerchio aereo", span: "md:col-span-7", ratio: "aspect-[4/5]" },
+  { src: cpm4439.url, alt: "Cinque aerealiste in fila su tessuti aerei azzurri", caption: "Ensemble — Tessuti in cinque", span: "md:col-span-12", ratio: "aspect-[16/9]" },
   { src: b.url, alt: "Allieva su tessuti aerei gialli", caption: "Tessuti — Saggio 2024", span: "md:col-span-5", ratio: "aspect-[4/5]" },
+  { src: sgr7156.url, alt: "Aerealista con abito blu su tessuti", caption: "Tessuti — Assolo blu", span: "md:col-span-7", ratio: "aspect-[4/3]" },
   { src: cpm1964.url, alt: "Cerchio aereo blu, figura capovolta", caption: "Cerchio — Assolo", span: "md:col-span-4", ratio: "aspect-[3/4]" },
   { src: cpm0029.url, alt: "Foto di gruppo sul palco al termine dello spettacolo", caption: "Saggio finale — Insieme", span: "md:col-span-8", ratio: "aspect-[4/3]" },
-  { src: sgr6255.url, alt: "Cerchio aereo, figura sospesa in luce rossa", caption: "Cerchio — Sospensione", span: "md:col-span-5", ratio: "aspect-[3/4]" },
+  { src: cpm3107.url, alt: "Aerealista in sospensione, tenda bordeaux", caption: "Tessuti — Sospensione bordeaux", span: "md:col-span-5", ratio: "aspect-[3/4]" },
+  { src: sgr6255.url, alt: "Cerchio aereo, figura sospesa in luce rossa", caption: "Cerchio — Sospensione", span: "md:col-span-7", ratio: "aspect-[16/10]" },
+  { src: sgr5909.url, alt: "Scena corale con adulti e bambini in circo in famiglia", caption: "Circo in famiglia — Scena", span: "md:col-span-8", ratio: "aspect-[16/10]" },
+  { src: cpm0250.url, alt: "Giovane allieva sui tessuti azzurri", caption: "Kids — Tessuti", span: "md:col-span-4", ratio: "aspect-[3/4]" },
   { src: a.url, alt: "Duo su cerchio aereo", caption: "Duo — Cerchio", span: "md:col-span-7", ratio: "aspect-[4/3]" },
-  { src: sgr5528.url, alt: "Backstage: trucco prima dello spettacolo", caption: "Backstage — Dietro le quinte", span: "md:col-span-8", ratio: "aspect-[16/10]" },
+  { src: sgr5528.url, alt: "Backstage: trucco prima dello spettacolo", caption: "Backstage — Dietro le quinte", span: "md:col-span-5", ratio: "aspect-[4/5]" },
+  { src: sgr5918.url, alt: "Trio di ragazze su tessuti, luci a raggiera", caption: "Trio — Tessuti in luce", span: "md:col-span-8", ratio: "aspect-[16/10]" },
   { src: cpm1154.url, alt: "Giovane allieva sul cerchio aereo rosso", caption: "Kids — Cerchio", span: "md:col-span-4", ratio: "aspect-[3/4]" },
   { src: c.url, alt: "Performer con cornice e tessuti verdi", caption: "Cornice — Ricerca artistica", span: "md:col-span-5", ratio: "aspect-[4/5]" },
   { src: d.url, alt: "Allieve su amaca aerea", caption: "Amaca — Duo giovani allieve", span: "md:col-span-7", ratio: "aspect-[16/10]" },
