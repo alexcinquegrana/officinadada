@@ -45,7 +45,7 @@ export function Contatti() {
           </h2>
         </Reveal>
 
-        <div className="mt-20 grid grid-cols-12 gap-10 md:gap-14">
+        <div className="mt-20 grid grid-cols-12 gap-y-14 md:gap-10 md:gap-14">
           <div className="col-span-12 md:col-span-5 space-y-10">
             <Reveal delay={0.1}>
               <p className="eyebrow">Scrivici</p>
