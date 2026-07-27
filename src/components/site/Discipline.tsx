@@ -1,21 +1,18 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { Reveal } from "./Reveal";
-import tessuti from "@/assets/tessuti0220.jpg.asset.json";
-import cerchio from "@/assets/cerchio.jpg.asset.json";
-import verde from "@/assets/tessuti0165.jpg.asset.json";
-import duo from "@/assets/tessuti0103.jpg.asset.json";
+import aerea from "@/assets/discipline-aerea.jpg.asset.json";
+import giocoleria from "@/assets/discipline-giocoleria.jpg.asset.json";
+import flexibility from "@/assets/discipline-flexibility.jpg.asset.json";
+import verticali from "@/assets/discipline-verticali.jpg.asset.json";
+import kids from "@/assets/cpm01154.jpg.asset.json";
 
 const items = [
-  {
-    name: "Danza aerea",
-    detail: "Tessuti, cerchio, amaca, corda e trapezio",
-    img: tessuti.url,
-  },
-  { name: "Giocoleria", detail: "Palline, cerchi, foulard e coordinazione", img: cerchio.url },
-  { name: "Circo in famiglia", detail: "Un'ora per grandi e piccoli, insieme in aria", img: duo.url },
-  { name: "Flexibility", detail: "Mobilità, forza e ascolto del corpo", img: verde.url },
-  { name: "Verticali", detail: "Equilibri, forza e controllo capovolti", img: cerchio.url },
+  { name: "Danza aerea", detail: "Tessuti, cerchio, amaca, corda e trapezio", img: aerea.url },
+  { name: "Giocoleria", detail: "Palline, cerchi, foulard e coordinazione", img: giocoleria.url },
+  { name: "Circo in famiglia", detail: "Un'ora per grandi e piccoli, insieme in aria", img: kids.url },
+  { name: "Flexibility", detail: "Mobilità, forza e ascolto del corpo", img: flexibility.url },
+  { name: "Verticali", detail: "Equilibri, forza e controllo capovolti", img: verticali.url },
 ];
 
 
@@ -91,7 +88,7 @@ export function Discipline() {
                   {/* Mobile image */}
                   <span className="col-span-12 md:hidden">
                     <span className="mt-4 block aspect-[16/10] w-full overflow-hidden">
-                      <img src={it.img} alt={it.name} className="h-full w-full object-cover" />
+                      <img src={it.img} alt={it.name} loading="lazy" className="h-full w-full object-cover" />
                     </span>
                   </span>
                 </button>

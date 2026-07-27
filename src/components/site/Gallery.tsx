@@ -1,10 +1,62 @@
+import { useCallback, useEffect, useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
 import { Reveal } from "./Reveal";
 import a from "@/assets/tessuti0103.jpg.asset.json";
 import b from "@/assets/tessuti0220.jpg.asset.json";
 import c from "@/assets/tessuti0165.jpg.asset.json";
 import d from "@/assets/cerchio.jpg.asset.json";
+import sgr6225 from "@/assets/SGR_6225.jpg.asset.json";
+import sgr6255 from "@/assets/SGR_6255.jpg.asset.json";
+import cpm1964 from "@/assets/cpm01964.jpg.asset.json";
+import cpm1154 from "@/assets/cpm01154.jpg.asset.json";
+import sgr5528 from "@/assets/SGR_5528.jpg.asset.json";
+import cpm0029 from "@/assets/cpm00029.jpg.asset.json";
+
+type Photo = { src: string; alt: string; caption: string; span: string; ratio: string };
+
+const gallery: Photo[] = [
+  { src: sgr6225.url, alt: "Duo su cerchio aereo, luce rossa", caption: "Duo — Cerchio aereo", span: "md:col-span-7", ratio: "aspect-[4/5]" },
+  { src: b.url, alt: "Allieva su tessuti aerei gialli", caption: "Tessuti — Saggio 2024", span: "md:col-span-5", ratio: "aspect-[4/5]" },
+  { src: cpm1964.url, alt: "Cerchio aereo blu, figura capovolta", caption: "Cerchio — Assolo", span: "md:col-span-4", ratio: "aspect-[3/4]" },
+  { src: cpm0029.url, alt: "Foto di gruppo sul palco al termine dello spettacolo", caption: "Saggio finale — Insieme", span: "md:col-span-8", ratio: "aspect-[4/3]" },
+  { src: sgr6255.url, alt: "Cerchio aereo, figura sospesa in luce rossa", caption: "Cerchio — Sospensione", span: "md:col-span-5", ratio: "aspect-[3/4]" },
+  { src: a.url, alt: "Duo su cerchio aereo", caption: "Duo — Cerchio", span: "md:col-span-7", ratio: "aspect-[4/3]" },
+  { src: sgr5528.url, alt: "Backstage: trucco prima dello spettacolo", caption: "Backstage — Dietro le quinte", span: "md:col-span-8", ratio: "aspect-[16/10]" },
+  { src: cpm1154.url, alt: "Giovane allieva sul cerchio aereo rosso", caption: "Kids — Cerchio", span: "md:col-span-4", ratio: "aspect-[3/4]" },
+  { src: c.url, alt: "Performer con cornice e tessuti verdi", caption: "Cornice — Ricerca artistica", span: "md:col-span-5", ratio: "aspect-[4/5]" },
+  { src: d.url, alt: "Allieve su amaca aerea", caption: "Amaca — Duo giovani allieve", span: "md:col-span-7", ratio: "aspect-[16/10]" },
+];
 
 export function Gallery() {
+  const [openIdx, setOpenIdx] = useState<number | null>(null);
+  const isOpen = openIdx !== null;
+
+  const close = useCallback(() => setOpenIdx(null), []);
+  const next = useCallback(
+    () => setOpenIdx((i) => (i === null ? i : (i + 1) % gallery.length)),
+    [],
+  );
+  const prev = useCallback(
+    () => setOpenIdx((i) => (i === null ? i : (i - 1 + gallery.length) % gallery.length)),
+    [],
+  );
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") close();
+      else if (e.key === "ArrowRight") next();
+      else if (e.key === "ArrowLeft") prev();
+    };
+    document.addEventListener("keydown", onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [isOpen, close, next, prev]);
+
   return (
     <section id="galleria" className="relative border-t border-white/10 py-28 md:py-40">
       <div className="mx-auto max-w-[1400px] px-6 md:px-10">
@@ -16,7 +68,7 @@ export function Gallery() {
                 Immagini di scena.
               </h2>
               <p className="mt-6 text-paper/60 text-sm max-w-xs">
-                Un frammento dei nostri saggi e spettacoli. Fotografie di
+                Un frammento dei nostri saggi, spettacoli e dietro le quinte. Fotografie di
                 <span className="text-paper"> David Pasotti</span>.
               </p>
             </Reveal>
@@ -24,44 +76,93 @@ export function Gallery() {
         </div>
 
         <div className="mt-16 grid grid-cols-12 gap-4 md:gap-6">
-          <Reveal className="col-span-12 md:col-span-7">
-            <figure>
-              <div className="aspect-[4/5] overflow-hidden">
-                <img src={b.url} alt="Allieva su tessuti aerei, luci gialle" className="h-full w-full object-cover" />
-              </div>
-              <figcaption className="mt-3 font-display italic text-paper/60 text-sm">Tessuti — Saggio 2024</figcaption>
-            </figure>
-          </Reveal>
-
-          <div className="col-span-12 md:col-span-5 flex flex-col gap-6">
-            <Reveal delay={0.1}>
+          {gallery.map((p, i) => (
+            <Reveal key={p.src} delay={(i % 3) * 0.06} className={`col-span-12 ${p.span}`}>
               <figure>
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img src={a.url} alt="Duo su cerchio aereo" className="h-full w-full object-cover" />
-                </div>
-                <figcaption className="mt-3 font-display italic text-paper/60 text-sm">Duo — Cerchio aereo</figcaption>
+                <button
+                  type="button"
+                  onClick={() => setOpenIdx(i)}
+                  className={`group block ${p.ratio} w-full overflow-hidden bg-secondary`}
+                  aria-label={`Apri ${p.caption}`}
+                >
+                  <img
+                    src={p.src}
+                    alt={p.alt}
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.03]"
+                  />
+                </button>
+                <figcaption className="mt-3 font-display italic text-paper/60 text-sm">
+                  {p.caption}
+                </figcaption>
               </figure>
             </Reveal>
-            <Reveal delay={0.2}>
-              <figure>
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img src={c.url} alt="Performer con cornice e tessuti verdi" className="h-full w-full object-cover" />
-                </div>
-                <figcaption className="mt-3 font-display italic text-paper/60 text-sm">Cornice — Ricerca artistica</figcaption>
-              </figure>
-            </Reveal>
-          </div>
-
-          <Reveal delay={0.15} className="col-span-12 md:col-span-8 md:col-start-3 mt-4">
-            <figure>
-              <div className="aspect-[16/9] overflow-hidden">
-                <img src={d.url} alt="Allieve su amaca aerea" className="h-full w-full object-cover" />
-              </div>
-              <figcaption className="mt-3 font-display italic text-paper/60 text-sm">Amaca — Duo giovani allieve</figcaption>
-            </figure>
-          </Reveal>
+          ))}
         </div>
       </div>
+
+      <AnimatePresence>
+        {isOpen && openIdx !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-ink/95 backdrop-blur-sm"
+            onClick={close}
+            role="dialog"
+            aria-modal="true"
+          >
+            <button
+              type="button"
+              onClick={(e) => { e.stopPropagation(); close(); }}
+              className="absolute top-5 right-5 md:top-8 md:right-8 text-paper/80 hover:text-paper text-sm eyebrow"
+              aria-label="Chiudi galleria"
+            >
+              Chiudi ✕
+            </button>
+            <button
+              type="button"
+              onClick={(e) => { e.stopPropagation(); prev(); }}
+              className="absolute left-3 md:left-8 top-1/2 -translate-y-1/2 text-paper/70 hover:text-paper text-3xl md:text-4xl font-display"
+              aria-label="Foto precedente"
+            >
+              ←
+            </button>
+            <button
+              type="button"
+              onClick={(e) => { e.stopPropagation(); next(); }}
+              className="absolute right-3 md:right-8 top-1/2 -translate-y-1/2 text-paper/70 hover:text-paper text-3xl md:text-4xl font-display"
+              aria-label="Foto successiva"
+            >
+              →
+            </button>
+
+            <motion.figure
+              key={openIdx}
+              initial={{ opacity: 0, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              className="relative max-h-[85vh] max-w-[92vw] md:max-w-[80vw] flex flex-col items-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img
+                src={gallery[openIdx].src}
+                alt={gallery[openIdx].alt}
+                className="max-h-[80vh] max-w-full object-contain"
+              />
+              <figcaption className="mt-4 font-display italic text-paper/70 text-sm text-center">
+                {gallery[openIdx].caption}
+                <span className="ml-3 text-paper/40">
+                  {openIdx + 1} / {gallery.length}
+                </span>
+              </figcaption>
+            </motion.figure>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
