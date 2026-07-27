@@ -1,4 +1,5 @@
 import { Reveal } from "./Reveal";
+import gruppo from "@/assets/cpm00029.jpg.asset.json";
 
 const events = [
   { year: "2026", title: "Ritorno all'essenza", body: "Officina Dadà rimette al centro la pura essenza della danza aerea: stupore, magia, ricerca artistica." },
@@ -13,7 +14,20 @@ const events = [
 export function Eventi() {
   return (
     <section id="eventi" className="relative border-t border-white/10 py-28 md:py-40">
-      <div className="mx-auto max-w-[1400px] px-6 md:px-10 grid grid-cols-12 gap-6 md:gap-10">
+      <div className="mx-auto max-w-[1400px] px-6 md:px-10">
+        <Reveal className="mb-16 md:mb-24">
+          <div className="aspect-[16/9] w-full overflow-hidden bg-secondary">
+            <img
+              src={gruppo.url}
+              alt="Foto di gruppo sul palco al termine del saggio"
+              loading="lazy"
+              className="h-full w-full object-cover"
+            />
+          </div>
+          <p className="mt-3 font-display italic text-paper/60 text-sm">Saggio finale — la nostra comunità sul palco.</p>
+        </Reveal>
+
+        <div className="grid grid-cols-12 gap-6 md:gap-10">
         <div className="col-span-12 md:col-span-3">
           <Reveal>
             <p className="eyebrow">Percorso</p>
@@ -22,6 +36,8 @@ export function Eventi() {
             </h2>
           </Reveal>
         </div>
+
+
 
         <ol className="col-span-12 md:col-span-8 md:col-start-5">
           {events.map((e, i) => (
@@ -42,6 +58,7 @@ export function Eventi() {
             </Reveal>
           ))}
         </ol>
+        </div>
       </div>
     </section>
   );
