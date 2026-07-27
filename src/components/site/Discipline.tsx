@@ -8,16 +8,16 @@ import duo from "@/assets/tessuti0103.jpg.asset.json";
 
 const items = [
   {
-    n: "01",
     name: "Danza aerea",
     detail: "Tessuti, cerchio, amaca, corda e trapezio",
     img: tessuti.url,
   },
-  { n: "02", name: "Giocoleria", detail: "Palline, cerchi, foulard e coordinazione", img: cerchio.url },
-  { n: "03", name: "Circo in famiglia", detail: "Un'ora per grandi e piccoli, insieme in aria", img: duo.url },
-  { n: "04", name: "Flexibility", detail: "Mobilità, forza e ascolto del corpo", img: verde.url },
-  { n: "05", name: "Verticali", detail: "Equilibri, forza e controllo capovolti", img: cerchio.url },
+  { name: "Giocoleria", detail: "Palline, cerchi, foulard e coordinazione", img: cerchio.url },
+  { name: "Circo in famiglia", detail: "Un'ora per grandi e piccoli, insieme in aria", img: duo.url },
+  { name: "Flexibility", detail: "Mobilità, forza e ascolto del corpo", img: verde.url },
+  { name: "Verticali", detail: "Equilibri, forza e controllo capovolti", img: cerchio.url },
 ];
+
 
 export function Discipline() {
   const [active, setActive] = useState(0);
@@ -74,12 +74,9 @@ export function Discipline() {
                   onClick={() => setActive(i)}
                   className="group grid w-full grid-cols-12 items-baseline gap-4 py-6 md:py-10 text-left transition-colors"
                 >
-                  <span className="col-span-2 md:col-span-1 eyebrow text-paper/40 group-hover:text-ember transition-colors">
-                    {it.n}
-                  </span>
-                  <span className="col-span-10 md:col-span-7">
+                  <span className="col-span-12 md:col-span-8 min-w-0">
                     <span
-                      className={`font-display font-light text-[clamp(2rem,5vw,4rem)] leading-none tracking-[-0.02em] transition-all duration-500 ${
+                      className={`block font-display font-light text-[clamp(1.75rem,7vw,4rem)] leading-none tracking-[-0.02em] transition-all duration-500 ${
                         active === i ? "text-paper italic" : "text-paper/60"
                       }`}
                     >
@@ -89,6 +86,7 @@ export function Discipline() {
                   <span className="col-span-12 md:col-span-4 text-paper/60 text-sm md:text-right">
                     {it.detail}
                   </span>
+
 
                   {/* Mobile image */}
                   <span className="col-span-12 md:hidden">
