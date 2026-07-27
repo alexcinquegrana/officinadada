@@ -1,0 +1,97 @@
+{
+  "version": 1,
+  "sdk_version": "0.24.0",
+  "path": "/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "officina-dada-mcp",
+      "version": "0.1.0",
+      "title": "Officina Dadà MCP"
+    },
+    "tools": [
+      {
+        "name": "get_organization_info",
+        "title": "Info Officina Dadà",
+        "description": "Restituisce informazioni generali sull'associazione Officina Dadà: nome, descrizione, sede, anno di fondazione e sito web.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_disciplines",
+        "title": "Discipline e corsi",
+        "description": "Elenca le discipline e i corsi offerti da Officina Dadà, con una breve descrizione di ciascuno.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_facilities",
+        "title": "Sedi e attrezzature",
+        "description": "Restituisce le sedi di Officina Dadà con altezza degli appendimenti aerei, materassi anticaduta e attrezzature disponibili.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_events",
+        "title": "Timeline eventi",
+        "description": "Elenca in ordine cronologico gli eventi e le tappe principali di Officina Dadà, dalla fondazione ai progetti futuri.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_contact_info",
+        "title": "Contatti",
+        "description": "Restituisce i contatti pubblici di Officina Dadà: email di segreteria, telefono, referente e area geografica.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
