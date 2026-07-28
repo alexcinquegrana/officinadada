@@ -29,7 +29,7 @@ export function Contatti() {
             <img
               src={logo.url}
               alt="Officina Dadà"
-              className="h-14 w-auto object-contain opacity-90"
+              className="h-14 w-auto object-contain opacity-90 invert"
             />
             <p className="eyebrow">Contatti</p>
           </div>
