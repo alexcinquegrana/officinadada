@@ -48,9 +48,9 @@ export default defineConfig({
       failOnError: true,
     },
     nitro: {
-      // Static preset emits only the client bundle and prerendered HTML files
-      // needed by GitHub Pages. No server runtime is generated.
-      preset: "static",
+      // Use the Vercel preset during build so the prerender preview server
+      // can start; GitHub Pages will only use the generated dist/client output.
+      preset: "vercel",
     },
   },
   vite: {
