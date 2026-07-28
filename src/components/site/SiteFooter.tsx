@@ -7,13 +7,11 @@ export function SiteFooter() {
       <div className="mx-auto max-w-[1400px] px-6 md:px-10">
         <div className="grid grid-cols-12 gap-10">
           <div className="col-span-12 md:col-span-5 flex items-start gap-4">
-            <span className="relative inline-block h-12 w-12 shrink-0 overflow-hidden rounded-full ring-1 ring-white/20">
-              <img
-                src={logo.url}
-                alt="Officina Dadà"
-                className="h-full w-full object-cover mix-blend-screen opacity-90"
-              />
-            </span>
+            <img
+              src={logo.url}
+              alt="Officina Dadà"
+              className="h-12 w-auto shrink-0 object-contain opacity-90"
+            />
             <div>
               <p className="font-display italic text-xl text-paper">Officina Dadà</p>
               <p className="text-xs text-paper/50 mt-1">
