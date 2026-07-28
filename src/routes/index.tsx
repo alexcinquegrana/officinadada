@@ -60,6 +60,7 @@ function Home() {
             </figure>
           </Reveal>
         </section>
+        <MapSection />
       </main>
       <SiteFooter />
     </>

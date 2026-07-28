@@ -21,94 +21,90 @@ export const Route = createFileRoute("/privacy")({
 
 function PrivacyPage() {
   return (
-    <LegalPage eyebrow="Informativa" title="Privacy Policy" updated="26 luglio 2026">
+    <LegalPage eyebrow="Informativa" title="Privacy Policy" updated="28 luglio 2026">
       <p>
-        La presente informativa descrive le modalità di trattamento dei dati personali degli
-        utenti che consultano il sito e delle persone che entrano in contatto con
-        <strong> Officina Dadà A.S.D.</strong> ai sensi del Regolamento UE 2016/679 (GDPR).
+        La presente informativa descrive le modalità di trattamento dei dati personali di chi
+        consulta il sito e di chi entra in contatto con <strong>Officina Dadà A.S.D.</strong>,
+        ai sensi del Regolamento UE 2016/679 (GDPR) e della normativa italiana vigente.
       </p>
 
-      <section>
-        <h2>Titolare del trattamento</h2>
-        <p>
-          Officina Dadà A.S.D. — Roè Volciano (BS), Valsabbia.
-          <br />
-          Email:{" "}
-          <a href="mailto:segreteriaofficinadada@gmail.com">
-            segreteriaofficinadada@gmail.com
-          </a>
-          <br />
-          Telefono: +39 327 327 6836
-        </p>
-      </section>
+      <h2>Titolare del trattamento</h2>
+      <p>
+        <strong>Officina Dadà A.S.D.</strong> — Roè Volciano (BS), Valsabbia.
+        <br />
+        Email:{" "}
+        <a href="mailto:segreteriaofficinadada@gmail.com">segreteriaofficinadada@gmail.com</a>.
+      </p>
 
-      <section>
-        <h2>Dati raccolti</h2>
-        <ul>
-          <li>
-            <strong>Dati di contatto</strong> forniti volontariamente tramite il modulo del
-            sito o via email/telefono (nome, email, telefono, contenuto del messaggio).
-          </li>
-          <li>
-            <strong>Dati di navigazione</strong> raccolti automaticamente dai sistemi
-            informatici (indirizzo IP, tipo di browser, pagine visitate) per finalità
-            statistiche e di sicurezza.
-          </li>
-          <li>
-            <strong>Dati dei soci</strong> raccolti in fase di iscrizione all'associazione
-            e trattati per finalità amministrative, assicurative e sportive.
-          </li>
-        </ul>
-      </section>
+      <h2>Dati raccolti</h2>
+      <ul>
+        <li>
+          <strong>Dati di contatto</strong>: nome, email, telefono e messaggio, quando compili
+          il form contatti o ci scrivi via email / WhatsApp.
+        </li>
+        <li>
+          <strong>Dati di navigazione</strong>: log tecnici (indirizzo IP, user-agent, pagine
+          visitate) trattati in forma aggregata per la sicurezza e il buon funzionamento del
+          sito.
+        </li>
+        <li>
+          <strong>Dati dei soci e allievi</strong>: dati anagrafici, di contatto e certificato
+          medico, raccolti in fase di iscrizione ai corsi tramite modulistica cartacea o
+          digitale dedicata (non raccolti da questo sito).
+        </li>
+      </ul>
 
-      <section>
-        <h2>Finalità del trattamento</h2>
-        <ul>
-          <li>Rispondere alle richieste di informazioni inviate dal sito.</li>
-          <li>Gestire il rapporto associativo, i corsi e gli eventi.</li>
-          <li>Adempiere ad obblighi di legge e assicurativi.</li>
-        </ul>
-      </section>
+      <h2>Finalità e basi giuridiche</h2>
+      <ul>
+        <li>
+          Rispondere a richieste di informazioni ricevute via form, email o WhatsApp —{" "}
+          <em>base: misure precontrattuali su richiesta dell'interessato (art. 6.1.b GDPR)</em>.
+        </li>
+        <li>
+          Gestire il rapporto associativo, i corsi e gli obblighi assicurativi/fiscali —{" "}
+          <em>base: esecuzione del contratto e obblighi di legge (art. 6.1.b–c GDPR)</em>.
+        </li>
+        <li>
+          Garantire la sicurezza del sito e prevenire abusi —{" "}
+          <em>base: legittimo interesse (art. 6.1.f GDPR)</em>.
+        </li>
+      </ul>
 
-      <section>
-        <h2>Base giuridica e conservazione</h2>
-        <p>
-          I dati sono trattati sulla base del consenso dell'interessato, dell'esecuzione di
-          misure precontrattuali o del rapporto associativo. Vengono conservati per il tempo
-          strettamente necessario alle finalità indicate e, comunque, non oltre i termini
-          previsti dalla legge.
-        </p>
-      </section>
+      <h2>Destinatari e trasferimenti</h2>
+      <p>
+        I dati sono trattati dallo staff dell'associazione e non vengono ceduti a terzi per
+        finalità commerciali. Alcuni servizi tecnici utilizzati per far funzionare il sito
+        (hosting, mappa Google Maps, caratteri Google Fonts, invio email) possono comportare
+        il trattamento di dati da parte di fornitori terzi, anche fuori dall'UE, con adeguate
+        garanzie previste dal GDPR.
+      </p>
 
-      <section>
-        <h2>Comunicazione dei dati</h2>
-        <p>
-          I dati non sono diffusi né ceduti a terzi per finalità di marketing. Possono essere
-          comunicati a soggetti che erogano servizi strumentali (es. fornitore email,
-          hosting, assicurazione) e alle autorità competenti quando previsto dalla legge.
-        </p>
-      </section>
+      <h2>Conservazione</h2>
+      <p>
+        I messaggi ricevuti sono conservati per il tempo necessario a gestire la richiesta e,
+        se dà origine a un rapporto associativo, per la durata prevista dagli obblighi
+        civilistici e fiscali. I log tecnici sono conservati per periodi brevi e cancellati o
+        anonimizzati periodicamente.
+      </p>
 
-      <section>
-        <h2>Diritti dell'interessato</h2>
-        <p>
-          Puoi esercitare in ogni momento i diritti previsti dagli artt. 15–22 GDPR: accesso,
-          rettifica, cancellazione, limitazione, opposizione e portabilità dei dati. Per farlo
-          scrivi a{" "}
-          <a href="mailto:segreteriaofficinadada@gmail.com">
-            segreteriaofficinadada@gmail.com
-          </a>
-          .
-        </p>
-      </section>
+      <h2>Diritti dell'interessato</h2>
+      <p>
+        In qualsiasi momento puoi esercitare i diritti previsti dagli artt. 15–22 GDPR:
+        accesso, rettifica, cancellazione, limitazione, opposizione e portabilità. Scrivi a{" "}
+        <a href="mailto:segreteriaofficinadada@gmail.com">segreteriaofficinadada@gmail.com</a>{" "}
+        e ti risponderemo entro i termini di legge. Hai inoltre diritto di proporre reclamo al
+        Garante per la protezione dei dati personali (
+        <a href="https://www.garanteprivacy.it" target="_blank" rel="noopener">
+          garanteprivacy.it
+        </a>
+        ).
+      </p>
 
-      <section>
-        <h2>Cookie</h2>
-        <p>
-          Per informazioni sull'utilizzo dei cookie e delle tecnologie di tracciamento sul
-          sito consulta la nostra <a href="/cookie">Cookie Policy</a>.
-        </p>
-      </section>
+      <h2>Cookie</h2>
+      <p>
+        L'uso dei cookie è descritto nella{" "}
+        <a href="/cookie">Cookie Policy</a> dedicata, coerente con questa informativa.
+      </p>
     </LegalPage>
   );
 }
