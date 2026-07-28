@@ -19,7 +19,7 @@ export function Hero() {
         <motion.img
           src={hero.url}
           alt="Due allieve di Officina Dadà in cerchio aereo, luci di scena calde"
-          className="h-full w-full object-cover"
+          className="h-full w-full object-contain object-center md:object-cover md:object-center"
           initial={reduce ? false : { opacity: 0, scale: 1.1 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 2.2, ease: [0.22, 1, 0.36, 1] }}
