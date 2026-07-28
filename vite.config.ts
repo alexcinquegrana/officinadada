@@ -54,24 +54,10 @@ export default defineConfig({
       // Use the Node server preset during build so the prerender preview server
       // can start; GitHub Pages will only use the generated dist/client output.
       preset: "node-server",
-      output: {
-        filename: "server",
-      },
     },
   },
   vite: {
-    plugins: [mcpPlugin()],
+    plugins: [mcpPlugin(), serverJsShimPlugin()],
     base: basePath,
-    environments: {
-      server: {
-        build: {
-          rollupOptions: {
-            output: {
-              entryFileNames: "server.js",
-            },
-          },
-        },
-      },
-    },
   },
 });
