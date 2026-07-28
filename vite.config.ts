@@ -40,19 +40,10 @@ function serverEntryShimPlugin() {
 }
 
 export default defineConfig({
-  tanstackStart: {
-    // Generate static HTML files for every route so the site can be hosted on GitHub Pages.
-    prerender: {
-      enabled: true,
-      autoStaticPathsDiscovery: true,
-      crawlLinks: true,
-      failOnError: true,
-    },
-  },
-  // Use a Node-compatible Nitro preset for prerendering locally / in CI, then
-  // deploy only the static `dist/client` output to GitHub Pages.
+  // GitHub Pages is a static host: we ship only the client build and let
+  // TanStack Router handle navigation client-side. A 404.html fallback is
+  // generated after the build so deep links work on github.io.
   nitro: {
-    preset: "node-server",
     output: {
       dir: "dist",
       serverDir: "dist/server",
@@ -60,7 +51,7 @@ export default defineConfig({
     },
   },
   vite: {
-    plugins: [serverEntryShimPlugin()],
+    plugins: [],
     base: basePath,
   },
 });
