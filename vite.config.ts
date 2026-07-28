@@ -48,9 +48,9 @@ export default defineConfig({
       failOnError: true,
     },
     nitro: {
-      // Use the Node server preset during build so the prerender preview server
-      // can start; GitHub Pages will only use the generated dist/client output.
-      preset: "node-server",
+      // Static preset emits only the client bundle and prerendered HTML files
+      // needed by GitHub Pages. No server runtime is generated.
+      preset: "static",
     },
   },
   vite: {
