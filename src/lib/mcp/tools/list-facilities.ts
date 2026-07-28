@@ -10,7 +10,7 @@ export default defineTool({
   handler: () => {
     const facilities = [
       {
-        name: "Sede principale — Roè Volciano (BS)",
+        name: "Sede principale — Via Arnoldo Bellini 7, 25077 Roè Volciano (BS)",
         rooms: 2,
         roomDetails: "Due sale con parquet e specchi",
         rigHeightMeters: 5.5,
