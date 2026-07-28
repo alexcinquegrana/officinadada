@@ -6,6 +6,7 @@ import { Discipline } from "@/components/site/Discipline";
 import { CtaBand } from "@/components/site/CtaBand";
 import { Reveal } from "@/components/site/Reveal";
 import { SiteFooter } from "@/components/site/SiteFooter";
+import { MapSection } from "@/components/site/MapSection";
 import hero from "@/assets/tessuti0103.jpg.asset.json";
 import saggio from "@/assets/cpm00029.jpg.asset.json";
 
