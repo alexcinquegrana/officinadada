@@ -3,11 +3,7 @@ import { SiteNav } from "@/components/site/SiteNav";
 import { Hero } from "@/components/site/Hero";
 import { Manifesto } from "@/components/site/Manifesto";
 import { Discipline } from "@/components/site/Discipline";
-import { Gallery } from "@/components/site/Gallery";
-import { Sede } from "@/components/site/Sede";
-import { Eventi } from "@/components/site/Eventi";
-import { Team } from "@/components/site/Team";
-import { Contatti } from "@/components/site/Contatti";
+import { CtaBand } from "@/components/site/CtaBand";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import hero from "@/assets/tessuti0103.jpg.asset.json";
 
@@ -41,11 +37,7 @@ function Home() {
         <Hero />
         <Manifesto />
         <Discipline />
-        <Gallery />
-        <Sede />
-        <Eventi />
-        <Team />
-        <Contatti />
+        <CtaBand />
       </main>
       <SiteFooter />
     </>

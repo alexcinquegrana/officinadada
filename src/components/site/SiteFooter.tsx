@@ -27,24 +27,39 @@ export function SiteFooter() {
             <p className="eyebrow">Naviga</p>
             <ul className="mt-4 space-y-2 text-sm">
               <li>
-                <a href="/#manifesto" className="text-paper/70 hover:text-paper transition-colors">
+                <Link to="/manifesto" className="text-paper/70 hover:text-paper transition-colors">
                   Manifesto
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/#discipline" className="text-paper/70 hover:text-paper transition-colors">
+                <Link to="/discipline" className="text-paper/70 hover:text-paper transition-colors">
                   Discipline
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/#sede" className="text-paper/70 hover:text-paper transition-colors">
+                <Link to="/galleria" className="text-paper/70 hover:text-paper transition-colors">
+                  Galleria
+                </Link>
+              </li>
+              <li>
+                <Link to="/sede" className="text-paper/70 hover:text-paper transition-colors">
                   La sede
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/#contatti" className="text-paper/70 hover:text-paper transition-colors">
+                <Link to="/eventi" className="text-paper/70 hover:text-paper transition-colors">
+                  Eventi
+                </Link>
+              </li>
+              <li>
+                <Link to="/team" className="text-paper/70 hover:text-paper transition-colors">
+                  Team
+                </Link>
+              </li>
+              <li>
+                <Link to="/contatti" className="text-paper/70 hover:text-paper transition-colors">
                   Contatti
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

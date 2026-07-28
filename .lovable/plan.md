@@ -1,51 +1,60 @@
-## Obiettivo
+# Ristrutturazione in multi-pagina + CTA di contatto
 
-1. Caricare le 7 nuove foto David Pasotti come asset CDN e integrarle nella Galleria.
-2. Rigenerare le immagini AI delle Discipline in stile più fotografico/coerente col mood teatrale del sito (luci di scena viola/blu/gialle, tende, fumo, grana), sostituendo le attuali che sembrano troppo "AI".
-3. Per **Verticali**, generare specificatamente **bambine di schiena in verticale** su pavimento di sala/palco.
-4. Aggiungere un'immagine dedicata a **Circo in famiglia** (usando `SGR_5909.jpeg` — gruppo con bambini e adulti sul palco, molto family-friendly) al posto dell'attuale `cpm01154.jpeg` che resta comunque in galleria.
+Obiettivo: ridurre la lunghezza percepita della home, portare l'utente ai contatti in un click, e aggiungere azioni dirette (Chiama, Contattaci, WhatsApp).
 
-## 1. Upload delle 7 nuove foto
+## Nuova struttura delle pagine
 
-Via `lovable-assets create` da `/mnt/user-uploads/` → `src/assets/*.jpg.asset.json`:
+Ogni sezione della one-page diventa una route dedicata sotto `src/routes/`, con proprio `head()` (title, description, og:title/description). La home resta come pagina "vetrina" breve.
 
-- `cpm04369.jpeg` → aerealista tessuti bianchi, luci viola/gialle (verticale, drammatica)
-- `cpm04439.jpeg` → **5 aerealiste in fila su tessuti azzurri** (foto corale iconica, orizzontale wide)
-- `SGR_7156.jpeg` → aerealista abito blu su tessuti, luce gialla (verticale)
-- `cpm03107.jpeg` → aerealista in sospensione, tenda bordeaux + luce blu (verticale)
-- `cpm00250.jpeg` → **bambina su tessuti azzurri**, luce blu (kids, orizzontale)
-- `SGR_5909.jpeg` → **scena "famiglia" con adulti e bambini** attorno ai tessuti (orizzontale, perfetta per Circo in famiglia)
-- `SGR_5918.jpeg` → **trio di ragazze su tessuti**, luci a raggiera viola (orizzontale)
+```text
+/               → Home (Hero + estratto Manifesto + preview Discipline + CTA finale)
+/manifesto      → Manifesto completo
+/discipline     → Discipline (griglia completa)
+/galleria       → Gallery (masonry + lightbox)
+/sede           → Sede
+/eventi         → Eventi
+/team           → Team
+/contatti       → Contatti (form + info + mappa/indirizzo)
+/privacy        → (esistente)
+/cookie         → (esistente)
+```
 
-## 2. Nuova sezione Circo in famiglia (Discipline)
+La home diventa corta: Hero → breve Manifesto (2–3 righe) → 3 discipline in anteprima con link a `/discipline` → banda CTA "Vieni a provare" → footer. Da qualsiasi pagina, la navbar porta subito ai contatti.
 
-In `Discipline.tsx`, rimpiazzo l'attuale `kids` (`cpm01154.jpg`) con `SGR_5909.jpg` — la scena corale con bambini + adulti sul palco racconta meglio il concetto di "famiglia" rispetto alla singola bambina sul cerchio. `cpm01154.jpg` resta nella Galleria.
+## Navbar
 
-## 3. Rigenerazione immagini AI Discipline
+`SiteNav` passa da anchor `#section` a `<Link to="/...">` TanStack Router con `activeProps`. Ordine:
+Manifesto · Discipline · Galleria · Sede · Eventi · Team · **Contatti** (evidenziato, stile pill ember).
 
-Le attuali immagini AI (aerea, giocoleria, flexibility, verticali) risultano "piatte" e riconoscibili come AI perché generate su prompt generici da studio. Le rifaccio con `imagegen--generate_image` (model `standard`), stile allineato alle foto reali di Pasotti: **tenda teatrale scura sul fondo, luci di scena colorate a fasci (viola/blu/giallo/ambra), fumo di scena leggero, grana fotografica 35mm, Nikon look**. Sempre senza volti in primo piano.
+Sul mobile: stesso menù, con il pulsante **Contatti** in evidenza in cima e un blocco "Chiama · WhatsApp" sempre visibile in fondo al drawer.
 
-Nuove immagini (sostituiscono i file `.asset.json` esistenti — ricarico gli asset, il resto del codice non cambia):
+## CTA globali
 
-- **Danza aerea** → aerialist di schiena avvolta in tessuti bianchi/argento, tenda scura, fasci di luce viola e gialla incrociati, fumo, grana pellicola — mood di `cpm04369.jpeg`.
-- **Giocoleria** → dettaglio ravvicinato di **mani in movimento** che lanciano 3 palline bianche/dorate, controluce ambra, sfondo tenda nera, motion blur leggero, film grain.
-- **Circo in famiglia** → **foto reale `SGR_5909.jpg`** (non AI).
-- **Flexibility** → silhouette **di schiena** in spaccata su pavimento di sala danza scura, singolo fascio di luce laterale blu, fumo di scena leggero, editorial.
-- **Verticali** → **due bambine di schiena in verticale** su una mano/due mani su pavimento di palco scuro, tenda teatrale sul fondo, fascio di luce viola/blu dall'alto, fumo leggero, grana pellicola, hyperrealistic — niente volti visibili (sono di schiena).
+Due punti di contatto sempre a portata:
 
-## 4. Aggiornamento Galleria
+1. **Nella navbar (desktop e mobile drawer)**: pulsante "Contatti" (link a `/contatti`) in stile ember.
+2. **Floating action buttons (mobile, in basso a destra)**:
+   - Cerchio verde WhatsApp → `https://wa.me/393273276836?text=Ciao%20Officina%20Dad%C3%A0%2C%20vorrei%20info%20sui%20corsi`
+   - Cerchio scuro "Chiama" (icona telefono) → `tel:+393273276836`
+   Nascosti su desktop (dove il numero è già in navbar/footer). Icone `lucide-react` (`Phone`, `MessageCircle`) — WhatsApp con bg verde `#25D366`.
+3. **Banda CTA** a fine home e fine ogni pagina interna: "Vieni a volare con noi" + due bottoni: `Scrivici` (→ `/contatti`) e `Chiama ora` (→ `tel:`).
 
-Aggiungo le 6 nuove foto (esclusa `SGR_5909.jpg` che va in Discipline, ma la metto **anche** in galleria) al set esistente. La Galleria diventa 16 foto totali, con `cpm04439.jpg` (le 5 aerealiste in fila) come nuova immagine hero wide `md:col-span-12` per creare un momento visivo forte a metà griglia. Riordino gli `span`/`ratio` per mantenere l'equilibrio masonry.
+## Modifiche ai file
 
-## 5. File toccati
+- **Nuove route**: `src/routes/manifesto.tsx`, `discipline.tsx`, `galleria.tsx`, `sede.tsx`, `eventi.tsx`, `team.tsx`, `contatti.tsx`. Ognuna monta il componente esistente di `src/components/site/*` dentro un layout con `SiteNav` + `SiteFooter`, e definisce `head()` dedicato.
+- **`src/routes/index.tsx`**: alleggerito — Hero, Manifesto (breve), Discipline (preview 3 card + link "Tutte le discipline"), CTA band, footer.
+- **`src/components/site/SiteNav.tsx`**: sostituisce anchor con `<Link>`; aggiunge pulsante Contatti evidenziato e blocco chiamata/WhatsApp nel drawer mobile.
+- **`src/components/site/SiteFooter.tsx`**: aggiorna colonna "Naviga" con i nuovi link route.
+- **Nuovi componenti**:
+  - `src/components/site/FloatingContacts.tsx` (FAB WhatsApp + Chiama, mobile-only, montato in `__root.tsx`).
+  - `src/components/site/CtaBand.tsx` (banda finale riutilizzabile).
+- **`src/routes/__root.tsx`**: monta `<FloatingContacts />` globalmente.
+- **`src/components/site/Contatti.tsx`**: rimuove `id="contatti"` (ora è una route), invariato per il resto.
+- I link interni con `href="/#..."` esistenti (footer, ecc.) diventano `<Link to="/manifesto">` ecc.
 
-- Nuovi: 7 `src/assets/*.jpg.asset.json` per le foto utente.
-- Sostituiti (stesso path, nuovo asset): `src/assets/discipline-aerea.jpg.asset.json`, `discipline-giocoleria.jpg.asset.json`, `discipline-flexibility.jpg.asset.json`, `discipline-verticali.jpg.asset.json`.
-- `src/components/site/Discipline.tsx` — swap import `kids` → `SGR_5909`.
-- `src/components/site/Gallery.tsx` — array `gallery` esteso con 7 nuove entry + riequilibrio span.
+## Dettagli tecnici
 
-## Note tecniche
-
-- Nessuna modifica a routing, backend, styles globali, o al lightbox (già funzionante).
-- Le foto reali con watermark "Dadà + Pasotti" (cpm04369, cpm04439, cpm03107, cpm00250, SGR_5918) mantengono il watermark: coerente con crediti fotografo già dichiarati in header galleria.
-- Immagini AI generate a 1024×1280 (aspect 4/5) per aerea/flexibility/verticali e 1280×1024 (5/4) per giocoleria, in linea coi ratio già usati in Discipline (sticky 4/5).
+- Numero: `+39 327 327 6836` → `tel:+393273276836`, WhatsApp `wa.me/393273276836`.
+- Ogni `head()` di route: title unico (`Sezione — Officina Dadà`), description specifica, og:title/description; niente og:image sulle route interne (resta solo su `/`).
+- `FloatingContacts`: `fixed bottom-5 right-5 z-40 md:hidden`, `aria-label` sui link, `rel="noopener"` su WhatsApp.
+- Preload navbar: `preload="intent"` sui `<Link>` per transizioni immediate.
