@@ -11,23 +11,24 @@ export function Hero() {
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 0.2]);
 
   return (
-    <section ref={ref} id="top" className="relative h-[100svh] min-h-[640px] w-full overflow-hidden">
+    <section ref={ref} id="top" className="relative h-[100svh] min-h-[640px] w-full overflow-hidden bg-[rgb(11,11,12)]">
       <motion.div
         style={reduce ? undefined : { y, scale }}
         className="absolute inset-0"
       >
         <motion.img
           src={hero.url}
-          alt="Due allieve di Officina Dadà in cerchio aereo, luci di scena calde"
-          className="h-full w-full object-cover"
+          alt="Due allieve di Officina Dadà sospese sui tessuti aerei verdi, luci di scena calde"
+          className="h-full w-full object-contain md:object-cover object-center"
           initial={reduce ? false : { opacity: 0, scale: 1.1 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 2.2, ease: [0.22, 1, 0.36, 1] }}
           style={reduce ? undefined : { opacity }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/40 to-ink" />
-        <div className="absolute inset-0 bg-radial-vignette" style={{ background: "radial-gradient(ellipse at center, transparent 40%, rgb(11,11,12) 100%)" }} />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black" />
+        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at center, transparent 40%, rgb(11,11,12) 100%)" }} />
       </motion.div>
+
 
       <div className="relative z-10 mx-auto flex h-full max-w-[1400px] flex-col justify-end px-6 pb-20 pt-32 md:px-10 md:pb-28">
         <motion.p
