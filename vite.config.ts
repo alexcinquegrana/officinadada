@@ -20,7 +20,7 @@ function serverJsShimPlugin() {
   return {
     name: "server-js-shim",
     writeBundle(options: OutputOptions) {
-      if (options.dir && options.dir.replace(/\\/$/, "").endsWith("dist/server")) {
+      if (options.dir && options.dir.replace(/\/$/, "").endsWith("dist/server")) {
         writeFileSync(
           join(options.dir, "server.js"),
           `export { default } from "./index.mjs";\n`,
