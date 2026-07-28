@@ -1,7 +1,7 @@
 import { Reveal } from "./Reveal";
 
 const specs = [
-  ["Sede principale", "Roè Volciano (BS)"],
+  ["Sede principale", "Via Arnoldo Bellini 7, 25077 Roè Volciano (BS)"],
   ["Sale", "Due, con parquet e specchi"],
   ["Altezza appendimenti", "5,50 m"],
   ["Appendimenti aerei", "10 – 14"],

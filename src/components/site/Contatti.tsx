@@ -63,9 +63,9 @@ export function Contatti() {
             <Reveal delay={0.2}>
               <p className="eyebrow">Vieni a trovarci</p>
               <p className="mt-3 font-display italic text-xl md:text-2xl text-paper">
-                Roè Volciano (BS)
+                Via Arnoldo Bellini 7
               </p>
-              <p className="mt-2 text-paper/50 text-sm">Valsabbia · Provincia di Brescia</p>
+              <p className="mt-2 text-paper/50 text-sm">25077 Roè Volciano (BS) · Valsabbia</p>
             </Reveal>
           </div>
 
