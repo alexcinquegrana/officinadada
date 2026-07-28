@@ -1,66 +1,27 @@
-# Piano: pubblicazione su GitHub Pages con dominio gratuito
-
 ## Obiettivo
-Portare il sito di Officina Dadà su GitHub Pages in modo che l'URL finale non contenga `lovable.app`. Useremo il dominio gratuito offerto da GitHub (`username.github.io/nome-repo`), oppure un dominio proprio se lo si desidera in futuro.
+Sostituire le coordinate generiche attuali della mappa con l’indirizzo corretto dell’associazione — **Via Arnoldo Bellini 7, 25077 Roè Volciano (BS)** — e allineare l’indirizzo in tutte le sezioni del sito.
 
 ## Stato attuale verificato
-- Il codice sorgente è attualmente su Lovable storage (`git.private.lovable-gcp.code.storage`), non su GitHub.
-- Esiste già `.github/workflows/main.yml` con build e deploy su GitHub Pages.
-- `vite.config.ts` ha un `base` path dinamico basato su `GITHUB_REPOSITORY`.
-- Il sito è costruito con TanStack Start, che di default genera un server SSR; GitHub Pages richiede invece file HTML statici.
-- Sono presenti MCP tools e server functions, che non funzioneranno su hosting statico.
+- `src/components/site/MapSection.tsx` usa coordinate approssimative (`LAT = 45.6208`, `LNG = 10.5578`) e l’indirizzo testuale "Roè Volciano (BS), Valsabbia".
+- Geocoding via Google Maps Platform ha restituito le coordinate precise del civico: **lat 45.6235077, lng 10.4928399**, con formatted address "Via Arnoldo Bellini, 7, 25077 Roè Volciano BS, Italy".
 
-## Passaggi previsti
+## Modifiche previste
 
-### 1. Creare un account GitHub e un repository
-- Se non lo si ha già, creare un account su https://github.com.
-- Creare un repository pubblico con nome, ad esempio, `officinadada`.
-- L'URL finale sarà `https://tuo-username.github.io/officinadada`.
+### 1. `src/components/site/MapSection.tsx`
+- Aggiornare `LAT` a `45.6235077` e `LNG` a `10.4928399`.
+- Aggiornare `ADDRESS` in "Via Arnoldo Bellini 7, 25077 Roè Volciano (BS)".
+- Aggiornare `MAPS_LINK` per puntare alla ricerca corretta su Google Maps (query "Officina Dadà Via Arnoldo Bellini 7 Roè Volciano").
+- Verificare che il pin e il centro mappa coincidano con il civico.
 
-### 2. Collegare il progetto Lovable a GitHub
-- Nella chat di Lovable, aprire il menu **Plus (+)** in basso a sinistra → **GitHub** → **Connect project**.
-- Autorizzare l'app GitHub di Lovable e selezionare il repository creato al passo 1.
-- In alternativa, scaricare il codice e fare push manuale su GitHub.
+### 2. `src/components/site/Contatti.tsx`
+- Sostituire il testo "Roè Volciano (BS)" / "Valsabbia · Provincia di Brescia" con l’indirizzo completo "Via Arnoldo Bellini 7, 25077 Roè Volciano (BS)".
 
-### 3. Abilitare il prerendering statico
-- Modificare `vite.config.ts` aggiungendo la configurazione di prerendering dentro `tanstackStart`.
-- Opzioni da attivare: `enabled: true`, `autoStaticPathsDiscovery: true`, `crawlLinks: true`, `failOnError: true`.
-- Verificare che `bun run build` generi file HTML statici in `./dist/client/` per ogni pagina (`/`, `/manifesto`, `/discipline`, ecc.).
-- Se il wrapper `@lovable.dev/vite-tanstack-config` non espone direttamente le opzioni, valutare una configurazione Nitro per output statico o un post-build script.
+### 3. `src/components/site/Sede.tsx`
+- Aggiornare la prima riga delle specifiche da "Roè Volciano (BS)" a "Via Arnoldo Bellini 7, 25077 Roè Volciano (BS)".
 
-### 4. Correggere il base path
-- Per GitHub Pages sottocartella, il `base` deve essere `/nome-repo/`.
-- La logica già presente in `vite.config.ts` usa `GITHUB_REPOSITORY` per impostarlo automaticamente durante il deploy.
-- Se in futuro si userà un dominio proprio, impostare `base: "/"`.
+### 4. `src/lib/mcp/tools/get-organization-info.ts`
+- Aggiornare l’oggetto `location` includendo `address: "Via Arnoldo Bellini 7, 25077 Roè Volciano (BS), Italia"`.
 
-### 5. Rimuovere o adattare le funzionalità non compatibili con hosting statico
-- Le server functions e gli endpoint MCP non funzioneranno su GitHub Pages.
-- Il form di contatto usa `mailto`, quindi continuerà a funzionare senza backend.
-- Valutare se rimuovere le route MCP (`src/routes/[.mcp]/`, `src/routes/mcp.ts`) o lasciarle inerti.
-
-### 6. Attivare GitHub Pages e verificare il deploy
-- Andare su **Settings → Pages** del repository GitHub.
-- Selezionare **GitHub Actions** come sorgente di deploy.
-- Assicurarsi che il workflow abbia i permessi `pages: write` e `id-token: write` (già presenti).
-- Fare push su `main` e attendere che il workflow completi build e deploy.
-- Verificare che il sito sia raggiungibile all'URL `https://tuo-username.github.io/officinadada`.
-
-### 7. Test e verifica finale
-- Controllare che tutte le pagine si carichino senza errori 404.
-- Verificare che immagini, CSS, JS e link interni funzionino correttamente con il base path.
-- Testare la navigazione da telefono.
-
-## Opzionale: dominio proprio in futuro
-- Se si desidera un dominio come `officinadada.it`, acquistarlo da un registrar o da Lovable.
-- In GitHub Pages, inserire il dominio nelle impostazioni del repo.
-- Aggiungere un file `CNAME` con il dominio nella root dell'artifact.
-- Configurare i record DNS A e TXT presso il provider di dominio.
-- In quel caso, impostare `base: "/"` in `vite.config.ts`.
-
-## Limitazioni da accettare
-- L'URL gratuito conterrà `github.io` (es. `tuo-username.github.io/officinadada`).
-- Sito puramente statico: niente backend, server functions, MCP in produzione.
-- Per avere un dominio proprio è necessario acquistarlo separatamente.
-
-## Risultato atteso
-Sito live su GitHub Pages con un URL gratuito che non contiene `lovable.app`, pronto da mostrare al cliente.
+## Verifica
+- Build del progetto per assicurare che non ci siano errori di TypeScript.
+- Controllo visivo della mappa in anteprima: il pin deve trovarsi esattamente su Via Bellini 7, Roè Volciano, e non più sulle coordinate generiche precedenti.
