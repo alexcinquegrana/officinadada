@@ -1,27 +1,44 @@
+# Piano: pubblicazione su GitHub Pages
+
 ## Obiettivo
-Sostituire le coordinate generiche attuali della mappa con l’indirizzo corretto dell’associazione — **Via Arnoldo Bellini 7, 25077 Roè Volciano (BS)** — e allineare l’indirizzo in tutte le sezioni del sito.
+Portare il sito su GitHub Pages all’URL `https://username.github.io/nome-repo`, eliminando completamente il sottodominio `.lovable.app` dalla URL vista dal cliente.
 
 ## Stato attuale verificato
-- `src/components/site/MapSection.tsx` usa coordinate approssimative (`LAT = 45.6208`, `LNG = 10.5578`) e l’indirizzo testuale "Roè Volciano (BS), Valsabbia".
-- Geocoding via Google Maps Platform ha restituito le coordinate precise del civico: **lat 45.6235077, lng 10.4928399**, con formatted address "Via Arnoldo Bellini, 7, 25077 Roè Volciano BS, Italy".
+- Esiste già `.github/workflows/main.yml` con build e deploy su GitHub Pages.
+- Il sito è costruito con TanStack Start, un framework full-stack con SSR.
+- GitHub Pages supporta solo siti statici (HTML/CSS/JS), non server-side rendering né server functions.
 
-## Modifiche previste
+## Passaggi previsti
 
-### 1. `src/components/site/MapSection.tsx`
-- Aggiornare `LAT` a `45.6235077` e `LNG` a `10.4928399`.
-- Aggiornare `ADDRESS` in "Via Arnoldo Bellini 7, 25077 Roè Volciano (BS)".
-- Aggiornare `MAPS_LINK` per puntare alla ricerca corretta su Google Maps (query "Officina Dadà Via Arnoldo Bellini 7 Roè Volciano").
-- Verificare che il pin e il centro mappa coincidano con il civico.
+### 1. Verificare/adattare il build a GitHub Pages
+- Eseguire `bun run build` e controllare che `./dist` contenga un `index.html` statico in radice.
+- Se il build produce un server Nitro/Cloudflare invece di un sito statico, configurare TanStack Start per l’export statico (SSG).
 
-### 2. `src/components/site/Contatti.tsx`
-- Sostituire il testo "Roè Volciano (BS)" / "Valsabbia · Provincia di Brescia" con l’indirizzo completo "Via Arnoldo Bellini 7, 25077 Roè Volciano (BS)".
+### 2. Configurare il base path
+- Aggiungere `base: '/nome-repo'` in `vite.config.ts` in modo che asset, immagini e route relative funzionino sotto il percorso del repository su GitHub Pages.
 
-### 3. `src/components/site/Sede.tsx`
-- Aggiornare la prima riga delle specifiche da "Roè Volciano (BS)" a "Via Arnoldo Bellini 7, 25077 Roè Volciano (BS)".
+### 3. Attivare GitHub Pages dal repository
+- Andare in Impostazioni → Pages del repo su GitHub.
+- Selezionare **GitHub Actions** come sorgente di deploy.
+- Verificare che il workflow `main.yml` abbia i permessi `pages: write` e `id-token: write` (già presenti).
 
-### 4. `src/lib/mcp/tools/get-organization-info.ts`
-- Aggiornare l’oggetto `location` includendo `address: "Via Arnoldo Bellini 7, 25077 Roè Volciano (BS), Italia"`.
+### 4. Rimuovere ogni riferimento a Lovable
+- Cercare nel codice URL `.lovable.app`, badge "Edit with Lovable", meta tag o testi che rimandino a Lovable.
+- Sostituire eventuali riferimenti residui con contenuti propri del brand.
 
-## Verifica
-- Build del progetto per assicurare che non ci siano errori di TypeScript.
-- Controllo visivo della mappa in anteprima: il pin deve trovarsi esattamente su Via Bellini 7, Roè Volciano, e non più sulle coordinate generiche precedenti.
+### 5. Gestire le funzionalità non supportate da GitHub Pages
+- Le **server functions** e le **MCP tools** non funzioneranno in hosting statico.
+- Il form di contatto attuale usa `mailto`, quindi continuerà a funzionare.
+- Se in futuro servirà invio email reale o logica server, si valuterà un servizio esterno (es. Formspree, Netlify Forms, EmailJS).
+
+### 6. Test e verifica finale
+- Build in locale con il base path corretto.
+- Verificare che immagini, CSS, JS e navigazione tra pagine funzionino.
+- Controllare il deploy effettivo su GitHub Pages e l’assenza di errori 404.
+
+## Limitazioni da accettare
+- Sito puramente statico: niente backend, niente server functions, niente MCP in produzione.
+- L’URL finale conterrà `github.io` (es. `username.github.io/officinadada`).
+
+## Risultato atteso
+Sito live su GitHub Pages, URL senza `.lovable.app`, pronto da mostrare al cliente.

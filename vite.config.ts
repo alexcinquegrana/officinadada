@@ -7,6 +7,12 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 import { mcpPlugin } from "@lovable.dev/mcp-js/stacks/tanstack/vite";
 
+// GitHub Pages serves the site under the repository name path (e.g. /repo-name/).
+// In local dev we keep the root path.
+const basePath = process.env.GITHUB_REPOSITORY
+  ? `/${process.env.GITHUB_REPOSITORY.split("/")[1]}/`
+  : "/";
+
 export default defineConfig({
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
@@ -15,5 +21,6 @@ export default defineConfig({
   },
   vite: {
     plugins: [mcpPlugin()],
+    base: basePath,
   },
 });

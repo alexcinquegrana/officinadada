@@ -1,29 +1,31 @@
-# Welcome to your Lovable project
+# Officina Dadà A.S.D.
 
-This project was built with [Lovable](https://lovable.dev).
+Sito web ufficiale di **Officina Dadà A.S.D.**, associazione sportiva dilettantistica specializzata in discipline aeree e circensi a Roè Volciano (BS), in Valsabbia.
 
-## Build with Lovable
+## Chi siamo
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+Officina Dadà nasce nel 2018 con l’obiettivo di diffondere la cultura del circo contemporaneo attraverso corsi di tessuti aerei, cerchio, trapezio, giocoleria, flex e circo in famiglia. Il progetto unisce tecnica, espressività artistica e lavoro di gruppo, rivolgendosi a bambini, ragazzi e adulti.
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+## Tecnologie
 
-## Development
+- [TanStack Start](https://tanstack.com/start)
+- [TypeScript](https://www.typescriptlang.org/)
+- [React](https://react.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+## Sviluppo locale
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
+bun install
+bun run dev
 ```
 
-## Built with
+Per generare la build di produzione:
 
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
+```sh
+bun run build
+```
+
+## Deploy
+
+Il sito viene pubblicato automaticamente su GitHub Pages tramite il workflow `.github/workflows/main.yml` ad ogni push sul branch `main`.
