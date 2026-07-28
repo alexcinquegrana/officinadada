@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { Reveal } from "./Reveal";
 
-// Officina Dadà — Roè Volciano (BS), Valsabbia
-const LAT = 45.6208;
-const LNG = 10.5578;
-const ADDRESS = "Roè Volciano (BS), Valsabbia";
-const MAPS_LINK = `https://www.google.com/maps/search/?api=1&query=Officina+Dad%C3%A0+Ro%C3%A8+Volciano`;
+// Officina Dadà — Via Arnoldo Bellini 7, Roè Volciano (BS)
+const LAT = 45.6235077;
+const LNG = 10.4928399;
+const ADDRESS = "Via Arnoldo Bellini 7, 25077 Roè Volciano (BS)";
+const MAPS_LINK = `https://www.google.com/maps/search/?api=1&query=Officina+Dad%C3%A0+Via+Arnoldo+Bellini+7+Ro%C3%A8+Volciano`;
 
 // Dark map style, coerente con il palcoscenico ink
 const DARK_STYLE: unknown[] = [

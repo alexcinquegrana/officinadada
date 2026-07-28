@@ -15,6 +15,7 @@ export default defineTool({
         "Associazione Sportiva Dilettantistica fondata nel 2018 a Roè Volciano (BS), dedicata alla diffusione delle arti circensi e aeree — tessuti, cerchio, amaca, corda, trapezio, giocoleria, verticali e flexibility — per ogni età e livello.",
       foundedYear: 2018,
       location: {
+        address: "Via Arnoldo Bellini 7, 25077 Roè Volciano (BS), Italia",
         city: "Roè Volciano",
         province: "BS",
         region: "Valsabbia · Lombardia",
