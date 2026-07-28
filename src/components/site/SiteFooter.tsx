@@ -17,7 +17,7 @@ export function SiteFooter() {
             </div>
           </div>
 
-          <div className="col-span-6 md:col-span-3">
+          <div className="col-span-12 md:col-span-3">
             <p className="eyebrow">Naviga</p>
             <ul className="mt-4 space-y-2 text-sm">
               <li>
@@ -58,7 +58,8 @@ export function SiteFooter() {
             </ul>
           </div>
 
-          <div className="col-span-6 md:col-span-4">
+          <div className="col-span-12 md:col-span-4">
+
             <p className="eyebrow">Informazioni legali</p>
             <ul className="mt-4 space-y-2 text-sm">
               <li>
