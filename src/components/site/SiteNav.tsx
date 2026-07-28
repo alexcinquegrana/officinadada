@@ -40,7 +40,7 @@ export function SiteNav() {
           <img
             src={logo.url}
             alt="Officina Dadà"
-            className="h-9 w-auto object-contain opacity-90 group-hover:opacity-100 transition"
+            className="h-9 w-auto object-contain opacity-90 group-hover:opacity-100 transition invert"
           />
           <span className="font-display italic text-lg tracking-tight text-paper">
             Officina Dadà

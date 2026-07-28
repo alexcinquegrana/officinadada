@@ -10,7 +10,7 @@ export function SiteFooter() {
             <img
               src={logo.url}
               alt="Officina Dadà"
-              className="h-12 w-auto shrink-0 object-contain opacity-90"
+              className="h-12 w-auto shrink-0 object-contain opacity-90 invert"
             />
             <div>
               <p className="font-display italic text-xl text-paper">Officina Dadà</p>

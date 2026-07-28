@@ -44,7 +44,7 @@
   --ink: oklch(0.14 0.005 260);           /* #0B0B0C stage */
   --paper: oklch(0.955 0.012 80);         /* #F2EFE9 warm white */
   --teal: oklch(0.75 0.06 190);           /* #7FB8B4 */
-  --ember: oklch(0.68 0.16 45);           /* #D96A3E */
+  --ember: oklch(0.74 0.12 235);          /* azure from logo ribbons */
   --ash: oklch(0.62 0.008 60);            /* #8A8681 */
 
   --background: var(--ink);
