@@ -38,9 +38,6 @@ const basePath = process.env.GITHUB_REPOSITORY
 
 export default defineConfig({
   tanstackStart: {
-    // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
-    // nitro/vite builds from this
-    server: { entry: "server" },
     // Static prerendering generates HTML files for every route so the site can be hosted
     // on GitHub Pages without a server runtime.
     prerender: {
