@@ -1,38 +1,35 @@
-# Piano — 4 interventi mirati
 
-## 1. Logo: solo i nastri restano azzurri (niente più `invert` piatto)
+## Interventi
 
-Oggi il logo è `dada-logo.jpg` (bianco+nero+azzurro) mostrato con classe CSS `invert`, che ribalta anche l'azzurro dei nastri facendolo diventare arancione. Da rimuovere.
+### 1. Modalità chiara — leggibilità testi
+In `src/styles.css`, il blocco `html.light` rimappa background/foreground ma molti componenti usano classi hardcoded `text-paper`, `text-paper/70`, `text-paper/50`, `border-white/10`, `bg-ink/70` — che restano chiare/trasparenti anche su sfondo chiaro, risultando illeggibili.
 
-- Generare con `imagegen--edit_image` una **variante scura del logo** (`dada-logo-dark.png`, trasparente): sfondo trasparente, silhouette e testo "dadà / discipline artistiche" in **bianco**, **nastri mantenuti nell'azzurro originale del logo**.
-- Il logo chiaro resta l'originale `dada-logo.jpg` invariato.
-- Rimuovere la classe `invert` da `SiteNav`, `SiteFooter`, `Contatti`.
+Approccio: mantenere i token `--paper`/`--ink` semanticamente corretti nel tema chiaro rimappando le variabili che i componenti già usano. In `html.light`:
+- `--paper: var(--ink)` (così `text-paper` diventa scuro su sfondo chiaro)
+- `--ink: <warm white originale>` (così `bg-ink` diventa chiaro)
+- Rimappare `--color-paper` e `--color-ink` di conseguenza in `@theme inline` — o più semplicemente aggiungere override diretti in `html.light` sui token `--color-paper`/`--color-ink`.
+- Adeguare i bordi: aggiungere override che rendano `border-white/10` visibile (usare `--border` scuro già definito; sostituire nei componenti chiave `border-white/10` → `border-border` dove necessario, oppure aggiungere una regola CSS globale in `html.light` che intercetti quelle classi).
 
-## 2. Toggle tema chiaro / scuro
+Preferisco la soluzione pulita: in `html.light` ridefinire `--paper` e `--ink` scambiati, così tutte le utility `text-paper`, `bg-ink`, `text-paper/70` funzionano automaticamente in entrambi i temi.
 
-- Creare `ThemeProvider` leggero (localStorage + classe `.light` su `<html>`, default scuro) — nessuna dipendenza aggiuntiva.
-- In `src/styles.css` aggiungere un blocco `html.light { … }` che rimappa `--background` a paper, `--foreground` a ink, bordi/muted coerenti. Palette azzurra `--ember` invariata in entrambi.
-- Nuovo componente `ThemeToggle` (icona luna/sole) accanto al pulsante "Contatti" nella navbar.
-- Nuovo componente `Logo` che sceglie l'immagine in base al tema: chiaro → `dada-logo.jpg` originale, scuro → `dada-logo-dark.png`. Sostituisce le 3 `<img>` attuali in nav / footer / contatti.
+### 2. Navbar più chiara in light mode
+In `SiteNav.tsx` la classe scrolled usa `bg-ink/70` + `border-white/10`. Con lo scambio di `--ink`/`--paper` sopra, `bg-ink/70` diventerà automaticamente un bianco caldo semi-trasparente. Aggiungere anche un override per `border-white/10` → in light mode usare un bordo scuro sottile (via classe condizionale `dark:border-white/10 border-black/10` sui punti chiave: header, menu mobile, footer, sezioni con `border-t border-white/10`).
 
-## 3. Mappa in fondo alla home con pin sulla sede
+### 3. Foto "Saggio finale" tagliata male su mobile (home)
+In `src/routes/index.tsx` la `<img>` usa `h-[70vh] min-h-[420px] object-cover` senza `object-position`. Su ritratto mobile taglia la parte importante. Aggiungere `object-[center_30%]` (o `object-top`) e ridurre l'altezza minima su mobile (`h-[60vh] min-h-[360px] md:h-[70vh]`), così l'inquadratura del gruppo resta visibile.
 
-- Nuovo componente `MapSection` che carica la Google Maps JS API in modo async con la chiave browser del connettore Google Maps (già linkato — `VITE_LOVABLE_CONNECTOR_GOOGLE_MAPS_BROWSER_KEY`), centrata su **Via … Roè Volciano (BS)** con un `google.maps.Marker` sul luogo e stile scuro coerente col sito.
-- Inserito in `src/routes/index.tsx` dopo la sezione "Saggio finale", prima del footer, con eyebrow "Dove siamo" e link "Apri in Google Maps".
-- Se la chiave non è disponibile, fallback statico con indirizzo + link Maps (nessun errore visibile).
+### 4. Footer leggibilità mobile
+`SiteFooter.tsx` usa `text-paper/40`, `text-paper/50`, `text-xs` con `border-white/10`. Con lo swap di token del punto 1 diventeranno automaticamente scuri su chiaro. Ritoccare comunque:
+- opacità troppo basse (`/40`) → alzare a `/60` per il copyright
+- `border-white/10` → `border-border` (semantico) o classi condizionali light/dark
+- verificare grid mobile (`col-span-6`) — l'email lunga può già sfondare; aggiungere `break-all` sul link email
 
-## 4. Cookie banner + armonizzazione Privacy / Cookie
-
-- Nuovo `CookieBanner` (in `__root.tsx`) che appare in basso finché non c'è consenso in `localStorage` (`dada-cookie-consent`): due CTA — "Solo essenziali" e "Accetta tutti" — con link a `/cookie` e `/privacy`. Stile coerente (ink/paper, accent azzurro), rispetta il tema.
-- **Armonizzazione contenuti**: riscrittura di `/privacy` e `/cookie` con stessa voce editoriale, stesse sezioni parallele (Titolare del trattamento, Dati raccolti, Finalità e basi giuridiche, Conservazione, Diritti, Contatti) e riferimenti coerenti (Officina Dadà A.S.D., segreteriaofficinadada@gmail.com, sede di Roè Volciano). La Cookie Policy elenca solo cookie tecnici + Google Maps + eventuale font Google, coerente col banner.
+### 5. Rimuovere immagine dalla sezione Sede
+In `src/components/site/Sede.tsx` eliminare la colonna sinistra (`<Reveal className="col-span-6">` con `<img>`) e centrare i contenuti testuali (`max-w-2xl mx-auto` o griglia a colonna singola). Rimuovere anche l'import `img` da `tessuti0165.jpg.asset.json`.
 
 ## File toccati
-
-- **Creati**: `src/components/site/ThemeProvider.tsx`, `ThemeToggle.tsx`, `Logo.tsx`, `MapSection.tsx`, `CookieBanner.tsx`; asset `src/assets/dada-logo-dark.png.asset.json`.
-- **Modificati**: `src/styles.css` (blocco `.light`), `src/routes/__root.tsx` (ThemeProvider + CookieBanner), `src/components/site/SiteNav.tsx` (Logo + ThemeToggle), `SiteFooter.tsx` + `Contatti.tsx` (Logo), `src/routes/index.tsx` (MapSection), `src/routes/privacy.tsx` + `src/routes/cookie.tsx` (contenuti armonizzati).
-
-## Note tecniche
-
-- Nessun `next-themes` — provider fatto in casa (~30 righe) per evitare i problemi già visti in passato.
-- Google Maps: connettore già linkato al progetto, non serve azione dell'utente.
-- Il logo scuro viene generato una sola volta come asset trasparente PNG → nessun filtro CSS che possa alterare l'azzurro dei nastri.
+- `src/styles.css` — swap `--paper`/`--ink` + `--color-paper`/`--color-ink` in `html.light`
+- `src/components/site/SiteNav.tsx` — bordi condizionali light/dark
+- `src/components/site/SiteFooter.tsx` — opacità testi, bordi, `break-all` email
+- `src/routes/index.tsx` — object-position + altezza responsive foto saggio
+- `src/components/site/Sede.tsx` — rimozione immagine, layout a colonna singola
