@@ -49,8 +49,9 @@ export function MapSection() {
     }
 
     const render = () => {
-      if (!ref.current || !window.google?.maps) return;
-      const map = new google.maps.Map(ref.current, {
+      const g: any = window.google;
+      if (!ref.current || !g?.maps) return;
+      const map = new g.maps.Map(ref.current, {
         center: { lat: LAT, lng: LNG },
         zoom: 14,
         disableDefaultUI: true,
@@ -58,12 +59,12 @@ export function MapSection() {
         styles: DARK_STYLE,
         backgroundColor: "#0B0B0C",
       });
-      new google.maps.Marker({
+      new g.maps.Marker({
         position: { lat: LAT, lng: LNG },
         map,
         title: "Officina Dadà",
         icon: {
-          path: google.maps.SymbolPath.CIRCLE,
+          path: g.maps.SymbolPath.CIRCLE,
           scale: 10,
           fillColor: "#5FB3D6",
           fillOpacity: 1,
