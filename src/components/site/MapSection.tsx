@@ -8,7 +8,7 @@ const ADDRESS = "Roè Volciano (BS), Valsabbia";
 const MAPS_LINK = `https://www.google.com/maps/search/?api=1&query=Officina+Dad%C3%A0+Ro%C3%A8+Volciano`;
 
 // Dark map style, coerente con il palcoscenico ink
-const DARK_STYLE: google.maps.MapTypeStyle[] = [
+const DARK_STYLE: unknown[] = [
   { elementType: "geometry", stylers: [{ color: "#141416" }] },
   { elementType: "labels.text.stroke", stylers: [{ color: "#0B0B0C" }] },
   { elementType: "labels.text.fill", stylers: [{ color: "#8A8681" }] },
