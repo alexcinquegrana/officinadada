@@ -33,6 +33,7 @@ const CHANNEL = import.meta.env.VITE_LOVABLE_CONNECTOR_GOOGLE_MAPS_TRACKING_ID a
 declare global {
   interface Window {
     initDadaMap?: () => void;
+    google?: any;
   }
 }
 
