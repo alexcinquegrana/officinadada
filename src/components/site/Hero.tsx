@@ -35,12 +35,12 @@ export function Hero() {
           initial={reduce ? false : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.4 }}
-          className="eyebrow mb-6"
+          className="eyebrow mb-6 text-white/70"
         >
           Discipline Aeree · Valsabbia · Dal 2018
         </motion.p>
 
-        <h1 className="font-display text-paper leading-[0.92] tracking-[-0.02em]">
+        <h1 className="font-display text-white leading-[0.92] tracking-[-0.02em]">
           <motion.span
             initial={reduce ? false : { opacity: 0, y: 40, filter: "blur(10px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -63,7 +63,7 @@ export function Hero() {
           initial={reduce ? false : { opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.4 }}
-          className="mt-8 max-w-xl text-base md:text-lg text-paper/70 leading-relaxed"
+          className="mt-8 max-w-xl text-base md:text-lg text-white/80 leading-relaxed"
         >
           Officina Dadà A.S.D. — una scuola di arti circensi nel cuore della Valsabbia,
           dove il movimento diventa linguaggio, e chi guarda impara a volare.
@@ -73,12 +73,13 @@ export function Hero() {
           initial={reduce ? false : { opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.7 }}
-          className="mt-12 flex items-center gap-3 text-xs uppercase tracking-[0.24em] text-paper/50"
+          className="mt-12 flex items-center gap-3 text-xs uppercase tracking-[0.24em] text-white/60"
         >
-          <span className="h-px w-10 bg-paper/40" />
+          <span className="h-px w-10 bg-white/40" />
           Scorri
         </motion.div>
       </div>
+
     </section>
   );
 }
