@@ -1,35 +1,33 @@
+## Obiettivo
+
+1. Nella hero, mostrare **entrambe le bambine** dell'immagine `tessuti0103.jpg` (attualmente il crop taglia una delle due figure).
+2. Verificare la **leggibilità dei testi** dell'hero sia in modalità scura che chiara e correggere eventuali problemi.
 
 ## Interventi
 
-### 1. Modalità chiara — leggibilità testi
-In `src/styles.css`, il blocco `html.light` rimappa background/foreground ma molti componenti usano classi hardcoded `text-paper`, `text-paper/70`, `text-paper/50`, `border-white/10`, `bg-ink/70` — che restano chiare/trasparenti anche su sfondo chiaro, risultando illeggibili.
+### `src/components/site/Hero.tsx`
+- Cambiare l'inquadratura dell'immagine di sfondo per garantire che entrambe le figure restino visibili a tutte le larghezze:
+  - Usare `object-position` mirato (es. `object-[50%_20%]` desktop, spostato leggermente su mobile) invece del default `center`.
+  - Su mobile (viewport stretto 393px), l'`object-cover` a piena altezza tende a tagliare i lati: valutare un `object-position` orizzontale calibrato sulla foto reale in modo che entrambe le silhouette rientrino nel frame.
+- Mantenere `motion` parallax invariato (la trasformazione `y`/`scale` è compatibile con object-position).
 
-Approccio: mantenere i token `--paper`/`--ink` semanticamente corretti nel tema chiaro rimappando le variabili che i componenti già usano. In `html.light`:
-- `--paper: var(--ink)` (così `text-paper` diventa scuro su sfondo chiaro)
-- `--ink: <warm white originale>` (così `bg-ink` diventa chiaro)
-- Rimappare `--color-paper` e `--color-ink` di conseguenza in `@theme inline` — o più semplicemente aggiungere override diretti in `html.light` sui token `--color-paper`/`--color-ink`.
-- Adeguare i bordi: aggiungere override che rendano `border-white/10` visibile (usare `--border` scuro già definito; sostituire nei componenti chiave `border-white/10` → `border-border` dove necessario, oppure aggiungere una regola CSS globale in `html.light` che intercetti quelle classi).
+### Leggibilità testi hero — verifica in entrambe le modalità
+Attualmente l'hero usa `text-paper` e `text-paper/70` sopra un gradient `from-ink/70 via-ink/40 to-ink`. In light mode `--ink` e `--paper` sono invertiti, quindi:
+- `text-paper` in light mode diventa quasi nero → sopra un'immagine chiara/scura può risultare illeggibile a seconda della zona.
+- Il gradient `bg-ink/xx` in light mode diventa una velatura bianca → contrasto ridotto sui testi scuri.
 
-Preferisco la soluzione pulita: in `html.light` ridefinire `--paper` e `--ink` scambiati, così tutte le utility `text-paper`, `bg-ink`, `text-paper/70` funzionano automaticamente in entrambi i temi.
+Soluzione:
+- Rendere hero **theme-agnostic**: forzare palette scura sull'hero indipendentemente dal tema (l'immagine è teatrale e scura), usando classi con colori espliciti coerenti col brand (equivalenti a ink/paper hard-coded via variabili CSS locali dentro la sezione), così i testi bianchi restano su gradient scuro anche in light mode.
+- In alternativa: aumentare l'opacità del gradient scuro (es. `from-black/80 via-black/50 to-black`) e mantenere `text-white`/`text-white/70` fissi dentro l'hero.
 
-### 2. Navbar più chiara in light mode
-In `SiteNav.tsx` la classe scrolled usa `bg-ink/70` + `border-white/10`. Con lo scambio di `--ink`/`--paper` sopra, `bg-ink/70` diventerà automaticamente un bianco caldo semi-trasparente. Aggiungere anche un override per `border-white/10` → in light mode usare un bordo scuro sottile (via classe condizionale `dark:border-white/10 border-black/10` sui punti chiave: header, menu mobile, footer, sezioni con `border-t border-white/10`).
+Sceglierò l'approccio con overlay scuro forzato + testi bianchi fissi solo nell'hero, per garantire contrasto WCAG in entrambe le modalità senza toccare il resto del sito.
 
-### 3. Foto "Saggio finale" tagliata male su mobile (home)
-In `src/routes/index.tsx` la `<img>` usa `h-[70vh] min-h-[420px] object-cover` senza `object-position`. Su ritratto mobile taglia la parte importante. Aggiungere `object-[center_30%]` (o `object-top`) e ridurre l'altezza minima su mobile (`h-[60vh] min-h-[360px] md:h-[70vh]`), così l'inquadratura del gruppo resta visibile.
-
-### 4. Footer leggibilità mobile
-`SiteFooter.tsx` usa `text-paper/40`, `text-paper/50`, `text-xs` con `border-white/10`. Con lo swap di token del punto 1 diventeranno automaticamente scuri su chiaro. Ritoccare comunque:
-- opacità troppo basse (`/40`) → alzare a `/60` per il copyright
-- `border-white/10` → `border-border` (semantico) o classi condizionali light/dark
-- verificare grid mobile (`col-span-6`) — l'email lunga può già sfondare; aggiungere `break-all` sul link email
-
-### 5. Rimuovere immagine dalla sezione Sede
-In `src/components/site/Sede.tsx` eliminare la colonna sinistra (`<Reveal className="col-span-6">` con `<img>`) e centrare i contenuti testuali (`max-w-2xl mx-auto` o griglia a colonna singola). Rimuovere anche l'import `img` da `tessuti0165.jpg.asset.json`.
+### Verifica
+- Screenshot Playwright a 393×706 (mobile corrente) e 1280×800 (desktop), in dark e light mode, per confermare che:
+  1. entrambe le bambine sono visibili nel frame,
+  2. eyebrow, H1 "Sospesi tra / terra e cielo.", sottotitolo e "Scorri" restano leggibili.
 
 ## File toccati
-- `src/styles.css` — swap `--paper`/`--ink` + `--color-paper`/`--color-ink` in `html.light`
-- `src/components/site/SiteNav.tsx` — bordi condizionali light/dark
-- `src/components/site/SiteFooter.tsx` — opacità testi, bordi, `break-all` email
-- `src/routes/index.tsx` — object-position + altezza responsive foto saggio
-- `src/components/site/Sede.tsx` — rimozione immagine, layout a colonna singola
+- `src/components/site/Hero.tsx` (crop + colori testi/overlay)
+
+Nessuna modifica a logica di business, routing, o altri componenti.
