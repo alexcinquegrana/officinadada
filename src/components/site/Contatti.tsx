@@ -26,13 +26,11 @@ export function Contatti() {
       <div className="mx-auto max-w-[1400px] px-6 md:px-10">
         <Reveal>
           <div className="flex items-center gap-4">
-            <span className="relative inline-block h-14 w-14 overflow-hidden rounded-full ring-1 ring-white/20">
-              <img
-                src={logo.url}
-                alt="Officina Dadà"
-                className="h-full w-full object-cover mix-blend-screen opacity-90"
-              />
-            </span>
+            <img
+              src={logo.url}
+              alt="Officina Dadà"
+              className="h-14 w-auto object-contain opacity-90"
+            />
             <p className="eyebrow">Contatti</p>
           </div>
         </Reveal>
