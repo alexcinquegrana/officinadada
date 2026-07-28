@@ -47,9 +47,10 @@ function Home() {
               <img
                 src={saggio.url}
                 alt="Il saggio finale di Officina Dadà: allievi e insegnanti insieme sul palco"
-                className="h-[70vh] min-h-[420px] w-full object-cover"
+                className="h-[58vh] min-h-[360px] w-full object-cover object-[center_25%] md:h-[70vh] md:min-h-[420px] md:object-center"
                 loading="lazy"
               />
+
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-transparent" />
               <figcaption className="absolute inset-x-0 bottom-0 mx-auto max-w-[1400px] px-6 pb-10 md:px-10 md:pb-14">
                 <p className="eyebrow">Saggio finale</p>
