@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Phone, MessageCircle } from "lucide-react";
-import logo from "@/assets/dada-logo.jpg.asset.json";
+import { Logo } from "./Logo";
+import { ThemeToggle } from "./ThemeToggle";
 
 const links = [
   { to: "/manifesto", label: "Manifesto" },
@@ -37,12 +38,8 @@ export function SiteNav() {
     >
       <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-4 md:px-10">
         <Link to="/" className="flex items-center gap-3 group" onClick={() => setOpen(false)}>
-          <img
-            src={logo.url}
-            alt="Officina Dadà"
-            className="h-9 w-auto object-contain opacity-90 group-hover:opacity-100 transition invert"
-          />
-          <span className="font-display italic text-lg tracking-tight text-paper">
+          <Logo className="h-9 w-auto opacity-90 group-hover:opacity-100 transition" />
+          <span className="font-display italic text-lg tracking-tight text-foreground">
             Officina Dadà
           </span>
         </Link>
@@ -66,17 +63,21 @@ export function SiteNav() {
           >
             Contatti
           </Link>
+          <ThemeToggle />
         </nav>
 
-        <button
-          aria-label="Apri menu"
-          onClick={() => setOpen((v) => !v)}
-          className="md:hidden text-paper p-2 -mr-2"
-        >
-          <span className="block w-6 h-px bg-paper mb-1.5" />
-          <span className={`block w-6 h-px bg-paper transition ${open ? "opacity-0" : ""}`} />
-          <span className="block w-6 h-px bg-paper mt-1.5" />
-        </button>
+        <div className="md:hidden flex items-center gap-2">
+          <ThemeToggle />
+          <button
+            aria-label="Apri menu"
+            onClick={() => setOpen((v) => !v)}
+            className="text-foreground p-2 -mr-2"
+          >
+            <span className="block w-6 h-px bg-current mb-1.5" />
+            <span className={`block w-6 h-px bg-current transition ${open ? "opacity-0" : ""}`} />
+            <span className="block w-6 h-px bg-current mt-1.5" />
+          </button>
+        </div>
       </div>
 
       {open && (

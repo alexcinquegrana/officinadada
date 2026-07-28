@@ -21,67 +21,85 @@ export const Route = createFileRoute("/cookie")({
 
 function CookiePage() {
   return (
-    <LegalPage eyebrow="Informativa" title="Cookie Policy" updated="26 luglio 2026">
+    <LegalPage eyebrow="Informativa" title="Cookie Policy" updated="28 luglio 2026">
       <p>
-        Questa Cookie Policy descrive i cookie e le tecnologie simili utilizzati sul sito di
-        <strong> Officina Dadà A.S.D.</strong>, in linea con le linee guida del Garante
-        Privacy e con il GDPR (Reg. UE 2016/679).
+        Questa Cookie Policy descrive i cookie e le tecnologie simili utilizzati sul sito di{" "}
+        <strong>Officina Dadà A.S.D.</strong>, in coerenza con le linee guida del Garante
+        Privacy e con il GDPR (Reg. UE 2016/679). Per il trattamento generale dei dati vedi la{" "}
+        <a href="/privacy">Privacy Policy</a>.
       </p>
 
-      <section>
-        <h2>Che cosa sono i cookie</h2>
-        <p>
-          I cookie sono piccoli file di testo che i siti visitati inviano al browser, dove
-          vengono memorizzati per essere ritrasmessi al sito alla successiva visita.
-        </p>
-      </section>
+      <h2>Titolare del trattamento</h2>
+      <p>
+        <strong>Officina Dadà A.S.D.</strong> — Roè Volciano (BS). Email:{" "}
+        <a href="mailto:segreteriaofficinadada@gmail.com">segreteriaofficinadada@gmail.com</a>.
+      </p>
 
-      <section>
-        <h2>Cookie utilizzati da questo sito</h2>
-        <ul>
-          <li>
-            <strong>Cookie tecnici</strong> — necessari al funzionamento del sito e alla
-            corretta visualizzazione dei contenuti. Non richiedono consenso.
-          </li>
-          <li>
-            <strong>Cookie di preferenza</strong> — memorizzano scelte come la lingua o le
-            impostazioni di visualizzazione.
-          </li>
-        </ul>
-        <p>
-          Al momento questo sito <strong>non utilizza cookie di profilazione o di marketing</strong>
-          {" "}né strumenti di tracciamento pubblicitario di terze parti.
-        </p>
-      </section>
+      <h2>Cosa sono i cookie</h2>
+      <p>
+        I cookie sono piccoli file di testo che i siti visitati salvano nel tuo browser per
+        far funzionare le pagine o memorizzare preferenze. Alcuni sono necessari, altri
+        richiedono il tuo consenso preventivo.
+      </p>
 
-      <section>
-        <h2>Cookie di terze parti</h2>
-        <p>
-          Alcuni contenuti (ad esempio font web erogati da Google Fonts) possono comportare
-          l'invio di richieste a server di terze parti. Questi soggetti agiscono come titolari
-          autonomi del trattamento e applicano le proprie informative privacy.
-        </p>
-      </section>
-
-      <section>
-        <h2>Come gestire i cookie</h2>
-        <p>
-          Puoi accettare, rifiutare o eliminare i cookie modificando le impostazioni del tuo
-          browser. Disabilitare i cookie tecnici può compromettere alcune funzionalità del
-          sito.
-        </p>
-      </section>
-
-      <section>
-        <h2>Contatti</h2>
-        <p>
-          Per qualsiasi domanda relativa a questa Cookie Policy scrivi a{" "}
-          <a href="mailto:segreteriaofficinadada@gmail.com">
-            segreteriaofficinadada@gmail.com
+      <h2>Cookie utilizzati su questo sito</h2>
+      <ul>
+        <li>
+          <strong>Tecnici e di preferenza</strong> (sempre attivi): consenso cookie salvato
+          localmente (<code>dada-cookie-consent</code>) e preferenza di tema chiaro/scuro
+          (<code>dada-theme</code>). Non profilano l'utente.
+        </li>
+        <li>
+          <strong>Google Maps</strong> (previo consenso): la mappa in fondo alla home è servita
+          da Google Maps, che può impostare cookie tecnici per il funzionamento e la sicurezza
+          del servizio. Fornitore: Google Ireland Ltd. —{" "}
+          <a
+            href="https://policies.google.com/privacy"
+            target="_blank"
+            rel="noopener"
+          >
+            privacy policy
           </a>
-          . Consulta anche la nostra <a href="/privacy">Privacy Policy</a>.
-        </p>
-      </section>
+          .
+        </li>
+        <li>
+          <strong>Google Fonts</strong> (previo consenso): i caratteri Fraunces e Inter Tight
+          sono caricati da <code>fonts.googleapis.com</code> / <code>fonts.gstatic.com</code>.
+          Fornitore: Google Ireland Ltd.
+        </li>
+      </ul>
+
+      <h2>Finalità e basi giuridiche</h2>
+      <ul>
+        <li>
+          Cookie tecnici e di preferenza — <em>base: legittimo interesse (art. 6.1.f GDPR)</em>,
+          nessun consenso necessario.
+        </li>
+        <li>
+          Cookie di terze parti (Google Maps, Google Fonts) — <em>base: consenso (art. 6.1.a
+          GDPR)</em>, raccolto tramite il banner al primo accesso.
+        </li>
+      </ul>
+
+      <h2>Gestione del consenso</h2>
+      <p>
+        Al primo accesso viene mostrato un banner con due opzioni: <em>Solo essenziali</em> o{" "}
+        <em>Accetta tutti</em>. Puoi modificare o revocare la scelta in ogni momento
+        cancellando i dati del sito dal tuo browser: al successivo accesso il banner
+        ricomparirà.
+      </p>
+
+      <h2>Diritti dell'interessato</h2>
+      <p>
+        Puoi esercitare i diritti previsti dagli artt. 15–22 GDPR (accesso, rettifica,
+        cancellazione, limitazione, opposizione, portabilità) scrivendo a{" "}
+        <a href="mailto:segreteriaofficinadada@gmail.com">segreteriaofficinadada@gmail.com</a>,
+        e hai diritto di proporre reclamo al{" "}
+        <a href="https://www.garanteprivacy.it" target="_blank" rel="noopener">
+          Garante per la protezione dei dati personali
+        </a>
+        .
+      </p>
     </LegalPage>
   );
 }

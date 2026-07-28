@@ -71,6 +71,31 @@
   --font-body: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
 }
 
+/* Light theme — invert stage/paper, keep azure accent */
+html.light {
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --card: var(--paper);
+  --card-foreground: var(--ink);
+  --popover: var(--paper);
+  --popover-foreground: var(--ink);
+  --primary: var(--ink);
+  --primary-foreground: var(--paper);
+  --secondary: oklch(0.92 0.008 80);
+  --secondary-foreground: var(--ink);
+  --muted: oklch(0.92 0.008 80);
+  --muted-foreground: oklch(0.42 0.008 60);
+  --accent: var(--ember);
+  --accent-foreground: var(--paper);
+  --border: oklch(0 0 0 / 12%);
+  --input: oklch(0 0 0 / 15%);
+}
+
+/* Logo color-swap: dark mode flips B/W while preserving azure ribbons */
+.dada-logo { filter: none; }
+html.dark .dada-logo { filter: invert(1) hue-rotate(180deg); }
+
+
 @layer base {
   * {
     border-color: var(--color-border);
