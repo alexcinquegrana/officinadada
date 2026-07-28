@@ -37,13 +37,11 @@ export function SiteNav() {
     >
       <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-4 md:px-10">
         <Link to="/" className="flex items-center gap-3 group" onClick={() => setOpen(false)}>
-          <span className="relative inline-block h-9 w-9 overflow-hidden rounded-full ring-1 ring-white/20">
-            <img
-              src={logo.url}
-              alt="Officina Dadà"
-              className="h-full w-full object-cover mix-blend-screen opacity-90 group-hover:opacity-100 transition"
-            />
-          </span>
+          <img
+            src={logo.url}
+            alt="Officina Dadà"
+            className="h-9 w-auto object-contain opacity-90 group-hover:opacity-100 transition"
+          />
           <span className="font-display italic text-lg tracking-tight text-paper">
             Officina Dadà
           </span>
