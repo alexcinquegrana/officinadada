@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { Reveal } from "./Reveal";
-import logo from "@/assets/dada-logo.jpg.asset.json";
+import { Logo } from "./Logo";
 
 const EMAIL = "segreteriaofficinadada@gmail.com";
 
@@ -26,11 +26,7 @@ export function Contatti() {
       <div className="mx-auto max-w-[1400px] px-6 md:px-10">
         <Reveal>
           <div className="flex items-center gap-4">
-            <img
-              src={logo.url}
-              alt="Officina Dadà"
-              className="h-14 w-auto object-contain opacity-90 invert"
-            />
+            <Logo className="h-14 w-auto opacity-90" />
             <p className="eyebrow">Contatti</p>
           </div>
         </Reveal>

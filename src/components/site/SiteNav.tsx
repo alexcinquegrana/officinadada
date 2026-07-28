@@ -66,15 +66,18 @@ export function SiteNav() {
           <ThemeToggle />
         </nav>
 
-        <button
-          aria-label="Apri menu"
-          onClick={() => setOpen((v) => !v)}
-          className="md:hidden text-paper p-2 -mr-2"
-        >
-          <span className="block w-6 h-px bg-paper mb-1.5" />
-          <span className={`block w-6 h-px bg-paper transition ${open ? "opacity-0" : ""}`} />
-          <span className="block w-6 h-px bg-paper mt-1.5" />
-        </button>
+        <div className="md:hidden flex items-center gap-2">
+          <ThemeToggle />
+          <button
+            aria-label="Apri menu"
+            onClick={() => setOpen((v) => !v)}
+            className="text-foreground p-2 -mr-2"
+          >
+            <span className="block w-6 h-px bg-current mb-1.5" />
+            <span className={`block w-6 h-px bg-current transition ${open ? "opacity-0" : ""}`} />
+            <span className="block w-6 h-px bg-current mt-1.5" />
+          </button>
+        </div>
       </div>
 
       {open && (
