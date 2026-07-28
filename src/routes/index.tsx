@@ -41,18 +41,16 @@ function Home() {
         <Manifesto />
         <Discipline />
         <CtaBand />
-        <section className="relative border-t border-white/10">
+        <section className="relative border-t border-white/10 bg-ink">
           <Reveal>
-            <figure className="relative">
+            <figure className="relative mx-auto max-w-[1400px] px-6 md:px-10 py-16 md:py-24">
               <img
                 src={saggio.url}
                 alt="Il saggio finale di Officina Dadà: allievi e insegnanti insieme sul palco"
-                className="h-[58vh] min-h-[360px] w-full object-cover object-[center_25%] md:h-[70vh] md:min-h-[420px] md:object-center"
+                className="w-full h-auto object-contain"
                 loading="lazy"
               />
-
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-transparent" />
-              <figcaption className="absolute inset-x-0 bottom-0 mx-auto max-w-[1400px] px-6 pb-10 md:px-10 md:pb-14">
+              <figcaption className="mt-6 md:mt-8">
                 <p className="eyebrow">Saggio finale</p>
                 <p className="mt-3 font-display italic text-2xl md:text-4xl text-paper max-w-2xl">
                   Insieme sul palco, alla fine di un altro anno di volo.
@@ -61,6 +59,7 @@ function Home() {
             </figure>
           </Reveal>
         </section>
+
         <MapSection />
       </main>
       <SiteFooter />
