@@ -1,35 +1,27 @@
+## Obiettivo
+Sostituire le coordinate generiche attuali della mappa con l’indirizzo corretto dell’associazione — **Via Arnoldo Bellini 7, 25077 Roè Volciano (BS)** — e allineare l’indirizzo in tutte le sezioni del sito.
 
-## Interventi
+## Stato attuale verificato
+- `src/components/site/MapSection.tsx` usa coordinate approssimative (`LAT = 45.6208`, `LNG = 10.5578`) e l’indirizzo testuale "Roè Volciano (BS), Valsabbia".
+- Geocoding via Google Maps Platform ha restituito le coordinate precise del civico: **lat 45.6235077, lng 10.4928399**, con formatted address "Via Arnoldo Bellini, 7, 25077 Roè Volciano BS, Italy".
 
-### 1. Modalità chiara — leggibilità testi
-In `src/styles.css`, il blocco `html.light` rimappa background/foreground ma molti componenti usano classi hardcoded `text-paper`, `text-paper/70`, `text-paper/50`, `border-white/10`, `bg-ink/70` — che restano chiare/trasparenti anche su sfondo chiaro, risultando illeggibili.
+## Modifiche previste
 
-Approccio: mantenere i token `--paper`/`--ink` semanticamente corretti nel tema chiaro rimappando le variabili che i componenti già usano. In `html.light`:
-- `--paper: var(--ink)` (così `text-paper` diventa scuro su sfondo chiaro)
-- `--ink: <warm white originale>` (così `bg-ink` diventa chiaro)
-- Rimappare `--color-paper` e `--color-ink` di conseguenza in `@theme inline` — o più semplicemente aggiungere override diretti in `html.light` sui token `--color-paper`/`--color-ink`.
-- Adeguare i bordi: aggiungere override che rendano `border-white/10` visibile (usare `--border` scuro già definito; sostituire nei componenti chiave `border-white/10` → `border-border` dove necessario, oppure aggiungere una regola CSS globale in `html.light` che intercetti quelle classi).
+### 1. `src/components/site/MapSection.tsx`
+- Aggiornare `LAT` a `45.6235077` e `LNG` a `10.4928399`.
+- Aggiornare `ADDRESS` in "Via Arnoldo Bellini 7, 25077 Roè Volciano (BS)".
+- Aggiornare `MAPS_LINK` per puntare alla ricerca corretta su Google Maps (query "Officina Dadà Via Arnoldo Bellini 7 Roè Volciano").
+- Verificare che il pin e il centro mappa coincidano con il civico.
 
-Preferisco la soluzione pulita: in `html.light` ridefinire `--paper` e `--ink` scambiati, così tutte le utility `text-paper`, `bg-ink`, `text-paper/70` funzionano automaticamente in entrambi i temi.
+### 2. `src/components/site/Contatti.tsx`
+- Sostituire il testo "Roè Volciano (BS)" / "Valsabbia · Provincia di Brescia" con l’indirizzo completo "Via Arnoldo Bellini 7, 25077 Roè Volciano (BS)".
 
-### 2. Navbar più chiara in light mode
-In `SiteNav.tsx` la classe scrolled usa `bg-ink/70` + `border-white/10`. Con lo scambio di `--ink`/`--paper` sopra, `bg-ink/70` diventerà automaticamente un bianco caldo semi-trasparente. Aggiungere anche un override per `border-white/10` → in light mode usare un bordo scuro sottile (via classe condizionale `dark:border-white/10 border-black/10` sui punti chiave: header, menu mobile, footer, sezioni con `border-t border-white/10`).
+### 3. `src/components/site/Sede.tsx`
+- Aggiornare la prima riga delle specifiche da "Roè Volciano (BS)" a "Via Arnoldo Bellini 7, 25077 Roè Volciano (BS)".
 
-### 3. Foto "Saggio finale" tagliata male su mobile (home)
-In `src/routes/index.tsx` la `<img>` usa `h-[70vh] min-h-[420px] object-cover` senza `object-position`. Su ritratto mobile taglia la parte importante. Aggiungere `object-[center_30%]` (o `object-top`) e ridurre l'altezza minima su mobile (`h-[60vh] min-h-[360px] md:h-[70vh]`), così l'inquadratura del gruppo resta visibile.
+### 4. `src/lib/mcp/tools/get-organization-info.ts`
+- Aggiornare l’oggetto `location` includendo `address: "Via Arnoldo Bellini 7, 25077 Roè Volciano (BS), Italia"`.
 
-### 4. Footer leggibilità mobile
-`SiteFooter.tsx` usa `text-paper/40`, `text-paper/50`, `text-xs` con `border-white/10`. Con lo swap di token del punto 1 diventeranno automaticamente scuri su chiaro. Ritoccare comunque:
-- opacità troppo basse (`/40`) → alzare a `/60` per il copyright
-- `border-white/10` → `border-border` (semantico) o classi condizionali light/dark
-- verificare grid mobile (`col-span-6`) — l'email lunga può già sfondare; aggiungere `break-all` sul link email
-
-### 5. Rimuovere immagine dalla sezione Sede
-In `src/components/site/Sede.tsx` eliminare la colonna sinistra (`<Reveal className="col-span-6">` con `<img>`) e centrare i contenuti testuali (`max-w-2xl mx-auto` o griglia a colonna singola). Rimuovere anche l'import `img` da `tessuti0165.jpg.asset.json`.
-
-## File toccati
-- `src/styles.css` — swap `--paper`/`--ink` + `--color-paper`/`--color-ink` in `html.light`
-- `src/components/site/SiteNav.tsx` — bordi condizionali light/dark
-- `src/components/site/SiteFooter.tsx` — opacità testi, bordi, `break-all` email
-- `src/routes/index.tsx` — object-position + altezza responsive foto saggio
-- `src/components/site/Sede.tsx` — rimozione immagine, layout a colonna singola
+## Verifica
+- Build del progetto per assicurare che non ci siano errori di TypeScript.
+- Controllo visivo della mappa in anteprima: il pin deve trovarsi esattamente su Via Bellini 7, Roè Volciano, e non più sulle coordinate generiche precedenti.
