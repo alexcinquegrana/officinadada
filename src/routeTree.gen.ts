@@ -9,14 +9,31 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TeamRouteImport } from './routes/team'
+import { Route as SedeRouteImport } from './routes/sede'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as McpRouteImport } from './routes/mcp'
+import { Route as ManifestoRouteImport } from './routes/manifesto'
+import { Route as GalleriaRouteImport } from './routes/galleria'
+import { Route as EventiRouteImport } from './routes/eventi'
+import { Route as DisciplineRouteImport } from './routes/discipline'
 import { Route as CookieRouteImport } from './routes/cookie'
+import { Route as ContattiRouteImport } from './routes/contatti'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
 import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
 import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
 
+const TeamRoute = TeamRouteImport.update({
+  id: '/team',
+  path: '/team',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SedeRoute = SedeRouteImport.update({
+  id: '/sede',
+  path: '/sede',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
@@ -27,9 +44,34 @@ const McpRoute = McpRouteImport.update({
   path: '/mcp',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ManifestoRoute = ManifestoRouteImport.update({
+  id: '/manifesto',
+  path: '/manifesto',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GalleriaRoute = GalleriaRouteImport.update({
+  id: '/galleria',
+  path: '/galleria',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EventiRoute = EventiRouteImport.update({
+  id: '/eventi',
+  path: '/eventi',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DisciplineRoute = DisciplineRouteImport.update({
+  id: '/discipline',
+  path: '/discipline',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CookieRoute = CookieRouteImport.update({
   id: '/cookie',
   path: '/cookie',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContattiRoute = ContattiRouteImport.update({
+  id: '/contatti',
+  path: '/contatti',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -58,18 +100,32 @@ const Char91DotmcpChar93InvokeToolToolRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/contatti': typeof ContattiRoute
   '/cookie': typeof CookieRoute
+  '/discipline': typeof DisciplineRoute
+  '/eventi': typeof EventiRoute
+  '/galleria': typeof GalleriaRoute
+  '/manifesto': typeof ManifestoRoute
   '/mcp': typeof McpRoute
   '/privacy': typeof PrivacyRoute
+  '/sede': typeof SedeRoute
+  '/team': typeof TeamRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contatti': typeof ContattiRoute
   '/cookie': typeof CookieRoute
+  '/discipline': typeof DisciplineRoute
+  '/eventi': typeof EventiRoute
+  '/galleria': typeof GalleriaRoute
+  '/manifesto': typeof ManifestoRoute
   '/mcp': typeof McpRoute
   '/privacy': typeof PrivacyRoute
+  '/sede': typeof SedeRoute
+  '/team': typeof TeamRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
@@ -77,9 +133,16 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/contatti': typeof ContattiRoute
   '/cookie': typeof CookieRoute
+  '/discipline': typeof DisciplineRoute
+  '/eventi': typeof EventiRoute
+  '/galleria': typeof GalleriaRoute
+  '/manifesto': typeof ManifestoRoute
   '/mcp': typeof McpRoute
   '/privacy': typeof PrivacyRoute
+  '/sede': typeof SedeRoute
+  '/team': typeof TeamRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
@@ -88,27 +151,48 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/contatti'
     | '/cookie'
+    | '/discipline'
+    | '/eventi'
+    | '/galleria'
+    | '/manifesto'
     | '/mcp'
     | '/privacy'
+    | '/sede'
+    | '/team'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/.mcp/invoke-tool/$tool'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/contatti'
     | '/cookie'
+    | '/discipline'
+    | '/eventi'
+    | '/galleria'
+    | '/manifesto'
     | '/mcp'
     | '/privacy'
+    | '/sede'
+    | '/team'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/.mcp/invoke-tool/$tool'
   id:
     | '__root__'
     | '/'
+    | '/contatti'
     | '/cookie'
+    | '/discipline'
+    | '/eventi'
+    | '/galleria'
+    | '/manifesto'
     | '/mcp'
     | '/privacy'
+    | '/sede'
+    | '/team'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/.mcp/invoke-tool/$tool'
@@ -116,9 +200,16 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ContattiRoute: typeof ContattiRoute
   CookieRoute: typeof CookieRoute
+  DisciplineRoute: typeof DisciplineRoute
+  EventiRoute: typeof EventiRoute
+  GalleriaRoute: typeof GalleriaRoute
+  ManifestoRoute: typeof ManifestoRoute
   McpRoute: typeof McpRoute
   PrivacyRoute: typeof PrivacyRoute
+  SedeRoute: typeof SedeRoute
+  TeamRoute: typeof TeamRoute
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
@@ -126,6 +217,20 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/team': {
+      id: '/team'
+      path: '/team'
+      fullPath: '/team'
+      preLoaderRoute: typeof TeamRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sede': {
+      id: '/sede'
+      path: '/sede'
+      fullPath: '/sede'
+      preLoaderRoute: typeof SedeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/privacy': {
       id: '/privacy'
       path: '/privacy'
@@ -140,11 +245,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof McpRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/manifesto': {
+      id: '/manifesto'
+      path: '/manifesto'
+      fullPath: '/manifesto'
+      preLoaderRoute: typeof ManifestoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/galleria': {
+      id: '/galleria'
+      path: '/galleria'
+      fullPath: '/galleria'
+      preLoaderRoute: typeof GalleriaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/eventi': {
+      id: '/eventi'
+      path: '/eventi'
+      fullPath: '/eventi'
+      preLoaderRoute: typeof EventiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/discipline': {
+      id: '/discipline'
+      path: '/discipline'
+      fullPath: '/discipline'
+      preLoaderRoute: typeof DisciplineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/cookie': {
       id: '/cookie'
       path: '/cookie'
       fullPath: '/cookie'
       preLoaderRoute: typeof CookieRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contatti': {
+      id: '/contatti'
+      path: '/contatti'
+      fullPath: '/contatti'
+      preLoaderRoute: typeof ContattiRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -180,9 +320,16 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ContattiRoute: ContattiRoute,
   CookieRoute: CookieRoute,
+  DisciplineRoute: DisciplineRoute,
+  EventiRoute: EventiRoute,
+  GalleriaRoute: GalleriaRoute,
+  ManifestoRoute: ManifestoRoute,
   McpRoute: McpRoute,
   PrivacyRoute: PrivacyRoute,
+  SedeRoute: SedeRoute,
+  TeamRoute: TeamRoute,
   Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
     Char91DotwellKnownChar93OauthProtectedResourceRoute,
