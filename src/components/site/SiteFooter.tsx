@@ -80,7 +80,7 @@ export function SiteFooter() {
               <li>
                 <a
                   href="mailto:segreteriaofficinadada@gmail.com"
-                  className="text-paper/70 hover:text-paper transition-colors break-words"
+                  className="text-paper/70 hover:text-paper transition-colors break-all"
                 >
                   segreteriaofficinadada@gmail.com
                 </a>
@@ -90,13 +90,14 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-14 pt-8 border-t border-white/10 grid grid-cols-12 gap-6 items-center">
-          <p className="col-span-12 md:col-span-6 text-paper/40 text-xs">
+          <p className="col-span-12 md:col-span-6 text-paper/60 text-xs">
             © {new Date().getFullYear()} Officina Dadà A.S.D. — Tutti i diritti riservati.
           </p>
-          <p className="col-span-12 md:col-span-6 md:text-right text-paper/40 text-xs">
-            Fotografie · <span className="text-paper/70">David Pasotti</span>
+          <p className="col-span-12 md:col-span-6 md:text-right text-paper/60 text-xs">
+            Fotografie · <span className="text-paper">David Pasotti</span>
           </p>
         </div>
+
       </div>
     </footer>
   );

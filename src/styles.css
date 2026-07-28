@@ -73,23 +73,35 @@
 
 /* Light theme — invert stage/paper, keep azure accent */
 html.light {
-  --background: var(--paper);
-  --foreground: var(--ink);
-  --card: var(--paper);
-  --card-foreground: var(--ink);
-  --popover: var(--paper);
-  --popover-foreground: var(--ink);
-  --primary: var(--ink);
-  --primary-foreground: var(--paper);
+  /* Swap ink/paper so utilities like bg-ink, text-paper, border-white/10 remap correctly */
+  --ink: oklch(0.98 0.008 80);            /* near-white stage */
+  --paper: oklch(0.16 0.005 260);         /* near-black text */
+
+  --background: var(--ink);
+  --foreground: var(--paper);
+  --card: var(--ink);
+  --card-foreground: var(--paper);
+  --popover: var(--ink);
+  --popover-foreground: var(--paper);
+  --primary: var(--paper);
+  --primary-foreground: var(--ink);
   --secondary: oklch(0.92 0.008 80);
-  --secondary-foreground: var(--ink);
+  --secondary-foreground: var(--paper);
   --muted: oklch(0.92 0.008 80);
   --muted-foreground: oklch(0.42 0.008 60);
   --accent: var(--ember);
-  --accent-foreground: var(--paper);
+  --accent-foreground: oklch(0.98 0.008 80);
   --border: oklch(0 0 0 / 12%);
   --input: oklch(0 0 0 / 15%);
 }
+
+/* In light mode, `border-white/10` and `bg-ink/xx` used across the site
+   need darker equivalents so borders/panels stay visible. */
+html.light .border-white\/10 { border-color: oklch(0 0 0 / 12%); }
+html.light .divide-white\/10 > :not([hidden]) ~ :not([hidden]) {
+  border-color: oklch(0 0 0 / 12%);
+}
+
 
 /* Logo color-swap: dark mode flips B/W while preserving azure ribbons */
 .dada-logo { filter: none; }
