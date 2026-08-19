@@ -107,6 +107,12 @@ html.light .divide-white\/10 > :not([hidden]) ~ :not([hidden]) {
 .dada-logo { filter: none; }
 html.dark .dada-logo { filter: invert(1) hue-rotate(180deg); }
 
+/* Navbar always solid so the logo's white/black plate merges with it */
+.site-nav { background: #ffffff; border-bottom: 1px solid oklch(0 0 0 / 8%); }
+html.dark .site-nav { background: #050505; border-bottom: 1px solid oklch(1 0 0 / 10%); }
+.site-nav .dada-logo { mix-blend-mode: multiply; }
+html.dark .site-nav .dada-logo { mix-blend-mode: screen; }
+
 
 @layer base {
   * {

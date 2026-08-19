@@ -4,7 +4,6 @@ import { Reveal } from "./Reveal";
 import aerea from "@/assets/discipline-aerea.jpg.asset.json";
 import giocoleria from "@/assets/discipline-giocoleria.jpg.asset.json";
 import flexibility from "@/assets/discipline-flexibility.jpg.asset.json";
-import verticali from "@/assets/discipline-verticali.jpg.asset.json";
 import famiglia from "@/assets/SGR_5909.jpg.asset.json";
 
 const items = [
@@ -12,7 +11,6 @@ const items = [
   { name: "Giocoleria", detail: "Palline, cerchi, foulard e coordinazione", img: giocoleria.url },
   { name: "Circo in famiglia", detail: "Un'ora per grandi e piccoli, insieme in aria", img: famiglia.url },
   { name: "Flexibility", detail: "Mobilità, forza e ascolto del corpo", img: flexibility.url },
-  { name: "Verticali", detail: "Equilibri, forza e controllo capovolti", img: verticali.url },
 ];
 
 

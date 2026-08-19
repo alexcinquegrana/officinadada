@@ -4,7 +4,7 @@ import { Discipline } from "@/components/site/Discipline";
 
 const title = "Discipline — Officina Dadà";
 const description =
-  "Tessuti, cerchio, amaca, corda, trapezio, giocoleria, flexibility e verticali: i corsi di Officina Dadà per bambini e adulti.";
+  "Tessuti, cerchio, amaca, corda, trapezio, giocoleria e flexibility: i corsi di Officina Dadà per bambini e adulti.";
 
 export const Route = createFileRoute("/discipline")({
   head: () => ({

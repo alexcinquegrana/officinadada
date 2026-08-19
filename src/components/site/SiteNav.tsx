@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Phone, MessageCircle } from "lucide-react";
 import { Logo } from "./Logo";
@@ -18,30 +18,15 @@ const WA_URL =
 const TEL = "tel:+393273276836";
 
 export function SiteNav() {
-  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 80);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-        scrolled || open
-          ? "backdrop-blur-md bg-ink/70 border-b border-white/10"
-          : "bg-transparent"
-      }`}
+      className="site-nav fixed inset-x-0 top-0 z-50 transition-all duration-500"
     >
       <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-4 md:px-10">
         <Link to="/" className="flex items-center gap-3 group" onClick={() => setOpen(false)}>
-          <Logo className="h-9 w-auto opacity-90 group-hover:opacity-100 transition" />
-          <span className="font-display italic text-lg tracking-tight text-foreground">
-            Officina Dadà
-          </span>
+          <Logo className="h-14 md:h-20 w-auto opacity-95 group-hover:opacity-100 transition" />
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">
@@ -51,7 +36,7 @@ export function SiteNav() {
               to={l.to}
               preload="intent"
               activeProps={{ className: "text-paper after:w-full" }}
-              className="relative text-sm text-paper/80 hover:text-paper transition-colors after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-ember after:transition-all after:duration-300 hover:after:w-full"
+              className="relative text-[15px] text-paper/80 hover:text-paper transition-colors after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-ember after:transition-all after:duration-300 hover:after:w-full"
             >
               {l.label}
             </Link>

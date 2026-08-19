@@ -7,7 +7,7 @@ const ThemeContext = createContext<Ctx | null>(null);
 const STORAGE_KEY = "dada-theme";
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>("dark");
+  const [theme, setThemeState] = useState<Theme>("light");
 
   // Hydrate from localStorage after mount (avoids SSR mismatch)
   useEffect(() => {
