@@ -65,7 +65,7 @@ export function Hero() {
           className="mt-8 max-w-xl text-base md:text-lg text-paper/70 leading-relaxed"
         >
           Officina Dadà A.S.D. — una scuola di arti circensi nel cuore della Valsabbia,
-          dove il movimento diventa linguaggio, e chi guarda impara a volare.
+          dove il movimento diventa linguaggio ed espressione artistica.
         </motion.p>
 
         <motion.div
