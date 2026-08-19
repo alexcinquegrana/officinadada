@@ -33,9 +33,7 @@ export function Manifesto() {
             </Reveal>
             <Reveal delay={0.15}>
               <p className="text-paper/80 leading-relaxed text-[15px] md:text-base">
-                Crediamo che l'arte circense cambi l'attitudine: da vittima a protagonista,
-                da pubblico ad artista. Offre ai ragazzi uno spazio in cui esprimersi,
-                riscattarsi, ascoltarsi, e diventare cittadini creativi del proprio tempo.
+                Un perfetto connubio tra attività sportiva e arte; dove la forza fisica si unisce alla grazia del movimento.
               </p>
             </Reveal>
           </div>
