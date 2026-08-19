@@ -1,27 +1,28 @@
-## Obiettivo
-Sostituire le coordinate generiche attuali della mappa con l’indirizzo corretto dell’associazione — **Via Arnoldo Bellini 7, 25077 Roè Volciano (BS)** — e allineare l’indirizzo in tutte le sezioni del sito.
+# Tema chiaro di default, logo integrato, rimozione Verticali
 
-## Stato attuale verificato
-- `src/components/site/MapSection.tsx` usa coordinate approssimative (`LAT = 45.6208`, `LNG = 10.5578`) e l’indirizzo testuale "Roè Volciano (BS), Valsabbia".
-- Geocoding via Google Maps Platform ha restituito le coordinate precise del civico: **lat 45.6235077, lng 10.4928399**, con formatted address "Via Arnoldo Bellini, 7, 25077 Roè Volciano BS, Italy".
+## 1. Rimuovere la disciplina "Verticali"
+- Toglierla dall'elenco delle discipline (card + immagine associata).
+- Toglierla dai testi SEO della home e della pagina Discipline e dai dati esposti agli agenti (elenco discipline, descrizione associazione).
+- Eliminare l'immagine AI `discipline-verticali` non più usata.
 
-## Modifiche previste
+## 2. Sito in modalità chiara di default
+- Il tema iniziale diventa "chiaro"; chi ha già scelto un tema mantiene la sua preferenza salvata.
+- L'HTML parte con la classe `light` e `theme-color` chiaro, così non c'è flash scuro al primo caricamento.
+- Il toggle chiaro/scuro resta invariato.
 
-### 1. `src/components/site/MapSection.tsx`
-- Aggiornare `LAT` a `45.6235077` e `LNG` a `10.4928399`.
-- Aggiornare `ADDRESS` in "Via Arnoldo Bellini 7, 25077 Roè Volciano (BS)".
-- Aggiornare `MAPS_LINK` per puntare alla ricerca corretta su Google Maps (query "Officina Dadà Via Arnoldo Bellini 7 Roè Volciano").
-- Verificare che il pin e il centro mappa coincidano con il civico.
+## 3. Hero leggibile anche in chiaro
+- Nella hero il velo chiaro (il "bagliore bianco") viene rimosso: l'immagine mantiene sempre la sovrapposizione scura/vignettatura, in entrambi i temi.
+- Titolo, occhiello e paragrafo della hero restano bianchi e leggibili anche con il sito in modalità chiara.
 
-### 2. `src/components/site/Contatti.tsx`
-- Sostituire il testo "Roè Volciano (BS)" / "Valsabbia · Provincia di Brescia" con l’indirizzo completo "Via Arnoldo Bellini 7, 25077 Roè Volciano (BS)".
+## 4. Logo nella navbar
+- Logo più grande (circa il doppio dell'altezza attuale) su desktop, con dimensione ridotta ma comunque più grande su mobile.
+- Lo sfondo del logo si fonde con la navbar: fusione in "moltiplica" in tema chiaro (sfondo bianco invisibile) e in "schiarisci" in tema scuro dopo l'inversione, così non si vede più il rettangolo.
+- Rimosso il testo "Officina Dadà" accanto al logo (evita la ripetizione con la scritta già presente nel logo).
+- Voci di menu leggermente più grandi per equilibrare il logo ingrandito.
+- Stesso trattamento del logo dove compare in footer e contatti, per coerenza.
 
-### 3. `src/components/site/Sede.tsx`
-- Aggiornare la prima riga delle specifiche da "Roè Volciano (BS)" a "Via Arnoldo Bellini 7, 25077 Roè Volciano (BS)".
-
-### 4. `src/lib/mcp/tools/get-organization-info.ts`
-- Aggiornare l’oggetto `location` includendo `address: "Via Arnoldo Bellini 7, 25077 Roè Volciano (BS), Italia"`.
-
-## Verifica
-- Build del progetto per assicurare che non ci siano errori di TypeScript.
-- Controllo visivo della mappa in anteprima: il pin deve trovarsi esattamente su Via Bellini 7, Roè Volciano, e non più sulle coordinate generiche precedenti.
+## Note tecniche
+- `src/components/site/Discipline.tsx`, `src/lib/mcp/tools/list-disciplines.ts`, `get-organization-info.ts`, `src/routes/index.tsx`, `src/routes/discipline.tsx`.
+- `ThemeProvider` default `light`; `__root.tsx` shell `className="light"`.
+- `Hero.tsx`: overlay gradient/vignette forzati sui token scuri (valori fissi) invece che sui token tematici.
+- `styles.css`: regole `.dada-logo` con `mix-blend-mode` per light/dark; `SiteNav.tsx` per dimensioni e rimozione dello span.
