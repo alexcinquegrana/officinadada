@@ -104,8 +104,8 @@ html.light .divide-white\/10 > :not([hidden]) ~ :not([hidden]) {
 
 
 /* Logo color-swap: dark mode flips B/W while preserving azure ribbons */
-.dada-logo { filter: none; }
-html.dark .dada-logo { filter: invert(1) hue-rotate(180deg); }
+.dada-logo { filter: none; mix-blend-mode: multiply; }
+html.dark .dada-logo { filter: invert(1) hue-rotate(180deg); mix-blend-mode: screen; }
 
 
 @layer base {

@@ -13,7 +13,6 @@ export default defineTool({
       { name: "Giocoleria", detail: "Palline, cerchi, foulard e coordinazione" },
       { name: "Circo in famiglia", detail: "Un'ora per grandi e piccoli, insieme in aria" },
       { name: "Flexibility", detail: "Mobilità, forza e ascolto del corpo" },
-      { name: "Verticali", detail: "Equilibri, forza e controllo capovolti" },
     ];
     return {
       content: [{ type: "text", text: JSON.stringify(disciplines, null, 2) }],

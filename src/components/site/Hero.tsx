@@ -25,7 +25,7 @@ export function Hero() {
           transition={{ duration: 2.2, ease: [0.22, 1, 0.36, 1] }}
           style={reduce ? undefined : { opacity }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/40 to-ink" />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(11,11,12,0.7), rgba(11,11,12,0.45) 45%, rgb(11,11,12))" }} />
         <div className="absolute inset-0 bg-radial-vignette" style={{ background: "radial-gradient(ellipse at center, transparent 40%, rgb(11,11,12) 100%)" }} />
       </motion.div>
 
@@ -34,12 +34,12 @@ export function Hero() {
           initial={reduce ? false : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.4 }}
-          className="eyebrow mb-6"
+          className="eyebrow mb-6 !text-white/70"
         >
           Discipline Aeree · Valsabbia · Dal 2018
         </motion.p>
 
-        <h1 className="font-display text-paper leading-[0.92] tracking-[-0.02em]">
+        <h1 className="font-display text-white leading-[0.92] tracking-[-0.02em]">
           <motion.span
             initial={reduce ? false : { opacity: 0, y: 40, filter: "blur(10px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -62,7 +62,7 @@ export function Hero() {
           initial={reduce ? false : { opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.4 }}
-          className="mt-8 max-w-xl text-base md:text-lg text-paper/70 leading-relaxed"
+          className="mt-8 max-w-xl text-base md:text-lg text-white/75 leading-relaxed"
         >
           Officina Dadà A.S.D. — una scuola di arti circensi nel cuore della Valsabbia,
           dove il movimento diventa linguaggio ed espressione artistica.
@@ -72,9 +72,9 @@ export function Hero() {
           initial={reduce ? false : { opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.7 }}
-          className="mt-12 flex items-center gap-3 text-xs uppercase tracking-[0.24em] text-paper/50"
+          className="mt-12 flex items-center gap-3 text-xs uppercase tracking-[0.24em] text-white/50"
         >
-          <span className="h-px w-10 bg-paper/40" />
+          <span className="h-px w-10 bg-white/40" />
           Scorri
         </motion.div>
       </div>
