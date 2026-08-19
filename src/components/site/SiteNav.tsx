@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Phone, MessageCircle } from "lucide-react";
 import { Logo } from "./Logo";
