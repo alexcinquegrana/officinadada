@@ -25,7 +25,7 @@ export function CtaBand() {
               to="/contatti"
               className="inline-flex items-center gap-3 rounded-full bg-ember px-8 py-4 text-xs uppercase tracking-[0.24em] text-paper hover:bg-ember/90 transition-colors"
             >
-              <span>Scrivici</span>
+              <span>Prenota la tua prova gratuita ora</span>
               <span>→</span>
             </Link>
             <a

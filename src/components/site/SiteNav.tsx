@@ -7,6 +7,7 @@ import { ThemeToggle } from "./ThemeToggle";
 const links = [
   { to: "/manifesto", label: "Manifesto" },
   { to: "/discipline", label: "Discipline" },
+  { to: "/iscrizioni", label: "Iscrizioni" },
   { to: "/galleria", label: "Galleria" },
   { to: "/sede", label: "Sede" },
   { to: "/eventi", label: "Eventi" },
@@ -24,19 +25,19 @@ export function SiteNav() {
     <header
       className="site-nav fixed inset-x-0 top-0 z-50 transition-all duration-500"
     >
-      <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-4 md:px-10">
+      <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-2 md:px-10">
         <Link to="/" className="flex items-center gap-3 group" onClick={() => setOpen(false)}>
-          <Logo className="h-14 md:h-20 w-auto opacity-95 group-hover:opacity-100 transition" />
+          <Logo className="h-9 md:h-11 w-auto opacity-95 group-hover:opacity-100 transition" />
         </Link>
 
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-5 lg:gap-7">
           {links.map((l) => (
             <Link
               key={l.to}
               to={l.to}
               preload="intent"
               activeProps={{ className: "text-paper after:w-full" }}
-              className="relative text-[15px] text-paper/80 hover:text-paper transition-colors after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-ember after:transition-all after:duration-300 hover:after:w-full"
+              className="relative text-[14px] text-paper/80 hover:text-paper transition-colors after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-ember after:transition-all after:duration-300 hover:after:w-full"
             >
               {l.label}
             </Link>
@@ -44,7 +45,7 @@ export function SiteNav() {
           <Link
             to="/contatti"
             preload="intent"
-            className="inline-flex items-center gap-2 rounded-full bg-ember px-5 py-2 text-xs uppercase tracking-[0.2em] text-paper hover:bg-ember/90 transition-colors"
+            className="inline-flex items-center gap-2 rounded-full bg-ember px-4 py-1.5 text-[11px] uppercase tracking-[0.18em] text-paper hover:bg-ember/90 transition-colors"
           >
             Contatti
           </Link>
