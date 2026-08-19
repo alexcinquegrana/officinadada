@@ -14,6 +14,7 @@ import { Route as SedeRouteImport } from './routes/sede'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as McpRouteImport } from './routes/mcp'
 import { Route as ManifestoRouteImport } from './routes/manifesto'
+import { Route as IscrizioniRouteImport } from './routes/iscrizioni'
 import { Route as GalleriaRouteImport } from './routes/galleria'
 import { Route as EventiRouteImport } from './routes/eventi'
 import { Route as DisciplineRouteImport } from './routes/discipline'
@@ -47,6 +48,11 @@ const McpRoute = McpRouteImport.update({
 const ManifestoRoute = ManifestoRouteImport.update({
   id: '/manifesto',
   path: '/manifesto',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IscrizioniRoute = IscrizioniRouteImport.update({
+  id: '/iscrizioni',
+  path: '/iscrizioni',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GalleriaRoute = GalleriaRouteImport.update({
@@ -105,6 +111,7 @@ export interface FileRoutesByFullPath {
   '/discipline': typeof DisciplineRoute
   '/eventi': typeof EventiRoute
   '/galleria': typeof GalleriaRoute
+  '/iscrizioni': typeof IscrizioniRoute
   '/manifesto': typeof ManifestoRoute
   '/mcp': typeof McpRoute
   '/privacy': typeof PrivacyRoute
@@ -121,6 +128,7 @@ export interface FileRoutesByTo {
   '/discipline': typeof DisciplineRoute
   '/eventi': typeof EventiRoute
   '/galleria': typeof GalleriaRoute
+  '/iscrizioni': typeof IscrizioniRoute
   '/manifesto': typeof ManifestoRoute
   '/mcp': typeof McpRoute
   '/privacy': typeof PrivacyRoute
@@ -138,6 +146,7 @@ export interface FileRoutesById {
   '/discipline': typeof DisciplineRoute
   '/eventi': typeof EventiRoute
   '/galleria': typeof GalleriaRoute
+  '/iscrizioni': typeof IscrizioniRoute
   '/manifesto': typeof ManifestoRoute
   '/mcp': typeof McpRoute
   '/privacy': typeof PrivacyRoute
@@ -156,6 +165,7 @@ export interface FileRouteTypes {
     | '/discipline'
     | '/eventi'
     | '/galleria'
+    | '/iscrizioni'
     | '/manifesto'
     | '/mcp'
     | '/privacy'
@@ -172,6 +182,7 @@ export interface FileRouteTypes {
     | '/discipline'
     | '/eventi'
     | '/galleria'
+    | '/iscrizioni'
     | '/manifesto'
     | '/mcp'
     | '/privacy'
@@ -188,6 +199,7 @@ export interface FileRouteTypes {
     | '/discipline'
     | '/eventi'
     | '/galleria'
+    | '/iscrizioni'
     | '/manifesto'
     | '/mcp'
     | '/privacy'
@@ -205,6 +217,7 @@ export interface RootRouteChildren {
   DisciplineRoute: typeof DisciplineRoute
   EventiRoute: typeof EventiRoute
   GalleriaRoute: typeof GalleriaRoute
+  IscrizioniRoute: typeof IscrizioniRoute
   ManifestoRoute: typeof ManifestoRoute
   McpRoute: typeof McpRoute
   PrivacyRoute: typeof PrivacyRoute
@@ -250,6 +263,13 @@ declare module '@tanstack/react-router' {
       path: '/manifesto'
       fullPath: '/manifesto'
       preLoaderRoute: typeof ManifestoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/iscrizioni': {
+      id: '/iscrizioni'
+      path: '/iscrizioni'
+      fullPath: '/iscrizioni'
+      preLoaderRoute: typeof IscrizioniRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/galleria': {
@@ -325,6 +345,7 @@ const rootRouteChildren: RootRouteChildren = {
   DisciplineRoute: DisciplineRoute,
   EventiRoute: EventiRoute,
   GalleriaRoute: GalleriaRoute,
+  IscrizioniRoute: IscrizioniRoute,
   ManifestoRoute: ManifestoRoute,
   McpRoute: McpRoute,
   PrivacyRoute: PrivacyRoute,
