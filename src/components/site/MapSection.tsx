@@ -89,7 +89,7 @@ export function MapSection() {
 
     if (window.google?.maps) {
       render();
-      return;
+      return () => window.clearTimeout(timeout);
     }
 
     // Global callback for the async loader
@@ -98,7 +98,7 @@ export function MapSection() {
     const existing = document.querySelector<HTMLScriptElement>("script[data-dada-maps]");
     if (existing) {
       existing.addEventListener("load", render, { once: true });
-      return;
+      return () => window.clearTimeout(timeout);
     }
 
     const script = document.createElement("script");
@@ -115,6 +115,8 @@ export function MapSection() {
     script.dataset.dadaMaps = "true";
     script.onerror = () => setError(true);
     document.head.appendChild(script);
+
+    return () => window.clearTimeout(timeout);
   }, []);
 
   return (
