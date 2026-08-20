@@ -30,9 +30,14 @@ const CHANNEL = import.meta.env.VITE_LOVABLE_CONNECTOR_GOOGLE_MAPS_TRACKING_ID a
   | string
   | undefined;
 
+const OSM_EMBED = `https://www.openstreetmap.org/export/embed.html?bbox=${LNG - 0.012}%2C${
+  LAT - 0.007
+}%2C${LNG + 0.012}%2C${LAT + 0.007}&layer=mapnik&marker=${LAT}%2C${LNG}`;
+
 declare global {
   interface Window {
     initDadaMap?: () => void;
+    gm_authFailure?: () => void;
     google?: any;
   }
 }
