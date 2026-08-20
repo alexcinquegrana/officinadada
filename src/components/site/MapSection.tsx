@@ -155,19 +155,21 @@ export function MapSection() {
               </div>
             )}
             {error && (
-              <div className="absolute inset-0 flex items-center justify-center bg-ink">
-                <div className="text-center px-6">
-                  <p className="eyebrow">Sede</p>
-                  <p className="mt-3 font-display italic text-2xl text-paper">{ADDRESS}</p>
-                  <a
-                    href={MAPS_LINK}
-                    target="_blank"
-                    rel="noopener"
-                    className="mt-6 inline-flex items-center gap-2 rounded-full bg-ember px-5 py-2.5 text-xs uppercase tracking-[0.2em] text-paper"
-                  >
-                    Apri in Google Maps
-                  </a>
-                </div>
+              <div className="absolute inset-0 bg-ink">
+                <iframe
+                  title={`Mappa — ${ADDRESS}`}
+                  src={OSM_EMBED}
+                  loading="lazy"
+                  className="h-full w-full border-0"
+                />
+                <a
+                  href={MAPS_LINK}
+                  target="_blank"
+                  rel="noopener"
+                  className="absolute bottom-4 left-1/2 -translate-x-1/2 inline-flex items-center gap-2 rounded-full bg-ember px-5 py-2.5 text-xs uppercase tracking-[0.2em] text-paper shadow-lg"
+                >
+                  Apri in Google Maps
+                </a>
               </div>
             )}
           </div>

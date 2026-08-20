@@ -31,6 +31,11 @@ export function SiteFooter() {
                 </Link>
               </li>
               <li>
+                <Link to="/iscrizioni" className="text-paper/70 hover:text-paper transition-colors">
+                  Iscrizioni
+                </Link>
+              </li>
+              <li>
                 <Link to="/galleria" className="text-paper/70 hover:text-paper transition-colors">
                   Galleria
                 </Link>
