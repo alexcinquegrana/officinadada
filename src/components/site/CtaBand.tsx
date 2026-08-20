@@ -1,6 +1,8 @@
-import { Link } from "@tanstack/react-router";
-import { Phone } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import { Reveal } from "./Reveal";
+
+const WA_URL =
+  "https://wa.me/393273276836?text=Ciao%20Officina%20Dad%C3%A0%2C%20vorrei%20prenotare%20la%20prova%20gratuita";
 
 export function CtaBand() {
   return (
