@@ -177,3 +177,13 @@ html.dark .site-nav .dada-logo { mix-blend-mode: screen; }
     scroll-behavior: auto !important;
   }
 }
+
+/* Soft transition band between the dark hero and the rest of the page */
+.section-haze {
+  background: linear-gradient(
+    to bottom,
+    color-mix(in oklab, var(--paper) 12%, var(--ink)) 0%,
+    color-mix(in oklab, var(--paper) 6%, var(--ink)) 45%,
+    var(--ink) 100%
+  );
+}

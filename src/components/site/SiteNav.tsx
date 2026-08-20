@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Phone, MessageCircle } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import { Logo } from "./Logo";
 import { ThemeToggle } from "./ThemeToggle";
 
@@ -15,8 +15,7 @@ const links = [
 ] as const;
 
 const WA_URL =
-  "https://wa.me/393273276836?text=Ciao%20Officina%20Dad%C3%A0%2C%20vorrei%20info%20sui%20corsi";
-const TEL = "tel:+393273276836";
+  "https://wa.me/393273276836?text=Ciao%20Officina%20Dad%C3%A0%2C%20vorrei%20prenotare%20la%20prova%20gratuita";
 
 export function SiteNav() {
   const [open, setOpen] = useState(false);
@@ -87,21 +86,15 @@ export function SiteNav() {
                 {l.label}
               </Link>
             ))}
-            <div className="mt-4 pt-4 border-t border-white/10 flex gap-3">
-              <a
-                href={TEL}
-                className="flex-1 inline-flex items-center justify-center gap-2 border border-paper/30 rounded-full px-4 py-3 text-xs uppercase tracking-[0.18em] text-paper"
-              >
-                <Phone size={14} /> Chiama
-              </a>
+            <div className="mt-4 pt-4 border-t border-white/10">
               <a
                 href={WA_URL}
                 target="_blank"
                 rel="noopener"
-                className="flex-1 inline-flex items-center justify-center gap-2 rounded-full px-4 py-3 text-xs uppercase tracking-[0.18em] text-paper"
+                className="w-full inline-flex items-center justify-center gap-2 rounded-full px-4 py-3 text-xs uppercase tracking-[0.18em] text-white"
                 style={{ backgroundColor: "#25D366" }}
               >
-                <MessageCircle size={14} /> WhatsApp
+                <MessageCircle size={14} /> Prenota ora la prova gratuita
               </a>
             </div>
           </nav>

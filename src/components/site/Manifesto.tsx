@@ -2,7 +2,7 @@ import { Reveal } from "./Reveal";
 
 export function Manifesto() {
   return (
-    <section id="manifesto" className="relative py-28 md:py-40">
+    <section id="manifesto" className="section-haze relative py-28 md:py-40">
       <div className="mx-auto grid max-w-[1400px] grid-cols-12 gap-6 px-6 md:gap-10 md:px-10">
         <div className="col-span-12 md:col-span-3">
           <Reveal>

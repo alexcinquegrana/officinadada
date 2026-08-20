@@ -30,9 +30,14 @@ const CHANNEL = import.meta.env.VITE_LOVABLE_CONNECTOR_GOOGLE_MAPS_TRACKING_ID a
   | string
   | undefined;
 
+const OSM_EMBED = `https://www.openstreetmap.org/export/embed.html?bbox=${LNG - 0.012}%2C${
+  LAT - 0.007
+}%2C${LNG + 0.012}%2C${LAT + 0.007}&layer=mapnik&marker=${LAT}%2C${LNG}`;
+
 declare global {
   interface Window {
     initDadaMap?: () => void;
+    gm_authFailure?: () => void;
     google?: any;
   }
 }
@@ -47,6 +52,13 @@ export function MapSection() {
       setError(true);
       return;
     }
+
+    // Google fires this when the key is rejected (referer/billing): fall back.
+    window.gm_authFailure = () => setError(true);
+    const timeout = window.setTimeout(() => {
+      if (!window.google?.maps) setError(true);
+    }, 6000);
+
 
     const render = () => {
       const g: any = window.google;
@@ -77,7 +89,7 @@ export function MapSection() {
 
     if (window.google?.maps) {
       render();
-      return;
+      return () => window.clearTimeout(timeout);
     }
 
     // Global callback for the async loader
@@ -86,7 +98,7 @@ export function MapSection() {
     const existing = document.querySelector<HTMLScriptElement>("script[data-dada-maps]");
     if (existing) {
       existing.addEventListener("load", render, { once: true });
-      return;
+      return () => window.clearTimeout(timeout);
     }
 
     const script = document.createElement("script");
@@ -103,6 +115,8 @@ export function MapSection() {
     script.dataset.dadaMaps = "true";
     script.onerror = () => setError(true);
     document.head.appendChild(script);
+
+    return () => window.clearTimeout(timeout);
   }, []);
 
   return (
@@ -141,19 +155,21 @@ export function MapSection() {
               </div>
             )}
             {error && (
-              <div className="absolute inset-0 flex items-center justify-center bg-ink">
-                <div className="text-center px-6">
-                  <p className="eyebrow">Sede</p>
-                  <p className="mt-3 font-display italic text-2xl text-paper">{ADDRESS}</p>
-                  <a
-                    href={MAPS_LINK}
-                    target="_blank"
-                    rel="noopener"
-                    className="mt-6 inline-flex items-center gap-2 rounded-full bg-ember px-5 py-2.5 text-xs uppercase tracking-[0.2em] text-paper"
-                  >
-                    Apri in Google Maps
-                  </a>
-                </div>
+              <div className="absolute inset-0 bg-ink">
+                <iframe
+                  title={`Mappa — ${ADDRESS}`}
+                  src={OSM_EMBED}
+                  loading="lazy"
+                  className="h-full w-full border-0"
+                />
+                <a
+                  href={MAPS_LINK}
+                  target="_blank"
+                  rel="noopener"
+                  className="absolute bottom-4 left-1/2 -translate-x-1/2 inline-flex items-center gap-2 rounded-full bg-ember px-5 py-2.5 text-xs uppercase tracking-[0.2em] text-paper shadow-lg"
+                >
+                  Apri in Google Maps
+                </a>
               </div>
             )}
           </div>

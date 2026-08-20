@@ -51,14 +51,16 @@ export function Contatti() {
               </a>
             </Reveal>
             <Reveal delay={0.15}>
-              <p className="eyebrow">Chiama</p>
+              <p className="eyebrow">WhatsApp</p>
               <a
-                href="tel:+393273276836"
+                href="https://wa.me/393273276836?text=Ciao%20Officina%20Dad%C3%A0%2C%20vorrei%20prenotare%20la%20prova%20gratuita"
+                target="_blank"
+                rel="noopener"
                 className="mt-3 block font-display italic text-xl md:text-2xl text-paper hover:text-ember transition-colors"
               >
-                +39 327 327 6836
+                Prenota ora la prova gratuita
               </a>
-              <p className="mt-2 text-paper/50 text-sm">Elena Trombini</p>
+              <p className="mt-2 text-paper/50 text-sm">Elena Trombini · +39 327 327 6836</p>
             </Reveal>
             <Reveal delay={0.2}>
               <p className="eyebrow">Vieni a trovarci</p>
