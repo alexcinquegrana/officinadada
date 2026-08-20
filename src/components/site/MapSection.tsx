@@ -53,6 +53,13 @@ export function MapSection() {
       return;
     }
 
+    // Google fires this when the key is rejected (referer/billing): fall back.
+    window.gm_authFailure = () => setError(true);
+    const timeout = window.setTimeout(() => {
+      if (!window.google?.maps) setError(true);
+    }, 6000);
+
+
     const render = () => {
       const g: any = window.google;
       if (!ref.current || !g?.maps) return;
