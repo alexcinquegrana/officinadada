@@ -1,5 +1,3 @@
-import { useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
 import { Reveal } from "./Reveal";
 import aerea from "@/assets/DAJ_9974.jpg.asset.json";
 import famigliaFoto from "@/assets/circo-in-famiglia.jpg.asset.json";
@@ -28,8 +26,6 @@ const items = [
 
 
 export function Discipline() {
-  const [active, setActive] = useState(0);
-
   return (
     <section id="discipline" className="relative border-t border-white/10 py-28 md:py-40">
       <div className="mx-auto max-w-[1400px] px-6 md:px-10">
@@ -52,65 +48,45 @@ export function Discipline() {
           </div>
         </div>
 
-        <div className="mt-20 grid grid-cols-12 gap-6 md:gap-10">
-          {/* Photo panel (desktop) */}
-          <div className="hidden md:block md:col-span-5">
-            <div className="sticky top-32 aspect-[4/5] w-full overflow-hidden bg-secondary">
-              <AnimatePresence mode="wait">
-                <motion.img
-                  key={items[active].img}
-                  src={items[active].img}
-                  alt={items[active].name}
-                  initial={{ opacity: 0, scale: 1.06 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-                  className="h-full w-full object-cover"
-                />
-              </AnimatePresence>
-            </div>
-          </div>
+        <ul className="mt-16 md:mt-20 divide-y divide-white/10 border-y border-white/10">
+          {items.map((it, i) => (
+            <li key={it.name}>
+              <Reveal>
+                <article className="grid grid-cols-12 gap-6 md:gap-10 py-10 md:py-16 items-center">
+                  <div
+                    className={`col-span-12 md:col-span-5 ${
+                      i % 2 === 1 ? "md:order-2 md:col-start-8" : ""
+                    }`}
+                  >
+                    <div className="aspect-[4/3] md:aspect-[4/5] w-full overflow-hidden bg-secondary">
+                      <img
+                        src={it.img}
+                        alt={it.name}
+                        loading="lazy"
+                        decoding="async"
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
+                  </div>
 
-          {/* List */}
-          <ul className="col-span-12 md:col-span-7 divide-y divide-white/10 border-y border-white/10">
-            {items.map((it, i) => (
-              <li key={it.name}>
-                <button
-                  type="button"
-                  onMouseEnter={() => setActive(i)}
-                  onFocus={() => setActive(i)}
-                  onClick={() => setActive(i)}
-                  className="group grid w-full grid-cols-12 items-baseline gap-4 py-6 md:py-10 text-left transition-colors"
-                >
-                  <span className="col-span-12 md:col-span-8 min-w-0">
-                    <span
-                      className={`block font-display font-light text-[clamp(1.75rem,7vw,4rem)] leading-none tracking-[-0.02em] transition-all duration-500 ${
-                        active === i ? "text-paper italic" : "text-paper/60"
-                      }`}
-                    >
+                  <div
+                    className={`col-span-12 md:col-span-6 ${
+                      i % 2 === 1 ? "md:order-1 md:col-start-1" : "md:col-start-7"
+                    }`}
+                  >
+                    <h3 className="font-display italic font-light text-[clamp(1.9rem,4.5vw,3.4rem)] leading-[1.05] tracking-[-0.02em] text-paper">
                       {it.name}
-                    </span>
-                  </span>
-                  <span className="col-span-12 md:col-span-4 text-paper/60 text-sm md:text-right">
-                    {it.detail}
-                  </span>
-
-                  <span className="col-span-12 md:col-span-9 mt-3 block text-paper/70 text-[15px] leading-relaxed">
-                    {it.desc}
-                  </span>
-
-
-                  {/* Mobile image */}
-                  <span className="col-span-12 md:hidden">
-                    <span className="mt-4 block aspect-[16/10] w-full overflow-hidden">
-                      <img src={it.img} alt={it.name} loading="lazy" className="h-full w-full object-cover" />
-                    </span>
-                  </span>
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div>
+                    </h3>
+                    <p className="mt-2 text-paper/60 text-sm">{it.detail}</p>
+                    <p className="mt-5 text-paper/70 text-[15px] leading-relaxed max-w-xl">
+                      {it.desc}
+                    </p>
+                  </div>
+                </article>
+              </Reveal>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

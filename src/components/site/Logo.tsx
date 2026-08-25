@@ -1,5 +1,5 @@
 import logo from "@/assets/dada-logo.jpg.asset.json";
-import mark from "@/assets/dada-mark.jpg.asset.json";
+import mark from "@/assets/dada-mark-v2.jpg.asset.json";
 
 type Props = {
   className?: string;

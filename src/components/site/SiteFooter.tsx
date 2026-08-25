@@ -8,7 +8,7 @@ export function SiteFooter() {
       <div className="mx-auto max-w-[1400px] px-6 md:px-10">
         <div className="grid grid-cols-12 gap-10">
           <div className="col-span-12 md:col-span-5 flex items-start gap-4">
-            <Logo className="h-16 w-auto shrink-0 opacity-90" />
+            <Logo variant="mark" alt="Officina Dadà" className="h-16 w-auto shrink-0 opacity-90" />
             <div>
               <p className="font-display italic text-xl text-paper">Officina Dadà</p>
               <p className="text-xs text-paper/50 mt-1">
