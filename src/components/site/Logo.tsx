@@ -1,8 +1,11 @@
 import logo from "@/assets/dada-logo.jpg.asset.json";
+import mark from "@/assets/dada-mark.jpg.asset.json";
 
 type Props = {
   className?: string;
   alt?: string;
+  /** Only the aerialist symbol, without the wordmark. */
+  variant?: "full" | "mark";
 };
 
 /**
