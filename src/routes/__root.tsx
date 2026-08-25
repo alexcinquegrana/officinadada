@@ -14,6 +14,14 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { FloatingContacts } from "@/components/site/FloatingContacts";
 import { ThemeProvider } from "@/components/site/ThemeProvider";
 import { CookieBanner } from "@/components/site/CookieBanner";
+import heroAsset from "@/assets/tessuti0103.jpg.asset.json";
+
+const SITE_URL = "https://officinadadaasd.it";
+const SITE_TITLE = "Officina Dadà A.S.D. — Discipline aeree e arti circensi in Valsabbia";
+const SITE_DESCRIPTION =
+  "Scuola di discipline aeree e arti circensi a Roè Volciano (BS): tessuti, cerchio, amaca, corda, trapezio e flexibility per bambini, ragazzi e adulti.";
+const OG_IMAGE = `${SITE_URL}${heroAsset.url}`;
+
 
 function NotFoundComponent() {
   return (
