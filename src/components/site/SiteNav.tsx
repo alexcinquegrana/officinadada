@@ -33,7 +33,7 @@ export function SiteNav() {
           />
           <span className="leading-none">
             <span className="block font-display italic text-lg md:text-2xl text-foreground">
-              Officina Dadà
+              Officina Dadà A.S.D.
             </span>
             <span className="mt-1 hidden sm:block text-[9px] md:text-[10px] uppercase tracking-[0.28em] text-foreground/55">
               discipline artistiche
