@@ -18,6 +18,7 @@ import { Route as IscrizioniRouteImport } from './routes/iscrizioni'
 import { Route as GalleriaRouteImport } from './routes/galleria'
 import { Route as EventiRouteImport } from './routes/eventi'
 import { Route as DisciplineRouteImport } from './routes/discipline'
+import { Route as CorsiRouteImport } from './routes/corsi'
 import { Route as CookieRouteImport } from './routes/cookie'
 import { Route as ContattiRouteImport } from './routes/contatti'
 import { Route as IndexRouteImport } from './routes/index'
@@ -70,6 +71,11 @@ const DisciplineRoute = DisciplineRouteImport.update({
   path: '/discipline',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CorsiRoute = CorsiRouteImport.update({
+  id: '/corsi',
+  path: '/corsi',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CookieRoute = CookieRouteImport.update({
   id: '/cookie',
   path: '/cookie',
@@ -108,6 +114,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/contatti': typeof ContattiRoute
   '/cookie': typeof CookieRoute
+  '/corsi': typeof CorsiRoute
   '/discipline': typeof DisciplineRoute
   '/eventi': typeof EventiRoute
   '/galleria': typeof GalleriaRoute
@@ -125,6 +132,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/contatti': typeof ContattiRoute
   '/cookie': typeof CookieRoute
+  '/corsi': typeof CorsiRoute
   '/discipline': typeof DisciplineRoute
   '/eventi': typeof EventiRoute
   '/galleria': typeof GalleriaRoute
@@ -143,6 +151,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/contatti': typeof ContattiRoute
   '/cookie': typeof CookieRoute
+  '/corsi': typeof CorsiRoute
   '/discipline': typeof DisciplineRoute
   '/eventi': typeof EventiRoute
   '/galleria': typeof GalleriaRoute
@@ -162,6 +171,7 @@ export interface FileRouteTypes {
     | '/'
     | '/contatti'
     | '/cookie'
+    | '/corsi'
     | '/discipline'
     | '/eventi'
     | '/galleria'
@@ -179,6 +189,7 @@ export interface FileRouteTypes {
     | '/'
     | '/contatti'
     | '/cookie'
+    | '/corsi'
     | '/discipline'
     | '/eventi'
     | '/galleria'
@@ -196,6 +207,7 @@ export interface FileRouteTypes {
     | '/'
     | '/contatti'
     | '/cookie'
+    | '/corsi'
     | '/discipline'
     | '/eventi'
     | '/galleria'
@@ -214,6 +226,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ContattiRoute: typeof ContattiRoute
   CookieRoute: typeof CookieRoute
+  CorsiRoute: typeof CorsiRoute
   DisciplineRoute: typeof DisciplineRoute
   EventiRoute: typeof EventiRoute
   GalleriaRoute: typeof GalleriaRoute
@@ -293,6 +306,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DisciplineRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/corsi': {
+      id: '/corsi'
+      path: '/corsi'
+      fullPath: '/corsi'
+      preLoaderRoute: typeof CorsiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/cookie': {
       id: '/cookie'
       path: '/cookie'
@@ -342,6 +362,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ContattiRoute: ContattiRoute,
   CookieRoute: CookieRoute,
+  CorsiRoute: CorsiRoute,
   DisciplineRoute: DisciplineRoute,
   EventiRoute: EventiRoute,
   GalleriaRoute: GalleriaRoute,
