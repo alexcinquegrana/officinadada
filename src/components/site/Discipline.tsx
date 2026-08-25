@@ -4,7 +4,6 @@ import { Reveal } from "./Reveal";
 import aerea from "@/assets/DAJ_9974.jpg.asset.json";
 import famigliaFoto from "@/assets/circo-in-famiglia.jpg.asset.json";
 import flexibility from "@/assets/DAJ_0012.jpg.asset.json";
-import famiglia from "@/assets/SGR_5909.jpg.asset.json";
 
 const items = [
   {

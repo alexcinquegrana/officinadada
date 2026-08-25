@@ -9,7 +9,7 @@ const specs = [
   ["Altezza appendimenti", "5,50 m"],
   ["Appendimenti aerei", "10 – 14"],
   ["Materassi anticaduta", "8"],
-  ["Altre attrezzature", "Slackline · Giocoleria · Audio pro"],
+  ["Altre attrezzature", "Slackline · Tappeti · Audio pro"],
 ];
 
 const rooms = [

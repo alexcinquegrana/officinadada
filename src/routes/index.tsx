@@ -12,7 +12,7 @@ import saggio from "@/assets/cpm00029.jpg.asset.json";
 
 const title = "Officina Dadà — Discipline aeree e arti circensi in Valsabbia";
 const description =
-  "Scuola di danza aerea e arti circensi a Roè Volciano (BS). Tessuti, cerchio, amaca, corda, trapezio, giocoleria, flexibility per bambini e adulti.";
+  "Scuola di danza aerea e arti circensi a Roè Volciano (BS). Tessuti, cerchio, amaca, corda, trapezio, flexibility per bambini e adulti.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
