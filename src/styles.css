@@ -98,9 +98,18 @@ html.light {
 /* In light mode, `border-white/10` and `bg-ink/xx` used across the site
    need darker equivalents so borders/panels stay visible. */
 html.light .border-white\/10 { border-color: oklch(0 0 0 / 12%); }
-html.light .divide-white\/10 > :not([hidden]) ~ :not([hidden]) {
+/* Tailwind v4 paints dividers on `> :not(:last-child)`; the legacy sibling
+   selector never matched the first child, leaving its divider white/invisible. */
+html.light .divide-white\/10 > :not([hidden]) ~ :not([hidden]),
+html.light .divide-white\/10 > :not(:last-child) {
   border-color: oklch(0 0 0 / 12%);
 }
+
+/* Keep browsers (and Android auto-dark) aligned with the active theme */
+html { color-scheme: light; }
+html.light { color-scheme: light; }
+html.dark { color-scheme: dark; }
+
 
 
 /* Logo color-swap: dark mode flips B/W while preserving azure ribbons */
