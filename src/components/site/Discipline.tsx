@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { Reveal } from "./Reveal";
-import aerea from "@/assets/discipline-aerea.jpg.asset.json";
+import aerea from "@/assets/DAJ_9974.jpg.asset.json";
 import giocoleria from "@/assets/discipline-giocoleria.jpg.asset.json";
-import flexibility from "@/assets/discipline-flexibility.jpg.asset.json";
+import flexibility from "@/assets/DAJ_0012.jpg.asset.json";
 import famiglia from "@/assets/SGR_5909.jpg.asset.json";
 
 const items = [
