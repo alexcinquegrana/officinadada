@@ -14,15 +14,9 @@ const items = [
     desc: "Il corpo lascia il suolo e trova un nuovo appoggio: tessuti, cerchio, amaca, corda e trapezio. Si lavora su forza, coordinazione e fiducia, imparando salite, chiavi e figure in totale sicurezza. Ogni sequenza diventa poi una piccola coreografia, con la musica a guidare il respiro. Percorsi per bambini, ragazzi e adulti, dal primo approccio ai livelli avanzati.",
   },
   {
-    name: "Giocoleria",
-    detail: "Palline, cerchi, foulard e coordinazione",
-    img: giocoleria.url,
-    desc: "Palline, cerchi, clave e foulard per allenare occhio, mano e ritmo. È la disciplina che insegna prima di tutto a sbagliare: si lascia cadere, si ride, si riprova. Migliora concentrazione, lateralità e memoria motoria, con esercizi progressivi adatti a ogni età. Nel tempo la tecnica diventa gioco scenico, da portare in scena da soli o in gruppo.",
-  },
-  {
     name: "Circo in famiglia",
     detail: "Un'ora per grandi e piccoli, insieme in aria",
-    img: famiglia.url,
+    img: famigliaFoto.url,
     desc: "Un'ora da vivere insieme, genitore e bambino, tra amaca, tappeti e piccoli attrezzi. Si gioca con l'equilibrio, il contatto e la fiducia reciproca, senza prerequisiti tecnici. È uno spazio protetto in cui gli adulti tornano a muoversi e i bambini scoprono il piacere del corpo. Ideale dai 3 anni in su, con proposte diverse a ogni incontro.",
   },
   {
