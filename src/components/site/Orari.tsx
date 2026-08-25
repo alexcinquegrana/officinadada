@@ -181,13 +181,13 @@ function CorsoCard({ c }: { c: Corso }) {
         alt={c.alt}
         loading="lazy"
         decoding="async"
-        className="absolute inset-0 h-full w-full object-cover object-top"
+        className="absolute inset-0 h-full w-full scale-105 object-cover object-top"
       />
       <div
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(to bottom, rgba(11,11,12,0.25) 0%, rgba(11,11,12,0.55) 42%, rgba(11,11,12,0.94) 78%, rgba(11,11,12,0.98) 100%)",
+            "linear-gradient(to bottom, rgba(11,11,12,0.15) 0%, rgba(11,11,12,0.35) 30%, rgba(11,11,12,0.9) 58%, rgba(11,11,12,0.98) 100%)",
         }}
       />
       <div className="relative flex h-full min-h-[420px] flex-col justify-end p-6 sm:min-h-[440px]">
