@@ -69,6 +69,25 @@ export function Contatti() {
               </p>
               <p className="mt-2 text-paper/50 text-sm">25077 Roè Volciano (BS) · Valsabbia</p>
             </Reveal>
+            <Reveal delay={0.25}>
+              <p className="eyebrow">Dati per la fatturazione</p>
+              <div className="mt-3 text-sm text-paper/60 leading-relaxed">
+                <p className="text-paper/80">Officina Dadà A.S.D.</p>
+                <p>Sede legale: Via Malpaga 1, 25070 Casto (BS)</p>
+                <p>C.F. 96040640177 · P.IVA 04721180984</p>
+                <p>Codice SDI: KRRH6B9</p>
+                <p className="break-all">
+                  PEC:{" "}
+                  <a
+                    href="mailto:elenatrombinidada@postecert.it"
+                    className="hover:text-ember transition-colors"
+                  >
+                    elenatrombinidada@postecert.it
+                  </a>
+                </p>
+              </div>
+            </Reveal>
+
           </div>
 
           <Reveal delay={0.15} className="col-span-12 md:col-span-7">
