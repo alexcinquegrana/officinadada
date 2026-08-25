@@ -1,6 +1,8 @@
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import hero from "@/assets/tessuti0103.jpg.asset.json";
+import clip from "@/assets/hero-clip.mp4.asset.json";
+import poster from "@/assets/hero-poster.jpg.asset.json";
 
 export function Hero() {
   const ref = useRef<HTMLDivElement>(null);
@@ -10,21 +12,52 @@ export function Hero() {
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 0.2]);
 
+  // Il video parte solo su schermi larghi e senza "riduci animazioni":
+  // su mobile resta l'immagine statica, più leggera in rete dati.
+  const [useVideo, setUseVideo] = useState(false);
+  useEffect(() => {
+    if (reduce) return;
+    const mq = window.matchMedia("(min-width: 768px)");
+    const apply = () => setUseVideo(mq.matches);
+    apply();
+    mq.addEventListener("change", apply);
+    return () => mq.removeEventListener("change", apply);
+  }, [reduce]);
+
+
   return (
     <section ref={ref} id="top" className="relative h-[100svh] min-h-[640px] w-full overflow-hidden">
       <motion.div
         style={reduce ? undefined : { y, scale }}
         className="absolute inset-0"
       >
-        <motion.img
-          src={hero.url}
-          alt="Due allieve di Officina Dadà in cerchio aereo, luci di scena calde"
-          className="h-full w-full object-cover"
-          initial={reduce ? false : { opacity: 0, scale: 1.1 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 2.2, ease: [0.22, 1, 0.36, 1] }}
-          style={reduce ? undefined : { opacity }}
-        />
+        {useVideo ? (
+          <motion.video
+            src={clip.url}
+            poster={poster.url}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            aria-hidden="true"
+            className="h-full w-full object-cover"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
+            style={reduce ? undefined : { opacity }}
+          />
+        ) : (
+          <motion.img
+            src={hero.url}
+            alt="Due allieve di Officina Dadà in cerchio aereo, luci di scena calde"
+            className="h-full w-full object-cover"
+            initial={reduce ? false : { opacity: 0, scale: 1.1 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 2.2, ease: [0.22, 1, 0.36, 1] }}
+            style={reduce ? undefined : { opacity }}
+          />
+        )}
         <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(11,11,12,0.7), rgba(11,11,12,0.45) 45%, rgb(11,11,12))" }} />
         <div className="absolute inset-0 bg-radial-vignette" style={{ background: "radial-gradient(ellipse at center, transparent 40%, rgb(11,11,12) 100%)" }} />
       </motion.div>
