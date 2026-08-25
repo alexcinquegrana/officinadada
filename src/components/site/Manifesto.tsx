@@ -1,11 +1,11 @@
 import { Reveal } from "./Reveal";
-import ritratto from "@/assets/tessuti0165.jpg.asset.json";
+import scena from "@/assets/cpm04369.jpg.asset.json";
 
 export function Manifesto() {
   return (
     <section id="manifesto" className="section-haze relative py-28 md:py-40">
       <div className="mx-auto grid max-w-[1400px] grid-cols-12 gap-6 px-6 md:gap-10 md:px-10">
-        <div className="col-span-12 md:col-span-3">
+        <div className="col-span-12 md:col-span-5">
           <Reveal>
             <p className="eyebrow">Manifesto</p>
             <p className="mt-6 font-display italic text-2xl text-paper/80 leading-tight">
@@ -15,20 +15,20 @@ export function Manifesto() {
           <Reveal delay={0.15}>
             <figure className="mt-10">
               <img
-                src={ritratto.url}
-                alt="Allieva di Officina Dadà sospesa sui tessuti aerei durante una lezione"
-                className="w-full aspect-[3/4] object-cover rounded-2xl"
+                src={scena.url}
+                alt="Aerealista di Officina Dadà sospesa sui tessuti aerei durante uno spettacolo"
+                className="w-full aspect-[4/5] object-cover rounded-2xl"
                 loading="lazy"
               />
               <figcaption className="mt-4 text-xs text-paper/50 leading-relaxed">
-                In aria, in Valsabbia · foto David Pasotti
+                In scena, in Valsabbia · foto David Pasotti
               </figcaption>
             </figure>
           </Reveal>
         </div>
 
 
-        <div className="col-span-12 md:col-span-8 md:col-start-5">
+        <div className="col-span-12 md:col-span-6 md:col-start-7">
           <Reveal delay={0.05}>
             <h2 className="font-display font-light text-[clamp(2rem,5vw,4.2rem)] leading-[1.02] tracking-[-0.02em] text-paper">
               Le arti circensi come strumento
