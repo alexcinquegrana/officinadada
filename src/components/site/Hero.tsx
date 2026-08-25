@@ -12,6 +12,19 @@ export function Hero() {
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 0.2]);
 
+  // Il video parte solo su schermi larghi e senza "riduci animazioni":
+  // su mobile resta l'immagine statica, più leggera in rete dati.
+  const [useVideo, setUseVideo] = useState(false);
+  useEffect(() => {
+    if (reduce) return;
+    const mq = window.matchMedia("(min-width: 768px)");
+    const apply = () => setUseVideo(mq.matches);
+    apply();
+    mq.addEventListener("change", apply);
+    return () => mq.removeEventListener("change", apply);
+  }, [reduce]);
+
+
   return (
     <section ref={ref} id="top" className="relative h-[100svh] min-h-[640px] w-full overflow-hidden">
       <motion.div
