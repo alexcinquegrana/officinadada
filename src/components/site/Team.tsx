@@ -56,6 +56,21 @@ export function Team() {
             </Reveal>
             <Reveal delay={0.1}>
               <figure className="mt-10">
+                <div className="aspect-[4/3] w-full overflow-hidden bg-secondary">
+                  <img
+                    src={elena.url}
+                    alt="Elena Trombini, presidente e direttrice artistica di Officina Dadà, alla reception della sede"
+                    loading="lazy"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <figcaption className="mt-3 font-display italic text-paper/60 text-sm">
+                  Elena Trombini — Presidente e direttrice artistica.
+                </figcaption>
+              </figure>
+            </Reveal>
+            <Reveal delay={0.15}>
+              <figure className="mt-8">
                 <div className="aspect-[4/5] w-full overflow-hidden bg-secondary">
                   <img
                     src={backstage.url}
