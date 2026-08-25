@@ -1,5 +1,32 @@
 import { Link } from "@tanstack/react-router";
 import { Reveal } from "./Reveal";
+import domanda from "@/assets/domanda-ammissione-socio.pdf.asset.json";
+import regolamento from "@/assets/regolamento-2026.pdf.asset.json";
+import safeguarding from "@/assets/safeguarding.pdf.asset.json";
+
+const moduli = [
+  {
+    href: domanda.url,
+    file: "domanda-ammissione-socio.pdf",
+    name: "Domanda di ammissione a socio",
+    note: "Da compilare e consegnare firmata in segreteria. Per i minori firma di un genitore.",
+    size: "PDF · 313 KB",
+  },
+  {
+    href: regolamento.url,
+    file: "regolamento-2026.pdf",
+    name: "Regolamento 2026",
+    note: "Regole della scuola, orari, comportamento in sala e frequenza dei corsi.",
+    size: "PDF · 114 KB",
+  },
+  {
+    href: safeguarding.url,
+    file: "safeguarding.pdf",
+    name: "Policy di safeguarding",
+    note: "Le nostre tutele per minori e persone in condizione di fragilità.",
+    size: "PDF · 82 KB",
+  },
+];
 
 const steps = [
   ["01", "Prenota la prova", "Scrivici o chiamaci: fissiamo insieme una lezione di prova gratuita, senza impegno."],
