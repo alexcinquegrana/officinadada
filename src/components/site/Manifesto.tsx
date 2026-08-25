@@ -13,7 +13,7 @@ export function Manifesto() {
             </p>
           </Reveal>
           <Reveal delay={0.15}>
-            <figure className="mt-10 hidden md:block">
+            <figure className="mt-10">
               <img
                 src={ritratto.url}
                 alt="Allieva di Officina Dadà sospesa sui tessuti aerei durante una lezione"
