@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Logo } from "./Logo";
+import { openCookiePreferences } from "./CookieBanner";
 import regolamento from "@/assets/regolamento-2026.pdf.asset.json";
 
 export function SiteFooter() {
@@ -29,6 +30,11 @@ export function SiteFooter() {
               <li>
                 <Link to="/discipline" className="text-paper/70 hover:text-paper transition-colors">
                   Discipline
+                </Link>
+              </li>
+              <li>
+                <Link to="/corsi" className="text-paper/70 hover:text-paper transition-colors">
+                  Corsi e orari
                 </Link>
               </li>
               <li>
@@ -85,6 +91,15 @@ export function SiteFooter() {
                 </Link>
               </li>
               <li>
+                <button
+                  type="button"
+                  onClick={openCookiePreferences}
+                  className="text-paper/70 hover:text-paper transition-colors text-left"
+                >
+                  Preferenze cookie
+                </button>
+              </li>
+              <li>
                 <a
                   href={regolamento.url}
                   download="regolamento-2026.pdf"
@@ -107,7 +122,43 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-14 pt-8 border-t border-white/10 grid grid-cols-12 gap-6 items-center">
+        <div className="mt-14 pt-8 border-t border-white/10">
+          <p className="eyebrow">Dati societari</p>
+          <div className="mt-4 grid grid-cols-12 gap-6 text-xs text-paper/60 leading-relaxed">
+            <div className="col-span-12 md:col-span-4">
+              <p className="text-paper/80">Officina Dadà A.S.D.</p>
+              <p className="mt-1">Sede legale: Via Malpaga 1, 25070 Casto (BS)</p>
+              <p>Sede operativa: Via A. Bellini 7, 25077 Roè Volciano (BS)</p>
+            </div>
+            <div className="col-span-12 md:col-span-4">
+              <p>Codice fiscale: 96040640177</p>
+              <p>Partita IVA: 04721180984</p>
+              <p>Codice SDI: KRRH6B9</p>
+            </div>
+            <div className="col-span-12 md:col-span-4">
+              <p className="break-all">
+                PEC:{" "}
+                <a
+                  href="mailto:elenatrombinidada@postecert.it"
+                  className="text-paper/80 hover:text-paper transition-colors"
+                >
+                  elenatrombinidada@postecert.it
+                </a>
+              </p>
+              <p className="break-all">
+                Email:{" "}
+                <a
+                  href="mailto:segreteriaofficinadada@gmail.com"
+                  className="text-paper/80 hover:text-paper transition-colors"
+                >
+                  segreteriaofficinadada@gmail.com
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-10 pt-8 border-t border-white/10 grid grid-cols-12 gap-6 items-center">
           <p className="col-span-12 md:col-span-6 text-paper/60 text-xs">
             © {new Date().getFullYear()} Officina Dadà A.S.D. — Tutti i diritti riservati.
           </p>
