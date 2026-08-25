@@ -48,6 +48,11 @@ export function Hero() {
             playsInline
             preload="auto"
             aria-hidden="true"
+            onLoadedData={(e) => {
+              const v = e.currentTarget as HTMLVideoElement;
+              v.muted = true;
+              void v.play().catch(() => {});
+            }}
             className="h-full w-full object-cover"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
