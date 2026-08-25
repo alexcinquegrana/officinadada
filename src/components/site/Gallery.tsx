@@ -156,9 +156,6 @@ export function Gallery() {
                     className="h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.03]"
                   />
                 </button>
-                <figcaption className="mt-3 font-display italic text-paper/60 text-sm">
-                  {p.caption}
-                </figcaption>
               </figure>
             </Reveal>
           ))}
