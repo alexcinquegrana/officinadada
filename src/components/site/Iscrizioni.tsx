@@ -88,6 +88,47 @@ export function Iscrizioni() {
             </Link>
           </Reveal>
         </div>
+
+        <div className="mt-20">
+          <Reveal>
+            <p className="eyebrow">Moduli da scaricare</p>
+            <p className="mt-4 max-w-xl text-sm md:text-[15px] text-paper/65 leading-relaxed">
+              Per iscriversi serve la domanda di ammissione a socio, compilata e firmata,
+              insieme al certificato medico non agonistico. Regolamento e policy di
+              safeguarding sono da leggere prima del primo ingresso in sala.
+            </p>
+          </Reveal>
+
+          <ul className="mt-8 divide-y divide-white/10 border-y border-white/10">
+            {moduli.map((m, i) => (
+              <Reveal key={m.file} delay={0.05 * i}>
+                <li>
+                  <a
+                    href={m.href}
+                    download={m.file}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 py-6"
+                  >
+                    <div className="min-w-0">
+                      <h3 className="font-display italic text-xl md:text-2xl text-paper group-hover:text-ember transition-colors">
+                        {m.name}
+                      </h3>
+                      <p className="mt-2 text-sm text-paper/60 leading-relaxed">{m.note}</p>
+                      <p className="eyebrow mt-3 text-paper/40">{m.size}</p>
+                    </div>
+                    <span
+                      aria-hidden="true"
+                      className="shrink-0 rounded-full border border-white/15 px-4 py-3 text-xs uppercase tracking-[0.2em] text-paper/70 group-hover:border-ember group-hover:text-ember transition-colors"
+                    >
+                      ↓
+                    </span>
+                  </a>
+                </li>
+              </Reveal>
+            ))}
+          </ul>
+        </div>
       </div>
     </section>
   );
