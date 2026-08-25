@@ -13,14 +13,19 @@ export function Hero() {
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 0.2]);
 
-  // Il video parte solo su schermi larghi e senza "riduci animazioni":
-  // su mobile resta l'immagine statica, più leggera in rete dati.
+  // Il video parte su tutti i dispositivi (versione più leggera su mobile).
+  // Resta l'immagine statica solo con "riduci animazioni" attivo.
   const [useVideo, setUseVideo] = useState(false);
+  const [videoSrc, setVideoSrc] = useState(clip.url);
   useEffect(() => {
-    if (reduce) return;
+    if (reduce) {
+      setUseVideo(false);
+      return;
+    }
     const mq = window.matchMedia("(min-width: 768px)");
-    const apply = () => setUseVideo(mq.matches);
+    const apply = () => setVideoSrc(mq.matches ? clip.url : clipMobile.url);
     apply();
+    setUseVideo(true);
     mq.addEventListener("change", apply);
     return () => mq.removeEventListener("change", apply);
   }, [reduce]);
@@ -34,13 +39,14 @@ export function Hero() {
       >
         {useVideo ? (
           <motion.video
-            src={clip.url}
+            key={videoSrc}
+            src={videoSrc}
             poster={poster.url}
             autoPlay
             muted
             loop
             playsInline
-            preload="metadata"
+            preload="auto"
             aria-hidden="true"
             className="h-full w-full object-cover"
             initial={{ opacity: 0 }}
