@@ -2,27 +2,49 @@ import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 
 const KEY = "dada-cookie-consent";
+const EVENT = "dada:open-cookie-preferences";
+const MAX_AGE_MS = 1000 * 60 * 60 * 24 * 182; // 6 mesi, come da linee guida del Garante
+
 type Consent = "essential" | "all";
+type Stored = { value: Consent; date: string };
+
+function read(): Stored | null {
+  try {
+    const raw = localStorage.getItem(KEY);
+    if (!raw) return null;
+    // Retro-compatibilità con il vecchio formato ("essential" / "all")
+    if (raw === "essential" || raw === "all") return { value: raw, date: new Date().toISOString() };
+    const parsed = JSON.parse(raw) as Stored;
+    if (parsed?.value !== "essential" && parsed?.value !== "all") return null;
+    if (Date.now() - new Date(parsed.date).getTime() > MAX_AGE_MS) return null;
+    return parsed;
+  } catch {
+    return null;
+  }
+}
+
+export function openCookiePreferences() {
+  window.dispatchEvent(new Event(EVENT));
+}
 
 export function CookieBanner() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    try {
-      const saved = localStorage.getItem(KEY);
-      if (saved !== "essential" && saved !== "all") setVisible(true);
-    } catch {
-      setVisible(true);
-    }
+    if (!read()) setVisible(true);
+    const open = () => setVisible(true);
+    window.addEventListener(EVENT, open);
+    return () => window.removeEventListener(EVENT, open);
   }, []);
 
   const save = (v: Consent) => {
     try {
-      localStorage.setItem(KEY, v);
+      localStorage.setItem(KEY, JSON.stringify({ value: v, date: new Date().toISOString() }));
     } catch {
       /* ignore */
     }
     setVisible(false);
+    window.dispatchEvent(new Event("dada:consent-changed"));
   };
 
   if (!visible) return null;
@@ -39,9 +61,8 @@ export function CookieBanner() {
             <p className="font-display italic text-base text-paper mb-1">Cookie & privacy</p>
             <p>
               Usiamo cookie tecnici essenziali per far funzionare il sito e — solo con il tuo
-              consenso — cookie di terze parti (Google Maps, Google Fonts) per mostrarti la mappa
-              della sede e i caratteri tipografici. Nessuna profilazione, nessuna pubblicità.
-              Leggi la{" "}
+              consenso — contenuti di terze parti (mappa OpenStreetMap, caratteri Google Fonts).
+              Nessuna profilazione, nessuna pubblicità. Puoi cambiare idea quando vuoi. Leggi la{" "}
               <Link to="/cookie" className="underline underline-offset-2 hover:text-ember">
                 Cookie Policy
               </Link>{" "}
@@ -73,11 +94,8 @@ export function CookieBanner() {
 }
 
 export function hasCookieConsent(kind: Consent = "all"): boolean {
-  try {
-    const v = localStorage.getItem(KEY);
-    if (kind === "essential") return v === "essential" || v === "all";
-    return v === "all";
-  } catch {
-    return false;
-  }
+  const stored = read();
+  if (!stored) return false;
+  if (kind === "essential") return true;
+  return stored.value === "all";
 }
