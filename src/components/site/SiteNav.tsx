@@ -25,8 +25,20 @@ export function SiteNav() {
       className="site-nav fixed inset-x-0 top-0 z-50 transition-all duration-500"
     >
       <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-2 md:px-10">
-        <Link to="/" className="flex items-center gap-3 group" onClick={() => setOpen(false)}>
-          <Logo className="h-9 md:h-11 w-auto opacity-95 group-hover:opacity-100 transition" />
+        <Link to="/" className="flex items-center gap-2 md:gap-3 group" onClick={() => setOpen(false)}>
+          <Logo
+            variant="mark"
+            alt="Officina Dadà"
+            className="h-14 md:h-20 w-auto opacity-95 group-hover:opacity-100 transition"
+          />
+          <span className="leading-none">
+            <span className="block font-display italic text-lg md:text-2xl text-foreground">
+              Officina Dadà
+            </span>
+            <span className="mt-1 hidden sm:block text-[9px] md:text-[10px] uppercase tracking-[0.28em] text-foreground/55">
+              discipline artistiche
+            </span>
+          </span>
         </Link>
 
         <nav className="hidden md:flex items-center gap-5 lg:gap-7">
