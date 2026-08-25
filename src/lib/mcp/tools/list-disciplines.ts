@@ -10,7 +10,6 @@ export default defineTool({
   handler: () => {
     const disciplines = [
       { name: "Danza aerea", detail: "Tessuti, cerchio, amaca, corda e trapezio" },
-      { name: "Giocoleria", detail: "Palline, cerchi, foulard e coordinazione" },
       { name: "Circo in famiglia", detail: "Un'ora per grandi e piccoli, insieme in aria" },
       { name: "Flexibility", detail: "Mobilità, forza e ascolto del corpo" },
     ];

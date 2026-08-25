@@ -16,7 +16,7 @@ export default defineTool({
         rigHeightMeters: 5.5,
         aerialRigs: "10 – 14",
         crashMats: 8,
-        equipment: ["Slackline", "Giocoleria", "Audio pro"],
+        equipment: ["Slackline", "Tappeti", "Audio pro"],
       },
       {
         name: "Seconda sede — Vestone (palestra della Scuola Primaria)",
