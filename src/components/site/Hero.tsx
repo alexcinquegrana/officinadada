@@ -2,7 +2,7 @@ import { motion, useReducedMotion, useScroll, useTransform } from "motion/react"
 import { useEffect, useRef, useState } from "react";
 import hero from "@/assets/tessuti0103.jpg.asset.json";
 import clip from "@/assets/hero-clip.mp4.asset.json";
-import clipMobile from "@/assets/hero-clip-mobile-v2.mp4.asset.json";
+import clipMobile from "@/assets/hero-left-pair-mobile.mp4.asset.json";
 import poster from "@/assets/hero-poster.jpg.asset.json";
 
 export function Hero() {
