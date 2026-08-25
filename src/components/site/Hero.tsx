@@ -1,6 +1,8 @@
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import hero from "@/assets/tessuti0103.jpg.asset.json";
+import clip from "@/assets/hero-clip.mp4.asset.json";
+import poster from "@/assets/hero-poster.jpg.asset.json";
 
 export function Hero() {
   const ref = useRef<HTMLDivElement>(null);
