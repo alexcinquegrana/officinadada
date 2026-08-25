@@ -213,11 +213,8 @@ export function Gallery() {
                 alt={photos[openIdx].alt}
                 className="max-h-[80vh] max-w-full object-contain"
               />
-              <figcaption className="mt-4 font-display italic text-paper/70 text-sm text-center">
-                {photos[openIdx].caption}
-                <span className="ml-3 text-paper/40">
-                  {openIdx + 1} / {photos.length}
-                </span>
+              <figcaption className="mt-4 font-display italic text-paper/40 text-sm text-center">
+                {openIdx + 1} / {photos.length}
               </figcaption>
             </motion.figure>
           </motion.div>
