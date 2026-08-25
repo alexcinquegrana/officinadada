@@ -29,7 +29,7 @@ export function SiteNav() {
           <Logo
             variant="mark"
             alt="Officina Dadà"
-            className="h-14 md:h-20 w-auto opacity-95 group-hover:opacity-100 transition"
+            className="h-11 md:h-14 w-auto opacity-95 group-hover:opacity-100 transition"
           />
           <span className="leading-none">
             <span className="block font-display italic text-lg md:text-2xl text-foreground">
