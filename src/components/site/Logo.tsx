@@ -1,8 +1,11 @@
 import logo from "@/assets/dada-logo.jpg.asset.json";
+import mark from "@/assets/dada-mark.jpg.asset.json";
 
 type Props = {
   className?: string;
   alt?: string;
+  /** Only the aerialist symbol, without the wordmark. */
+  variant?: "full" | "mark";
 };
 
 /**
@@ -11,10 +14,10 @@ type Props = {
  * which preserves the azure ribbons (b↔w flipped, hues largely preserved).
  * Light mode shows the logo untouched.
  */
-export function Logo({ className = "", alt = "Officina Dadà — Discipline artistiche" }: Props) {
+export function Logo({ className = "", alt = "Officina Dadà — Discipline artistiche", variant = "full" }: Props) {
   return (
     <img
-      src={logo.url}
+      src={variant === "mark" ? mark.url : logo.url}
       alt={alt}
       className={`object-contain dada-logo ${className}`}
       loading="eager"
