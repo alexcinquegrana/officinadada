@@ -21,6 +21,7 @@ export const Route = createFileRoute("/discipline")({
   component: () => (
     <SitePage>
       <Discipline />
+      <Orari />
     </SitePage>
   ),
 });
