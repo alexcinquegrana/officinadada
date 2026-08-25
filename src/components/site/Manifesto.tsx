@@ -5,7 +5,7 @@ export function Manifesto() {
   return (
     <section id="manifesto" className="section-haze relative py-28 md:py-40">
       <div className="mx-auto grid max-w-[1400px] grid-cols-12 gap-6 px-6 md:gap-10 md:px-10">
-        <div className="col-span-12 md:col-span-3">
+        <div className="col-span-12 md:col-span-5">
           <Reveal>
             <p className="eyebrow">Manifesto</p>
             <p className="mt-6 font-display italic text-2xl text-paper/80 leading-tight">
@@ -28,7 +28,7 @@ export function Manifesto() {
         </div>
 
 
-        <div className="col-span-12 md:col-span-8 md:col-start-5">
+        <div className="col-span-12 md:col-span-6 md:col-start-7">
           <Reveal delay={0.05}>
             <h2 className="font-display font-light text-[clamp(2rem,5vw,4.2rem)] leading-[1.02] tracking-[-0.02em] text-paper">
               Le arti circensi come strumento
