@@ -21,7 +21,17 @@ export default defineTool({
         region: "Valsabbia · Lombardia",
         country: "Italia",
       },
+      legal: {
+        legalName: "Officina Dadà A.S.D.",
+        registeredOffice: "Via Malpaga 1, 25070 Casto (BS), Italia",
+        operatingOffice: "Via A. Bellini 7, 25077 Roè Volciano (BS), Italia",
+        taxCode: "96040640177",
+        vatNumber: "04721180984",
+        sdiCode: "KRRH6B9",
+        pec: "elenatrombinidada@postecert.it",
+      },
       photographyCredits: "David Pasotti",
+
     };
     return {
       content: [{ type: "text", text: JSON.stringify(info, null, 2) }],

@@ -1,4 +1,5 @@
 import { Reveal } from "./Reveal";
+import ritratto from "@/assets/tessuti0165.jpg.asset.json";
 
 export function Manifesto() {
   return (
@@ -11,7 +12,21 @@ export function Manifesto() {
               In cosa crediamo.
             </p>
           </Reveal>
+          <Reveal delay={0.15}>
+            <figure className="mt-10">
+              <img
+                src={ritratto.url}
+                alt="Allieva di Officina Dadà sospesa sui tessuti aerei durante una lezione"
+                className="w-full aspect-[3/4] object-cover rounded-2xl"
+                loading="lazy"
+              />
+              <figcaption className="mt-4 text-xs text-paper/50 leading-relaxed">
+                In aria, in Valsabbia · foto David Pasotti
+              </figcaption>
+            </figure>
+          </Reveal>
         </div>
+
 
         <div className="col-span-12 md:col-span-8 md:col-start-5">
           <Reveal delay={0.05}>

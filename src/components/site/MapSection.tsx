@@ -1,4 +1,6 @@
+import { useEffect, useState } from "react";
 import { Reveal } from "./Reveal";
+import { hasCookieConsent } from "./CookieBanner";
 
 // Officina Dadà — Via Arnoldo Bellini 7, Roè Volciano (BS)
 const LAT = 45.6235077;
@@ -15,6 +17,15 @@ const OSM_EMBED = `https://www.openstreetmap.org/export/embed.html?bbox=${LNG - 
 }%2C${LNG + D_LNG}%2C${LAT + D_LAT}&layer=mapnik&marker=${LAT}%2C${LNG}`;
 
 export function MapSection() {
+  const [allowed, setAllowed] = useState(false);
+
+  useEffect(() => {
+    const sync = () => setAllowed(hasCookieConsent("all"));
+    sync();
+    window.addEventListener("dada:consent-changed", sync);
+    return () => window.removeEventListener("dada:consent-changed", sync);
+  }, []);
+
   return (
     <section className="relative border-t border-white/10 py-24 md:py-32">
       <div className="mx-auto max-w-[1400px] px-6 md:px-10">
@@ -44,12 +55,28 @@ export function MapSection() {
 
         <Reveal delay={0.1}>
           <div className="mt-12 relative overflow-hidden rounded-2xl border border-white/10 bg-secondary">
-            <iframe
-              title={`Mappa — ${ADDRESS}`}
-              src={OSM_EMBED}
-              loading="lazy"
-              className="h-[420px] md:h-[520px] w-full border-0"
-            />
+            {allowed ? (
+              <iframe
+                title={`Mappa — ${ADDRESS}`}
+                src={OSM_EMBED}
+                loading="lazy"
+                className="h-[420px] md:h-[520px] w-full border-0"
+              />
+            ) : (
+              <div className="h-[420px] md:h-[520px] w-full flex flex-col items-center justify-center gap-4 px-6 text-center">
+                <p className="eyebrow">Mappa disattivata</p>
+                <p className="max-w-md text-sm text-foreground/70">
+                  La mappa è fornita da OpenStreetMap: caricandola vengono inviati dati al
+                  fornitore terzo. Attivala solo se sei d'accordo.
+                </p>
+                <button
+                  onClick={() => setAllowed(true)}
+                  className="rounded-full bg-primary px-5 py-2.5 text-xs uppercase tracking-[0.2em] text-primary-foreground hover:opacity-90 transition-opacity"
+                >
+                  Mostra la mappa
+                </button>
+              </div>
+            )}
           </div>
         </Reveal>
       </div>

@@ -7,6 +7,8 @@ import { ThemeToggle } from "./ThemeToggle";
 const links = [
   { to: "/manifesto", label: "Manifesto" },
   { to: "/discipline", label: "Discipline" },
+  { to: "/corsi", label: "Corsi" },
+
   { to: "/iscrizioni", label: "Iscrizioni" },
   { to: "/galleria", label: "Galleria" },
   { to: "/sede", label: "Sede" },

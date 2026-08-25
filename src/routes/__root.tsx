@@ -14,6 +14,14 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { FloatingContacts } from "@/components/site/FloatingContacts";
 import { ThemeProvider } from "@/components/site/ThemeProvider";
 import { CookieBanner } from "@/components/site/CookieBanner";
+import heroAsset from "@/assets/tessuti0103.jpg.asset.json";
+
+const SITE_URL = "https://officinadadaasd.it";
+const SITE_TITLE = "Officina Dadà A.S.D. — Discipline aeree e arti circensi in Valsabbia";
+const SITE_DESCRIPTION =
+  "Scuola di discipline aeree e arti circensi a Roè Volciano (BS): tessuti, cerchio, amaca, corda, trapezio e flexibility per bambini, ragazzi e adulti.";
+const OG_IMAGE = `${SITE_URL}${heroAsset.url}`;
+
 
 function NotFoundComponent() {
   return (
@@ -82,14 +90,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "author", content: "Officina Dadà A.S.D." },
       { name: "theme-color", content: "#F2EFE9" },
-      { title: "Officina dada" },
-      { property: "og:title", content: "Officina dada" },
-      { name: "twitter:title", content: "Officina dada" },
-      { name: "description", content: "Brand Story Weaver crafts unique, premium digital experiences by deeply understanding brand identity and audience." },
-      { property: "og:description", content: "Brand Story Weaver crafts unique, premium digital experiences by deeply understanding brand identity and audience." },
-      { name: "twitter:description", content: "Brand Story Weaver crafts unique, premium digital experiences by deeply understanding brand identity and audience." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/4c85279d-0232-4722-b44e-9f57cbe7cee0/id-preview-0d0b4add--a8e12bfb-e6ec-4be4-bb98-884824dd0596.lovable.app-1785224945606.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/4c85279d-0232-4722-b44e-9f57cbe7cee0/id-preview-0d0b4add--a8e12bfb-e6ec-4be4-bb98-884824dd0596.lovable.app-1785224945606.png" },
+      { name: "color-scheme", content: "light" },
+      { title: SITE_TITLE },
+      { property: "og:site_name", content: "Officina Dadà A.S.D." },
+      { property: "og:title", content: SITE_TITLE },
+      { name: "twitter:title", content: SITE_TITLE },
+      { name: "description", content: SITE_DESCRIPTION },
+      { property: "og:description", content: SITE_DESCRIPTION },
+      { name: "twitter:description", content: SITE_DESCRIPTION },
+      { property: "og:image", content: OG_IMAGE },
+      { name: "twitter:image", content: OG_IMAGE },
       { name: "twitter:card", content: "summary_large_image" },
       { property: "og:type", content: "website" },
     ],
@@ -103,12 +113,40 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Inter+Tight:wght@400;500;600&display=swap",
       },
     ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "SportsClub",
+          name: "Officina Dadà A.S.D.",
+          description: SITE_DESCRIPTION,
+          url: SITE_URL,
+          image: OG_IMAGE,
+          email: "segreteriaofficinadada@gmail.com",
+          telephone: "+39 327 327 6836",
+          vatID: "04721180984",
+          taxID: "96040640177",
+          foundingDate: "2018",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "Via Arnoldo Bellini 7",
+            postalCode: "25077",
+            addressLocality: "Roè Volciano",
+            addressRegion: "BS",
+            addressCountry: "IT",
+          },
+          geo: { "@type": "GeoCoordinates", latitude: 45.6235077, longitude: 10.4928399 },
+        }),
+      },
+    ],
   }),
   shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
   errorComponent: ErrorComponent,
 });
+
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
