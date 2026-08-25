@@ -17,7 +17,7 @@ export function Manifesto() {
               <img
                 src={scena.url}
                 alt="Aerealista di Officina Dadà sospesa sui tessuti aerei durante uno spettacolo"
-                className="w-full aspect-[4/5] object-cover rounded-2xl"
+                className="w-full aspect-[4/5] object-cover"
                 loading="lazy"
               />
               <figcaption className="mt-4 text-xs text-paper/50 leading-relaxed">
