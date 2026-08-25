@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Logo } from "./Logo";
+import regolamento from "@/assets/regolamento-2026.pdf.asset.json";
 
 export function SiteFooter() {
   return (
