@@ -97,7 +97,8 @@ export function Orari() {
                   alt={c.alt}
                   loading="lazy"
                   decoding="async"
-                  className="absolute inset-0 h-full w-full object-cover opacity-45"
+                  aria-hidden="true"
+                  className="absolute inset-0 h-full w-full scale-125 object-cover opacity-30 blur-[6px]"
                 />
                 <div
                   className="absolute inset-0"
