@@ -1,5 +1,6 @@
 import { Reveal } from "./Reveal";
 import backstage from "@/assets/SGR_5528.jpg.asset.json";
+import elena from "@/assets/elena-presidente.jpg.asset.json";
 
 const board = [
   { name: "Elena Trombini", role: "Presidente · Direttrice artistica", note: "Regista e istruttrice di acrobatica aerea. Non dimentica mai il lato artistico della disciplina." },
