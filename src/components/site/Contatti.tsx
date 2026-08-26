@@ -1,26 +1,9 @@
-import { useState, type FormEvent } from "react";
 import { Reveal } from "./Reveal";
 import { Logo } from "./Logo";
 
 const EMAIL = "segreteriaofficinadada@gmail.com";
 
 export function Contatti() {
-  const [nome, setNome] = useState("");
-  const [email, setEmail] = useState("");
-  const [tel, setTel] = useState("");
-  const [messaggio, setMessaggio] = useState("");
-  const [sent, setSent] = useState(false);
-
-  const onSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    const subject = encodeURIComponent(`Richiesta informazioni — ${nome || "Nuovo contatto"}`);
-    const body = encodeURIComponent(
-      `Nome: ${nome}\nEmail: ${email}\nTelefono: ${tel}\n\n${messaggio}\n\n— Inviato dal sito Officina Dadà`,
-    );
-    window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
-    setSent(true);
-  };
-
   return (
     <section id="contatti" className="relative border-t border-white/10 py-28 md:py-44">
       <div className="mx-auto max-w-[1400px] px-6 md:px-10">
@@ -87,7 +70,6 @@ export function Contatti() {
                 </p>
               </div>
             </Reveal>
-
           </div>
 
           <Reveal delay={0.15} className="col-span-12 md:col-span-7">
@@ -115,35 +97,5 @@ export function Contatti() {
         </div>
       </div>
     </section>
-  );
-}
-
-function Field({
-  label,
-  value,
-  onChange,
-  type = "text",
-  required,
-  autoComplete,
-}: {
-  label: string;
-  value: string;
-  onChange: (v: string) => void;
-  type?: string;
-  required?: boolean;
-  autoComplete?: string;
-}) {
-  return (
-    <div>
-      <label className="eyebrow block">{label}</label>
-      <input
-        type={type}
-        required={required}
-        autoComplete={autoComplete}
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        className="mt-3 w-full border-b border-white/20 bg-transparent pb-2 font-display italic text-lg text-paper placeholder:text-paper/30 focus:border-ember focus:outline-none transition-colors"
-      />
-    </div>
   );
 }
