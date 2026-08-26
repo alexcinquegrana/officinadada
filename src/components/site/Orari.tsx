@@ -17,10 +17,16 @@ type Corso = {
   target: string;
   img: string;
   alt: string;
-  slots: [string, string][];
+  desc?: string;
 };
 
 type Gruppo = { title: string; corsi: Corso[] };
+
+const DESC_BAMBINI_JUNIOR =
+  "I vostri bambini amano il circo e si arrampicano dappertutto? Il nostro corso di discipline aeree gli permetterà di divertirsi su tessuti e cerchio aereo, sviluppando elasticità, forza fisica e controllo del corpo come dei veri acrobati!";
+
+const DESC_ADOLESCENTI_ADULTI =
+  "Il corso prevede una preparazione fisica e artistica per avere gli strumenti per danzare nell'aria. Si svilupperà forza, tonicità, controllo del corpo ed elasticità di gambe e schiena.";
 
 const gruppi: Gruppo[] = [
   {
@@ -31,56 +37,28 @@ const gruppi: Gruppo[] = [
         target: "Bambini · 6 – 8 anni",
         img: tessutiBambini.url,
         alt: "Bambina sospesa su un tessuto aereo verde",
-        slots: [
-          ["Principiante · Lun (Vestone)", "16:30 – 17:30"],
-          ["Principiante · Ven", "16:30 – 17:30"],
-          ["Intermedio · Mar", "16:30 – 17:30"],
-        ],
+        desc: DESC_BAMBINI_JUNIOR,
       },
       {
         name: "Tessuti aerei",
         target: "Junior · 8 – 10 anni",
         img: tessutiJunior.url,
         alt: "Ragazza in figura su tessuti aerei verdi",
-        slots: [
-          ["Principiante · Ven", "17:30 – 18:30"],
-          ["Intermedio · Lun (Vestone)", "17:30 – 18:30"],
-          ["Int. / Ava. · Lun", "17:30 – 18:30"],
-          ["Avanzato · Mer", "17:30 – 18:30"],
-        ],
+        desc: DESC_BAMBINI_JUNIOR,
       },
       {
         name: "Tessuti aerei",
         target: "Adolescenti",
         img: tessutiAdolescenti.url,
         alt: "Adolescente capovolta su tessuti aerei arancioni",
-        slots: [
-          ["Principiante · Mer (Vestone)", "16:30 – 17:30"],
-          ["Principiante · Gio", "16:30 – 17:30"],
-          ["Intermedio · Mer (Vestone)", "17:30 – 18:30"],
-          ["Intermedio · Mer", "18:30 – 19:30"],
-          ["Intermedio · Ven", "18:30 – 19:30"],
-          ["Avanzato · Mar", "17:30 – 18:30"],
-          ["Avanzato · Gio", "17:30 – 18:30"],
-          ["Avanzato · Ven", "17:30 – 18:30"],
-        ],
+        desc: DESC_ADOLESCENTI_ADULTI,
       },
       {
         name: "Tessuti aerei",
         target: "Adulti",
         img: tessutiAdulti.url,
         alt: "Aerealista adulto su tessuti aerei rossi",
-        slots: [
-          ["Principiante · Lun", "10:30 – 11:30"],
-          ["Principiante · Mar", "18:30 – 19:30"],
-          ["Principiante · Mer (Vestone)", "18:30 – 19:30"],
-          ["Principiante · Gio", "20:00 – 21:00"],
-          ["Intermedio · Lun", "20:00 – 21:30"],
-          ["Int. / Ava. · Mar", "19:30 – 21:00"],
-          ["Int. / Ava. · Mer", "19:30 – 21:00"],
-          ["Int. / Ava. · Gio", "18:30 – 20:00"],
-          ["Avanzato · Lun", "9:00 – 10:30"],
-        ],
+        desc: DESC_ADOLESCENTI_ADULTI,
       },
     ],
   },
@@ -92,50 +70,35 @@ const gruppi: Gruppo[] = [
         target: "4 – 6 anni",
         img: babyAerea.url,
         alt: "Bambina sospesa su un tessuto aereo verde durante lo spettacolo",
-        slots: [["Mer", "16:30 – 17:30"]],
+        desc: DESC_BAMBINI_JUNIOR,
       },
       {
         name: "Cerchio aereo",
         target: "Bambini · 6 – 8 anni",
         img: cerchioBambini.url,
         alt: "Due bambine su cerchi aerei durante lo spettacolo",
-        slots: [
-          ["Principiante · Lun", "16:30 – 17:30"],
-          ["Intermedio · Mar", "16:30 – 17:30"],
-        ],
+        desc: DESC_BAMBINI_JUNIOR,
       },
       {
         name: "Cerchio aereo",
         target: "Junior · 8 – 10 anni",
         img: cerchioJunior.url,
         alt: "Ragazza sospesa su cerchio aereo con ombrello di scena",
-        slots: [
-          ["Principiante · Gio", "16:30 – 17:30"],
-          ["Intermedio · Gio", "17:30 – 18:30"],
-          ["Avanzato · Mer", "16:30 – 17:30"],
-        ],
+        desc: DESC_BAMBINI_JUNIOR,
       },
       {
         name: "Cerchio aereo",
         target: "Adolescenti",
         img: cerchioAdolescenti.url,
         alt: "Due adolescenti capovolte su cerchi aerei",
-        slots: [
-          ["Principiante · Mar", "18:30 – 19:30"],
-          ["Int. / Ava. · Mer", "17:30 – 18:30"],
-        ],
+        desc: DESC_ADOLESCENTI_ADULTI,
       },
       {
         name: "Cerchio aereo",
         target: "Adulti",
         img: cerchioAdulti.url,
         alt: "Aerealista adulta sospesa a testa in giù su cerchio aereo",
-        slots: [
-          ["Principiante · Gio", "20:00 – 21:00"],
-          ["Intermedio · Gio", "18:30 – 20:00"],
-          ["Int. / Ava. · Mar", "19:30 – 21:00"],
-          ["Avanzato · Lun", "19:00 – 20:30"],
-        ],
+        desc: DESC_ADOLESCENTI_ADULTI,
       },
     ],
   },
@@ -147,27 +110,20 @@ const gruppi: Gruppo[] = [
         target: "Mobilità e allungamento",
         img: flexybility.url,
         alt: "Figura sospesa su cerchio aereo in luce viola",
-        slots: [
-          ["Mar", "17:30 – 18:30"],
-          ["Ven", "18:30 – 19:30"],
-        ],
       },
       {
         name: "Level up",
         target: "Tessuti e cerchio, livello avanzato",
         img: levelUp.url,
         alt: "Aerealiste su tessuti in scena con luci calde",
-        slots: [
-          ["Tessuti · Lun", "18:30 – 20:00"],
-          ["Cerchio · Lun", "17:30 – 19:00"],
-        ],
+        desc: "Corso di perfezionamento per atleti di livello avanzato che partecipano a competizioni o spettacoli.",
       },
       {
         name: "Creazione sull'attrezzo",
         target: "Ricerca e composizione",
         img: creazione.url,
         alt: "Gruppo di allieve in una composizione a terra sotto le luci di scena",
-        slots: [["Mer", "18:30 – 19:45"]],
+        desc: "Un corso dove le idee prendono forma e si esprimono attraverso la danza aerea. Studio del movimento sull'attrezzo per creare un personaggio e trovare il proprio stile.",
       },
     ],
   },
@@ -183,6 +139,9 @@ function CorsoCard({ c }: { c: Corso }) {
         decoding="async"
         className="block h-auto w-full object-contain"
       />
+      {c.desc && (
+        <p className="px-5 py-4 text-sm leading-relaxed text-paper/70">{c.desc}</p>
+      )}
     </article>
   );
 }

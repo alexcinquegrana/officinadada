@@ -32,6 +32,15 @@ export function Contatti() {
               >
                 {EMAIL}
               </a>
+              <p className="mt-3 text-sm text-paper/50">
+                Segreteria ·{" "}
+                <a
+                  href="tel:+393889766785"
+                  className="text-paper hover:text-ember transition-colors"
+                >
+                  +39 388 976 6785
+                </a>
+              </p>
             </Reveal>
             <Reveal delay={0.15}>
               <p className="eyebrow">WhatsApp</p>
