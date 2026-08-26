@@ -20,7 +20,12 @@ type Corso = {
   desc?: string;
 };
 
-type Gruppo = { title: string; corsi: Corso[] };
+type Gruppo = {
+  title: string;
+  /** Descrizioni condivise mostrate una sola volta sopra la griglia. */
+  sharedDescs?: { label: string; text: string }[];
+  corsi: Corso[];
+};
 
 const DESC_BAMBINI_JUNIOR =
   "I vostri bambini amano il circo e si arrampicano dappertutto? Il nostro corso di discipline aeree gli permetterà di divertirsi su tessuti e cerchio aereo, sviluppando elasticità, forza fisica e controllo del corpo come dei veri acrobati!";
@@ -28,77 +33,79 @@ const DESC_BAMBINI_JUNIOR =
 const DESC_ADOLESCENTI_ADULTI =
   "Il corso prevede una preparazione fisica e artistica per avere gli strumenti per danzare nell'aria. Si svilupperà forza, tonicità, controllo del corpo ed elasticità di gambe e schiena.";
 
+const DESC_FLEXIBILITY =
+  "Un allenamento dedicato a mobilità articolare, allungamento attivo e forza nei range estremi. Si lavora su spalle, colonna e anche con progressioni graduali e rispettose dei tempi di ciascuno. È il complemento perfetto alle discipline aeree: più ampiezza, meno infortuni, linee più pulite. Adatto anche a chi non fa circo e vuole semplicemente stare meglio nel proprio corpo.";
+
 const gruppi: Gruppo[] = [
   {
     title: "Tessuti aerei",
+    sharedDescs: [
+      { label: "Bambini · Junior", text: DESC_BAMBINI_JUNIOR },
+      { label: "Adolescenti · Adulti", text: DESC_ADOLESCENTI_ADULTI },
+    ],
     corsi: [
       {
         name: "Tessuti aerei",
         target: "Bambini · 6 – 8 anni",
         img: tessutiBambini.url,
         alt: "Bambina sospesa su un tessuto aereo verde",
-        desc: DESC_BAMBINI_JUNIOR,
       },
       {
         name: "Tessuti aerei",
         target: "Junior · 8 – 10 anni",
         img: tessutiJunior.url,
         alt: "Ragazza in figura su tessuti aerei verdi",
-        desc: DESC_BAMBINI_JUNIOR,
       },
       {
         name: "Tessuti aerei",
         target: "Adolescenti",
         img: tessutiAdolescenti.url,
         alt: "Adolescente capovolta su tessuti aerei arancioni",
-        desc: DESC_ADOLESCENTI_ADULTI,
       },
       {
         name: "Tessuti aerei",
         target: "Adulti",
         img: tessutiAdulti.url,
         alt: "Aerealista adulto su tessuti aerei rossi",
-        desc: DESC_ADOLESCENTI_ADULTI,
       },
     ],
   },
   {
     title: "Cerchio aereo",
+    sharedDescs: [
+      { label: "Bambini · Junior", text: DESC_BAMBINI_JUNIOR },
+      { label: "Adolescenti · Adulti", text: DESC_ADOLESCENTI_ADULTI },
+    ],
     corsi: [
       {
         name: "Baby aerea",
         target: "4 – 6 anni",
         img: babyAerea.url,
         alt: "Bambina sospesa su un tessuto aereo verde durante lo spettacolo",
-        desc: DESC_BAMBINI_JUNIOR,
       },
       {
         name: "Cerchio aereo",
         target: "Bambini · 6 – 8 anni",
         img: cerchioBambini.url,
         alt: "Due bambine su cerchi aerei durante lo spettacolo",
-        desc: DESC_BAMBINI_JUNIOR,
       },
       {
         name: "Cerchio aereo",
         target: "Junior · 8 – 10 anni",
         img: cerchioJunior.url,
         alt: "Ragazza sospesa su cerchio aereo con ombrello di scena",
-        desc: DESC_BAMBINI_JUNIOR,
       },
       {
         name: "Cerchio aereo",
         target: "Adolescenti",
         img: cerchioAdolescenti.url,
         alt: "Due adolescenti capovolte su cerchi aerei",
-        desc: DESC_ADOLESCENTI_ADULTI,
       },
       {
         name: "Cerchio aereo",
         target: "Adulti",
         img: cerchioAdulti.url,
         alt: "Aerealista adulta sospesa a testa in giù su cerchio aereo",
-        desc: DESC_ADOLESCENTI_ADULTI,
       },
     ],
   },
@@ -110,6 +117,7 @@ const gruppi: Gruppo[] = [
         target: "Mobilità e allungamento",
         img: flexybility.url,
         alt: "Figura sospesa su cerchio aereo in luce viola",
+        desc: DESC_FLEXIBILITY,
       },
       {
         name: "Level up",
@@ -169,6 +177,22 @@ export function Orari() {
                 {g.title}
               </h3>
             </Reveal>
+
+            {g.sharedDescs && (
+              <Reveal>
+                <div className="mt-5 grid grid-cols-1 gap-x-10 gap-y-4 md:grid-cols-2 md:divide-x md:divide-white/10">
+                  {g.sharedDescs.map((d) => (
+                    <div key={d.label} className="md:px-6 first:md:pl-0 last:md:pr-0">
+                      <p className="text-xs uppercase tracking-[0.18em] text-ember/80">
+                        {d.label}
+                      </p>
+                      <p className="mt-2 text-sm leading-relaxed text-paper/70">{d.text}</p>
+                    </div>
+                  ))}
+                </div>
+              </Reveal>
+            )}
+
             <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {g.corsi.map((c, i) => (
                 <Reveal key={c.name + c.target} delay={(i % 3) * 0.06}>
