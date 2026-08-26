@@ -45,6 +45,12 @@ const gruppi: Gruppo[] = [
     ],
     corsi: [
       {
+        name: "Baby aerea",
+        target: "4 – 6 anni",
+        img: babyAerea.url,
+        alt: "Bambina sospesa su un tessuto aereo verde durante lo spettacolo",
+      },
+      {
         name: "Tessuti aerei",
         target: "Bambini · 6 – 8 anni",
         img: tessutiBambini.url,
@@ -77,12 +83,6 @@ const gruppi: Gruppo[] = [
       { label: "Adolescenti · Adulti", text: DESC_ADOLESCENTI_ADULTI },
     ],
     corsi: [
-      {
-        name: "Baby aerea",
-        target: "4 – 6 anni",
-        img: babyAerea.url,
-        alt: "Bambina sospesa su un tessuto aereo verde durante lo spettacolo",
-      },
       {
         name: "Cerchio aereo",
         target: "Bambini · 6 – 8 anni",
