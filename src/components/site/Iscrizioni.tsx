@@ -1,8 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Reveal } from "./Reveal";
 import domanda from "@/assets/domanda-ammissione-socio.pdf.asset.json";
-import regolamento from "@/assets/regolamento-2026.pdf.asset.json";
-import safeguarding from "@/assets/safeguarding.pdf.asset.json";
 
 const moduli = [
   {
@@ -13,18 +11,16 @@ const moduli = [
     size: "PDF · 313 KB",
   },
   {
-    href: regolamento.url,
-    file: "regolamento-2026.pdf",
-    name: "Regolamento 2026",
-    note: "Regole della scuola, orari, comportamento in sala e frequenza dei corsi.",
-    size: "PDF · 114 KB",
+    href: "https://www.facebook.com/OfficinaDADAdisciplineartistiche/posts/pfbid0xuwpweK3p2aFwr3NXsywaAujkREzGaBzLUYnonvgxm1fs2AbByYDKTrEAAHEvn6Yl",
+    name: "Safeguarding",
+    note: "Le nostre tutele per minori e persone in condizione di fragilità.",
+    size: "Documento ufficiale",
   },
   {
-    href: safeguarding.url,
-    file: "safeguarding.pdf",
-    name: "Policy di safeguarding",
-    note: "Le nostre tutele per minori e persone in condizione di fragilità.",
-    size: "PDF · 82 KB",
+    href: "https://www.facebook.com/OfficinaDADAdisciplineartistiche/posts/pfbid026pr5VFi2pXNCxVdLBddsJb93tmaYMFiUPtfiNfVvjUkbkAhqJK7kZPsg8UF2xCfgl",
+    name: "Codice Etico",
+    note: "I principi e le regole di condotta dell'associazione.",
+    size: "Documento ufficiale",
   },
 ];
 
@@ -121,7 +117,7 @@ export function Iscrizioni() {
                       aria-hidden="true"
                       className="shrink-0 rounded-full border border-white/15 px-4 py-3 text-xs uppercase tracking-[0.2em] text-paper/70 group-hover:border-ember group-hover:text-ember transition-colors"
                     >
-                      ↓
+                      ↗
                     </span>
                   </a>
                 </li>
