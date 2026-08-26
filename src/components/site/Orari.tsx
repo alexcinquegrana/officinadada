@@ -36,13 +36,14 @@ const DESC_ADOLESCENTI_ADULTI =
 const DESC_FLEXIBILITY =
   "Un allenamento dedicato a mobilità articolare, allungamento attivo e forza nei range estremi. Si lavora su spalle, colonna e anche con progressioni graduali e rispettose dei tempi di ciascuno. È il complemento perfetto alle discipline aeree: più ampiezza, meno infortuni, linee più pulite. Adatto anche a chi non fa circo e vuole semplicemente stare meglio nel proprio corpo.";
 
+const sharedDescs = [
+  { label: "Bambini · Junior", text: DESC_BAMBINI_JUNIOR },
+  { label: "Adolescenti · Adulti", text: DESC_ADOLESCENTI_ADULTI },
+];
+
 const gruppi: Gruppo[] = [
   {
     title: "Tessuti aerei",
-    sharedDescs: [
-      { label: "Bambini · Junior", text: DESC_BAMBINI_JUNIOR },
-      { label: "Adolescenti · Adulti", text: DESC_ADOLESCENTI_ADULTI },
-    ],
     corsi: [
       {
         name: "Baby aerea",
@@ -78,10 +79,6 @@ const gruppi: Gruppo[] = [
   },
   {
     title: "Cerchio aereo",
-    sharedDescs: [
-      { label: "Bambini · Junior", text: DESC_BAMBINI_JUNIOR },
-      { label: "Adolescenti · Adulti", text: DESC_ADOLESCENTI_ADULTI },
-    ],
     corsi: [
       {
         name: "Cerchio aereo",
