@@ -36,13 +36,14 @@ const DESC_ADOLESCENTI_ADULTI =
 const DESC_FLEXIBILITY =
   "Un allenamento dedicato a mobilità articolare, allungamento attivo e forza nei range estremi. Si lavora su spalle, colonna e anche con progressioni graduali e rispettose dei tempi di ciascuno. È il complemento perfetto alle discipline aeree: più ampiezza, meno infortuni, linee più pulite. Adatto anche a chi non fa circo e vuole semplicemente stare meglio nel proprio corpo.";
 
+const sharedDescs = [
+  { label: "Bambini · Junior", text: DESC_BAMBINI_JUNIOR },
+  { label: "Adolescenti · Adulti", text: DESC_ADOLESCENTI_ADULTI },
+];
+
 const gruppi: Gruppo[] = [
   {
     title: "Tessuti aerei",
-    sharedDescs: [
-      { label: "Bambini · Junior", text: DESC_BAMBINI_JUNIOR },
-      { label: "Adolescenti · Adulti", text: DESC_ADOLESCENTI_ADULTI },
-    ],
     corsi: [
       {
         name: "Baby aerea",
@@ -78,10 +79,6 @@ const gruppi: Gruppo[] = [
   },
   {
     title: "Cerchio aereo",
-    sharedDescs: [
-      { label: "Bambini · Junior", text: DESC_BAMBINI_JUNIOR },
-      { label: "Adolescenti · Adulti", text: DESC_ADOLESCENTI_ADULTI },
-    ],
     corsi: [
       {
         name: "Cerchio aereo",
@@ -170,6 +167,19 @@ export function Orari() {
           </p>
         </Reveal>
 
+        <Reveal>
+          <div className="mt-10 grid grid-cols-1 gap-x-10 gap-y-4 md:grid-cols-2 md:divide-x md:divide-white/10">
+            {sharedDescs.map((d) => (
+              <div key={d.label} className="md:px-6 first:md:pl-0 last:md:pr-0">
+                <p className="text-xs uppercase tracking-[0.18em] text-ember/80">
+                  {d.label}
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-paper/70">{d.text}</p>
+              </div>
+            ))}
+          </div>
+        </Reveal>
+
         {gruppi.map((g) => (
           <div key={g.title} className="mt-16">
             <Reveal>
@@ -177,21 +187,6 @@ export function Orari() {
                 {g.title}
               </h3>
             </Reveal>
-
-            {g.sharedDescs && (
-              <Reveal>
-                <div className="mt-5 grid grid-cols-1 gap-x-10 gap-y-4 md:grid-cols-2 md:divide-x md:divide-white/10">
-                  {g.sharedDescs.map((d) => (
-                    <div key={d.label} className="md:px-6 first:md:pl-0 last:md:pr-0">
-                      <p className="text-xs uppercase tracking-[0.18em] text-ember/80">
-                        {d.label}
-                      </p>
-                      <p className="mt-2 text-sm leading-relaxed text-paper/70">{d.text}</p>
-                    </div>
-                  ))}
-                </div>
-              </Reveal>
-            )}
 
             <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {g.corsi.map((c, i) => (
