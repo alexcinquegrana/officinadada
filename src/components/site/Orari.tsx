@@ -175,40 +175,14 @@ const gruppi: Gruppo[] = [
 
 function CorsoCard({ c }: { c: Corso }) {
   return (
-    <article className="relative h-full overflow-hidden rounded-sm bg-ink">
+    <article className="overflow-hidden rounded-sm border border-border bg-ink">
       <img
         src={c.img}
         alt={c.alt}
         loading="lazy"
         decoding="async"
-        className="absolute inset-0 h-full w-full scale-105 object-cover object-top"
+        className="block h-auto w-full object-contain"
       />
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(to bottom, rgba(11,11,12,0.15) 0%, rgba(11,11,12,0.35) 30%, rgba(11,11,12,0.9) 58%, rgba(11,11,12,0.98) 100%)",
-        }}
-      />
-      <div className="relative flex h-full min-h-[420px] flex-col justify-end p-6 sm:min-h-[440px]">
-        <p className="eyebrow !text-white/70">{c.target}</p>
-        <h3 className="mt-2 font-display italic font-light text-[clamp(1.6rem,4vw,2.2rem)] leading-tight text-white">
-          {c.name}
-        </h3>
-        <dl className="mt-4 space-y-2 border-t border-white/15 pt-4">
-          {c.slots.map(([label, time]) => (
-            <div
-              key={label + time}
-              className="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-3"
-            >
-              <dt className="min-w-0 truncate text-xs uppercase tracking-[0.14em] text-white/60">
-                {label}
-              </dt>
-              <dd className="shrink-0 font-display italic text-white text-[15px]">{time}</dd>
-            </div>
-          ))}
-        </dl>
-      </div>
     </article>
   );
 }
