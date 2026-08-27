@@ -2,12 +2,12 @@
 
 ## 1. Sezione "Dove siamo" (`src/components/site/MapSection.tsx`)
 
-Sostituire il paragrafo descrittivo sotto il titolo "Sotto il tendone, in Valsabbia." (riga 41–43, il testo `Officina Dadà A.S.D. — {ADDRESS}. Vieni a trovarci...`) con due righe indicative delle due sedi:
+- **Rimuovere** il titolo `<h2>` "Sotto il tendone, in Valsabbia." (righe 36–39) — è sbagliato, non c'è nessun tendone. Lasciare solo l'eyebrow "Dove siamo".
+- **Sostituire** il paragrafo descrittivo (riga 40–43, `Officina Dadà A.S.D. — {ADDRESS}. Vieni a trovarci...`) con due righe indicative delle due sedi:
+  - **Sede principale** — Via Arnoldo Bellini 7, 25077 Roè Volciano (BS)
+  - **Seconda sede** — Via Mons. Toccabelli 26, 25078 Vestone (BS) · palestra Collodi
 
-- **Sede principale** — Via Arnoldo Bellini 7, 25077 Roè Volciano (BS)
-- **Seconda sede** — Via Mons. Toccabelli 26, 25078 Vestone (BS) · palestra Collodi
-
-Il titolo e il pulsante "Apri in Google Maps" restano invariati. Aggiornare anche la `const ADDRESS` se serve per coerenza, mantenendo il pin sulla sede principale di Roè Volciano.
+Il pulsante "Apri in Google Maps" resta invariato. Mantenere il pin sulla sede principale di Roè Volciano.
 
 ## 2. Spostare il Regolamento (`src/components/site/SiteFooter.tsx` → `src/components/site/Iscrizioni.tsx`)
 
