@@ -12,6 +12,13 @@ const moduli = [
     size: "PDF · 313 KB",
   },
   {
+    href: regolamento.url,
+    file: "regolamento-2026.pdf",
+    name: "Regolamento 2026",
+    note: "Il regolamento associativo da leggere prima del primo ingresso in sala.",
+    size: "Documento ufficiale",
+  },
+  {
     href: "https://www.facebook.com/OfficinaDADAdisciplineartistiche/posts/pfbid0xuwpweK3p2aFwr3NXsywaAujkREzGaBzLUYnonvgxm1fs2AbByYDKTrEAAHEvn6Yl",
     name: "Safeguarding",
     note: "Le nostre tutele per minori e persone in condizione di fragilità.",
