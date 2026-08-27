@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Reveal } from "./Reveal";
 import domanda from "@/assets/domanda-ammissione-socio.pdf.asset.json";
+import regolamento from "@/assets/regolamento-2026.pdf.asset.json";
 
 const moduli = [
   {
