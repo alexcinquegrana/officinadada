@@ -33,14 +33,16 @@ export function MapSection() {
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
             <div>
               <p className="eyebrow">Dove siamo</p>
-              <h2 className="mt-3 font-display font-light text-[clamp(2rem,5vw,3.5rem)] leading-[1] tracking-[-0.02em] text-foreground">
-                <span className="italic">Sotto</span> il tendone,
-                <br className="hidden md:block" /> in Valsabbia.
-              </h2>
-              <p className="mt-4 text-sm text-foreground/70 max-w-md">
-                Officina Dadà A.S.D. — {ADDRESS}. Vieni a trovarci, o scrivi in segreteria per
-                fissare una prova.
-              </p>
+              <div className="mt-4 space-y-1.5 text-sm text-foreground/80">
+                <p>
+                  <span className="text-foreground/50">Sede principale — </span>
+                  Via Arnoldo Bellini 7, 25077 Roè Volciano (BS)
+                </p>
+                <p>
+                  <span className="text-foreground/50">Seconda sede — </span>
+                  Via Mons. Toccabelli 26, 25078 Vestone (BS) · palestra Collodi
+                </p>
+              </div>
             </div>
             <a
               href={MAPS_LINK}

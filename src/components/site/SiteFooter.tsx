@@ -1,7 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Logo } from "./Logo";
 import { openCookiePreferences } from "./CookieBanner";
-import regolamento from "@/assets/regolamento-2026.pdf.asset.json";
 
 export function SiteFooter() {
   return (
@@ -98,17 +97,6 @@ export function SiteFooter() {
                 >
                   Preferenze cookie
                 </button>
-              </li>
-              <li>
-                <a
-                  href={regolamento.url}
-                  download="regolamento-2026.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-paper/70 hover:text-paper transition-colors"
-                >
-                  Regolamento 2026 (PDF)
-                </a>
               </li>
               <li>
                 <a

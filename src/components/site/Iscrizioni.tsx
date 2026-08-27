@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Reveal } from "./Reveal";
 import domanda from "@/assets/domanda-ammissione-socio.pdf.asset.json";
+import regolamento from "@/assets/regolamento-2026.pdf.asset.json";
 
 const moduli = [
   {
@@ -9,6 +10,13 @@ const moduli = [
     name: "Domanda di ammissione a socio",
     note: "Da compilare e consegnare firmata in segreteria. Per i minori firma di un genitore.",
     size: "PDF · 313 KB",
+  },
+  {
+    href: regolamento.url,
+    file: "regolamento-2026.pdf",
+    name: "Regolamento 2026",
+    note: "Il regolamento associativo da leggere prima del primo ingresso in sala.",
+    size: "Documento ufficiale",
   },
   {
     href: "https://www.facebook.com/OfficinaDADAdisciplineartistiche/posts/pfbid0xuwpweK3p2aFwr3NXsywaAujkREzGaBzLUYnonvgxm1fs2AbByYDKTrEAAHEvn6Yl",
